@@ -18,5 +18,6 @@ jobs:
                   GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
                   BRANCH: gh-pages
+                  BASE_BRANCH: docs
                   FOLDER: .vuepress/dist
                   BUILD_SCRIPT: npm install && npm run build
