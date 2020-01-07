@@ -58,6 +58,7 @@ module.exports = {
     deploy: {
         repo: 'git@github.com:zyao89/zyao89.github.io.git',
         branch: 'gh-pages',
+        CNAME: 'zyao89.cn',
     },
 };
 
