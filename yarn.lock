@@ -979,10 +979,10 @@
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
-"@micro-app/plugin-vuepress@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.8.tgz#96cea715dc1db66fb482b95ecc43e07b3e29f12e"
-  integrity sha512-THrbpLNMAH5Xmq9nUyq1t30K6IoL8nznnN89AOwTWSkQnH24yb4Fh6th9385H4K6FeBzGXce2b4psBEP7TuSjg==
+"@micro-app/plugin-vuepress@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.9.tgz#760fbea5f7c8ddf3454e937e7fcab4611754e9cb"
+  integrity sha512-n+zswhNv9DwPCvSRzhl5NiOhBJ8IjVTPPbARCIpP2J/vKyf0no83S/tQJPLpNJG5How/a53eo3yecvW34Ja07w==
   dependencies:
     "@micro-app/shared-utils" "^0.1.11"
     "@vssue/api-github-v3" "^1.1.2"
