@@ -3,7 +3,6 @@
 module.exports = {
     type: 'blog',
     // logo: '/logo.png',
-    // sourceDir: 'docs',
 
     lang: 'zh-CN',
     title: "Zyao89's Blogs",
