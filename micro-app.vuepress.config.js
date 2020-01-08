@@ -10,11 +10,12 @@ module.exports = {
     head: [
         [ 'link', { rel: 'icon', href: '/favicon.png' }],
         [ 'link', { rel: 'manifest', href: '/manifest.json' }],
-        [ 'meta', { name: 'keywords', content: 'Zyao89,Zyao89 Blogs,Android,移动开发,手机APP,javascript,html5,开发者,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek' }],
+        [ 'meta', { name: 'keywords', content: '二圆三土,二圆与三土,Zyao89,Zyao89 Blogs,Android,移动开发,手机APP,javascript,html5,开发者,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek' }],
         [ 'meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         [ 'meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ],
     author: 'Zyao89',
+    avatar: '/favicon.png',
 
     lastUpdated: '上次编辑时间',
 
@@ -35,8 +36,9 @@ module.exports = {
     footer: {
         powerby: true,
         copyright: true,
-        // beian: 'abc',
+        beian: '浙ICP备17039012号-1',
     },
+
     // friendLinks: [
     //     {
     //         title: 'abc',
@@ -46,12 +48,18 @@ module.exports = {
     //     },
     // ],
 
-    comment: {
-        type: 'vssue', // default: vssue
-        owner: 'zyao89',
-        repo: 'zyao89.github.io',
-        clientId: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    blogConfig: {
+        comment: {
+            type: 'vssue', // default: vssue
+            platform: 'github-v4',
+            owner: 'zyao89',
+            repo: 'zyao89.github.io',
+            clientId: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            prefix: '[Comments] ',
+            labels: [ 'comments' ],
+            // admins: [ 'zyao89' ],
+        },
     },
 
     deploy: {
@@ -87,9 +95,10 @@ function getNav() {
             icon: 'timeline',
         },
         {
-            text: '了解更多',
+            text: '更多',
+            icon: 'mores',
             items: [
-                { text: 'NPM', link: 'https://www.npmjs.com/zyao89', icon: 'npm' },
+                { text: 'NPM', link: 'https://www.npmjs.com/~zyao89', icon: 'npm' },
                 { text: 'GitHub', link: 'https://github.com/zyao89', icon: 'github' },
                 { text: 'Email', link: 'mailto:zyao89@gmail.com', icon: 'email' },
             ],

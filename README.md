@@ -2,7 +2,7 @@
 home: true
 # banner: /banner-blog.jpg
 heroText: 'STAY HUNGRY STAY FOOLISH'
-tagline: '这家伙真的很懒。'
+tagline: 'No one can call back yesterday.'
 # features:
 #     - image: /banner/designer_mindset.svg
 #     - title: 简洁至上
@@ -18,6 +18,6 @@ footer: true
 ---
 
 
-# zyao89.github.io
+<!-- # zyao89.github.io -->
 
-[Website]
+<!-- [Website] -->
