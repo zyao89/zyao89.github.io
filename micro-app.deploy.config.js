@@ -1,9 +1,14 @@
 'use strict';
 
-const repoToken = process.env.ACCESS_TOKEN || 'git';
+let repoToken = 'git';
+if (process.env.GITHUB_TOKEN && process.env.GITHUB_TOKEN !== 'undefined') {
+    repoToken = `x-access-token:${process.env.GITHUB_TOKEN}`;
+} else if (process.env.ACCESS_TOKEN && process.env.ACCESS_TOKEN !== 'undefined') {
+    repoToken = process.env.ACCESS_TOKEN;
+}
 
 module.exports = {
-    repo: `${repoToken}@github.com:zyao89/zyao89.github.io.git`,
+    repo: `https://${repoToken}@github.com:zyao89/zyao89.github.io.git`,
     branch: 'master',
     dist: '.vuepress/dist',
     user: {
