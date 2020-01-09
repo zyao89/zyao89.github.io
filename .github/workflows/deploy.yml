@@ -22,8 +22,8 @@ jobs:
 
             - name: Deploy
               run: npm run-script deploy
-            #   env:
-            #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              env:
+                  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
             # - name: Deploy
             #   uses: JamesIves/github-pages-deploy-action@release/v3
             #   with:
