@@ -2,7 +2,7 @@
 title: 2O3T Tools 使用说明
 date: 2019-01-31 22:45:59
 tags: [Sketch,Plugin]
-categories: [应用产品]
+categories: [Sketch]
 ---
 ## 安装
 
