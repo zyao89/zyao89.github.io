@@ -27,7 +27,7 @@ main() {
 }
 ```
 
-**注释**
+**注释:**
 
 使用 `//` 来表示剩下的行是一个注释，也可以使用 `/*...*/` 来注释
 
@@ -237,7 +237,7 @@ main() {
 
 ## 命名参数、位置参数、参数默认值、可选参数
 
-#### 命名参数
+### 命名参数
 
 ```dart
 sayHello({String name}) {
@@ -303,9 +303,9 @@ int sum(int a, int b, [int c = 3]) {
 }
 ```
 
-#### main()函数
+#### main() 函数
 
-不论在Dart还是Flutter中，必须都需要一个顶层的main()函数，它是整个应用的入口函数，main()函数的返回值是void，还有一个可选的参数，参数类型是List<String>。
+不论在Dart还是Flutter中，必须都需要一个顶层的main()函数，它是整个应用的入口函数，main()函数的返回值是void，还有一个可选的参数，参数类型是`List<String>`。
 
 #### 匿名函数
 
@@ -367,7 +367,7 @@ main() {
 | ~/     | 返回一个整数值的除法                               |
 | %      | 取余，除法剩下的余数                               |
 
-#### 类型测试操作符
+### 类型测试操作符
 
 `as`、`is` 和 `is!` 操作符在运行时用于检查类型非常便捷。
 
@@ -542,7 +542,7 @@ main() {
 }
 ```
 
-#### 异常
+### 异常
 
 抛出异常：
 
@@ -858,7 +858,7 @@ import 'package:lib2/lib2.dart' hide foo;
 import 'package:greetings/hello.dart' deferred as hello;
 ```
 
-# dart:html
+## dart:html
 
 用于连接 Dart 和 HTML
 
@@ -897,12 +897,12 @@ class OutPut {
 }
 ```
 
-# dart:js
+## dart:js
 
 用于调用原生 `JavaScript`
 
 ---
 
-# Demo链接
+## Demo链接
 
 [我是链接](https://github.com/zyao89/Dart-Flutter/tree/master/Code)

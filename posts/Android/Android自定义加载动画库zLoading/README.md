@@ -16,36 +16,44 @@ Android自定义动画总结更新一下，增加了对话框Dialog模式，今�
 
 ## 目前拥有的类型
 
-索引 | 名称 | 枚举值（Z_TYPE）
-:------:|:------:|:------:
-0|CircleBuilder | CIRCLE
-1|ClockBuilder | CIRCLE_CLOCK
-2|StarBuilder | STAR_LOADING
-3|LeafBuilder | LEAF_ROTATE
-4|DoubleCircleBuilder | DOUBLE_CIRCLE
-5|PacManBuilder | PAC_MAN
-6|ElasticBallBuilder | ELASTIC_BALL
-7|InfectionBallBuilder | INFECTION_BALL
-8|IntertwineBuilder | INTERTWINE
-9|TextBuilder | TEXT
+索引 | 类名 | 枚举值（Z_TYPE）| 昵称
+:------:|:------:|:------:|:-------:
+0|CircleBuilder | CIRCLE | 圆
+1|ClockBuilder | CIRCLE_CLOCK | 计时器
+2|StarBuilder | STAR_LOADING | 跳舞的星星
+3|LeafBuilder | LEAF_ROTATE | 旋转的叶子
+4|DoubleCircleBuilder | DOUBLE_CIRCLE | 画两个圈圈
+5|PacManBuilder | PAC_MAN | PacMan
+6|ElasticBallBuilder | ELASTIC_BALL | 颤抖吧！球球
+7|InfectionBallBuilder | INFECTION_BALL | 感染体
+8|IntertwineBuilder | INTERTWINE | 交织
+9|TextBuilder | TEXT | 文字
+10|SearchPathBuilder | SEARCH_PATH | 搜索等待
+11|RotateCircleBuilder | ROTATE_CIRCLE | 多圆旋转
+12|SingleCircleBuilder | SINGLE_CIRCLE | 单圆简单动画
+13|SnakeCircleBuilder | SNAKE_CIRCLE | 引蛇出洞
+14|StairsPathBuilder | STAIRS_CIRCLE | 舞动阶梯
+15|MusicPathBuilder | MUSIC_PATH | 跳动音符
+16|StairsRectBuilder | STAIRS_RECT | 递增方块
+17|ChartRectBuilder | CHART_RECT | 跳动的柱状图
 
 ## 链接如下
 
-[第一个，ClockBuilder](markdown/Android自定义动画-ClockLoadingView.md)
+[第一个，ClockBuilder](../Android自定义动画-ClockLoadingView/README.md)
 
-[第二个，StarBuilder](http://zyao89.github.io/2017/03/22/Android自定义动画-StarLoadingView/)
+[第二个，StarBuilder](../Android自定义动画-StarLoadingView/README.md)
 
-[第三个，LeafBuilder](https://zyao89.cn/2017/03/22/旋转的叶子-LeafLoadingView/)
+[第三个，LeafBuilder](../旋转的叶子-LeafLoadingView/README.md)
 
-[第四个，DoubleCircleBuilder](https://zyao89.cn/2017/03/25/Android自定义加载动画-DoubleCircleBuilder/)
+[第四个，DoubleCircleBuilder](../Android自定义加载动画-DoubleCircleBuilder/README.md)
 
-[第五个，PacManBuilder](https://zyao89.cn/2017/03/26/Android自定义加载动画-PacMan/)
+[第五个，PacManBuilder](../2017/03/26/Android自定义加载动画-PacMan/README.md)
 
-[第六个，ElasticBallBuilder](https://zyao89.cn/2017/03/27/Android自定义加载动画-颤抖吧！球球/)
+[第六个，ElasticBallBuilder](../Android自定义加载动画-颤抖吧！球球/README.md)
 
-[第七个，InfectionBallBuilder](https://zyao89.cn/2017/04/06/Android自定义加载动画-感染体/)
+[第七个，InfectionBallBuilder](../Android自定义加载动画-感染体/README.md)
 
-[第八个，IntertwineBuilder](https://zyao89.cn/2017/04/06/Android自定义加载动画-交织/)
+[第八个，IntertwineBuilder](../Android自定义加载动画-交织/README.md)
 
 ## 引入
 

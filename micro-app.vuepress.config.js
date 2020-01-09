@@ -32,7 +32,7 @@ module.exports = {
     // displayAllHeaders: true // 默认值：false
 
     svgIconsDir: 'icons',
-    copyright: '2019 - present, Zyao89',
+    copyright: '2017 - present, Zyao89',
     footer: {
         powerby: true,
         copyright: true,

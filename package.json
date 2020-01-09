@@ -10,7 +10,7 @@
         "build": "micro-app-vuepress build",
         "info": "micro-app-vuepress info",
         "deploy": "micro-app-vuepress deploy",
-        "create": "micro-app-vuepress create --type post --base test --classify",
+        "create": "micro-app-vuepress create --type post --base posts --classify categories",
         "test": "jest"
     },
     "repository": {
