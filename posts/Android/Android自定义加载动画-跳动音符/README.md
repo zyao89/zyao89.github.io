@@ -2,7 +2,7 @@
 title: Android自定义加载动画-跳动音符
 categories: [Android]
 tags: [移动开发,ZLoading,动画]
-date: 2018-03-17 18:51:16
+date: 2018-03-17 04:04:16
 ---
 
 > Android自定义动画系列十五，今天来分享第15个自定义动画，一个跳动的音符动画（MUSIC_PATH）。

@@ -2,7 +2,7 @@
 title: Android自定义加载动画-舞动阶梯
 categories: [Android]
 tags: [移动开发,ZLoading,动画]
-date: 2018-03-17 04:07:22
+date: 2018-03-11 01:50:22
 ---
 
 > Android自定义动画系列十四，今天来分享第14个自定义动画，一个递增的楼梯动画（STAIRS_CIRCLE），此动画灵感来自于评论区，很感谢。

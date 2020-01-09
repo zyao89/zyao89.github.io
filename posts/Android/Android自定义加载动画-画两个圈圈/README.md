@@ -2,7 +2,7 @@
 title: Android自定义加载动画-画两个圈圈
 categories: [Android]
 tags: [移动开发,ZLoading,动画]
-date: 2018-03-17 04:06:19
+date: 2017-03-25 16:01:19
 ---
 
 Android自定义动画系列四，今天来分享第四个自定义Loading动画（DoubleCircleBuilder），同样的先起了一个名字叫 `画两个圈圈` ，还是老规矩先介绍，后上图。

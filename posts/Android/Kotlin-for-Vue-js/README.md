@@ -2,7 +2,7 @@
 title: Kotlin for Vue.js
 date: 2017-06-03 02:37:01
 tags: [JavaScript,Kotlin,Vue.js]
-categories: [Kotlin]
+categories: [Android]
 ---
 ## Kotlin介绍
 

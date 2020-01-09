@@ -2,7 +2,7 @@
 title: Android自定义加载动画-跳动的柱状图
 categories: [Android]
 tags: [移动开发,ZLoading,动画]
-date: 2018-03-17 18:52:57
+date: 2018-03-17 04:08:57
 ---
 
 > Android自定义动画系列十六、十七，今天分享的是第16、17两个自定义动画。第16个递增的方块（STAIRS_RECT）。第17个跳动的柱状图（CHART_RECT）。
