@@ -1,7 +1,9 @@
 'use strict';
 
+const repoToken = process.env.GITHUB_TOKEN || 'git';
+
 module.exports = {
-    repo: 'git@github.com:zyao89/zyao89.github.io.git',
+    repo: `${repoToken}@github.com:zyao89/zyao89.github.io.git`,
     branch: 'master',
     dist: '.vuepress/dist',
     user: {
