@@ -24,5 +24,4 @@ jobs:
               with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   BRANCH: master
-                  BASE_BRANCH: src
                   FOLDER: .vuepress/dist

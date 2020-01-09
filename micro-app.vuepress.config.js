@@ -66,8 +66,6 @@ module.exports = {
         repo: 'git@github.com:zyao89/zyao89.github.io.git',
         branch: 'master',
         CNAME: 'zyao89.cn',
-        // name: 'Zyao89',
-        // email: 'zyao89@gmail.com',
     },
 };
 
