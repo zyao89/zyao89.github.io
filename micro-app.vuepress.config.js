@@ -68,6 +68,7 @@ module.exports = {
         CNAME: 'zyao89.cn',
         name: 'Zyao89',
         email: 'zyao89@gmail.com',
+        message: 'Deploying',
     },
 };
 
