@@ -979,6 +979,13 @@
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
+"@micro-app/plugin-deploy-command@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-deploy-command/-/plugin-deploy-command-0.1.2.tgz#dbb968936856e21744ba7e4a0453768c8799c74d"
+  integrity sha512-vs8HRxoE9EuDAzthJequRbdLlFXnKCTNhEK8TT3VLCxoPvtJlcK0DbFj4tbpPjStLjA192Vy5+WnZaR2jRl2eg==
+  dependencies:
+    shelljs "^0.8.3"
+
 "@micro-app/plugin-vuepress@^0.0.14":
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.14.tgz#c7ead9713d198558ee8c7639ef20639791aa18b4"
