@@ -955,10 +955,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@micro-app/plugin-vuepress@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.11.tgz#55f2dbcbdc747c7eb86fd651334024564f283666"
-  integrity sha512-RsG8I9ENE2nYf/4Qw0Z+VGc/+rAZHnz1NWJ/ZHnUiuxCHOz9rY1LUZIb5tXb8bRk76Z178qGcReteKX0UGjgnw==
+"@micro-app/plugin-vuepress@^0.0.11-alpha":
+  version "0.0.11-alpha"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.11-alpha.tgz#f93c09b03ca8c0d3ea4958d80690bb7d5b7d85a2"
+  integrity sha512-2kEnSu2YxBveLQnaggrDTJQb3gX0mvYhFMx7d8Fx5jgv59PtljzElIeNul0NEeij4+FSgiPxP7lBKgETtmowcg==
   dependencies:
     "@micro-app/shared-utils" "^0.1.11"
     "@vssue/api-github-v4" "^1.1.2"

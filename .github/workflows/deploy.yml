@@ -10,14 +10,21 @@ jobs:
             - name: Checkout
               uses: actions/checkout@master
 
-            - name: Build and Deploy
-              uses: JamesIves/github-pages-deploy-action@master
+            - name: Build
+              run: |
+                  npm install
+                  npm run-script build
               env:
                   GAID: ${{ secrets.GAID }}
                   GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
                   GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
-                  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: docs/.vuepress/dist
                   BRANCH: master
                   BASE_BRANCH: src
                   FOLDER: .vuepress/dist
-                  BUILD_SCRIPT: npm install && npm run build
