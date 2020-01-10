@@ -235,7 +235,7 @@ public void login(View view)
   Call<User> getUser(@Url String url);
 ```
 
-![Demo演示](img1.png)
+![Demo演示](./img1.png)
 
 Github项目地址：[zyao89/DemoRetrofit](https://github.com/zyao89/DemoRetrofit)
 

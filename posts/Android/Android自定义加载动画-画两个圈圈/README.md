@@ -93,7 +93,7 @@ Android自定义动画系列四，今天来分享第四个自定义Loading动画
 
 ## 演示
 
-![动画演示图](img1.gif)
+![动画演示图](./img1.gif)
 
 Github：[zyao89/ZCustomView](https://github.com/zyao89/ZCustomView)
 

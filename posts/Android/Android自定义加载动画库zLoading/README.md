@@ -12,7 +12,7 @@ Android自定义动画总结更新一下，增加了对话框Dialog模式，今�
 
 ## 效果图
 
-![演示效果动画](zLoadingDialog.gif)
+![演示效果动画](./zLoadingDialog.gif)
 
 ## 目前拥有的类型
 

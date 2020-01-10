@@ -374,7 +374,7 @@ public class MainActivity extends AppCompatActivity
 
 ## 演示图
 
-![演示图](image01.gif)
+![演示图](./image01.gif)
 
 Github项目地址：[zyao89/DemoAbstractProcessor](https://github.com/zyao89/DemoAbstractProcessor)
 

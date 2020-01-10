@@ -417,10 +417,10 @@ Android自定义动画系列六，今天来分享第六个自定义Loaidng动画
 
 ## 演示
 
-![动画效果演示](elastic_ball.gif)
+![动画效果演示](./elastic_ball.gif)
 
 Github：[zyao89/ZCustomView](https://github.com/zyao89/ZCustomView)
 
 `作者：Zyao89；转载请保留此行，谢谢；`
 
-个人博客：[zyao89.me](http://zyao89.github.io)
+个人博客：[zyao89.cn](http://zyao89.github.io)

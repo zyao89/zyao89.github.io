@@ -12,7 +12,7 @@ Android自定义动画系列八，今天来分享第八个自定义Loaidng动画
 
 ## 效果图
 
-![演示效果动画](Intertwine_loading.gif)
+![演示效果动画](./Intertwine_loading.gif)
 
 ## 介绍
 

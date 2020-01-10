@@ -172,6 +172,6 @@ categories: [Android]
 
 ## 演示
 
-![结果演示图](circle_loading.gif)
+![结果演示图](./circle_loading.gif)
 
 Github：[zyao89/ZCustomView](https://github.com/zyao89/ZCustomView)

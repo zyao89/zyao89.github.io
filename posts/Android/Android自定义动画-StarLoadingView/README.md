@@ -168,10 +168,10 @@ categories: [Android]
 
 ## 演示
 
-![动画演示图](star_loading.gif)
+![动画演示图](./star_loading.gif)
 
 Github：[zyao89/ZCustomView](https://github.com/zyao89/ZCustomView)
 
 `作者：Zyao89；转载请保留此行，谢谢；`
 
-个人博客：[zyao89.me](http://zyao89.github.io)
+个人博客：[zyao89.cn](http://zyao89.github.io)

@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity
 
 ## 动画演示
 
-![案例演示](Image01.gif)
+![案例演示](./Image01.gif)
 
 ## 总结
 

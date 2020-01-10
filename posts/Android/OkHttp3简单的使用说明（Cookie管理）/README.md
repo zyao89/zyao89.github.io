@@ -329,7 +329,7 @@ mOkHttpClient = new OkHttpClient.Builder()
 
 ## Demo演示图
 
-![测试Demo演示图](img1.gif)
+![测试Demo演示图](./img1.gif)
 
 Github项目地址：[zyao89/DemoOkHttp](https://github.com/zyao89/DemoOkHttp)
 

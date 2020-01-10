@@ -8,7 +8,7 @@ Android自定义动画系列十，先介绍下第九个Loading动画（TextBuild
 
 <!--more-->
 
-![系列九动画](text_loading.gif)
+![系列九动画](./text_loading.gif)
 
 > 上一篇介绍了[Android自定义加载动画库zLoading](https://zyao89.cn/2017/04/10/Android自定义加载动画库zLoading/)的使用方式，欢迎戳入！
 
@@ -16,7 +16,7 @@ Android自定义动画系列十，先介绍下第九个Loading动画（TextBuild
 
 ## 效果图
 
-![系列十动画](search_path.gif)
+![系列十动画](./search_path.gif)
 
 ## 正文
 

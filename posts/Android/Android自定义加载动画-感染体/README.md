@@ -12,7 +12,7 @@ Android自定义动画系列七，今天来分享第七个自定义Loaidng动画
 
 ## 效果图
 
-![演示效果动画](infection_ball.gif)
+![演示效果动画](./infection_ball.gif)
 
 ## 介绍
 
