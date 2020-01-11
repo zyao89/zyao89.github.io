@@ -8,7 +8,7 @@ if (process.env.GITHUB_TOKEN && process.env.GITHUB_TOKEN !== 'undefined') {
 }
 
 module.exports = {
-    repo: `https://${repoToken}@github.com/zyao89/zyao89.github.io.git`,
+    repo: repoToken === 'git' ? 'git@github.com:zyao89/zyao89.github.io.git' : `https://${repoToken}@github.com/zyao89/zyao89.github.io.git`,
     branch: 'master',
     dist: '.vuepress/dist',
     user: {

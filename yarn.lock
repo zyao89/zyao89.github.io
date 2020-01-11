@@ -979,17 +979,15 @@
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
-"@micro-app/plugin-deploy-command@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-deploy-command/-/plugin-deploy-command-0.1.2.tgz#dbb968936856e21744ba7e4a0453768c8799c74d"
-  integrity sha512-vs8HRxoE9EuDAzthJequRbdLlFXnKCTNhEK8TT3VLCxoPvtJlcK0DbFj4tbpPjStLjA192Vy5+WnZaR2jRl2eg==
-  dependencies:
-    shelljs "^0.8.3"
+"@micro-app/plugin-deploy-command@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-deploy-command/-/plugin-deploy-command-0.1.5.tgz#87f0dd324b538dd2c0a4c1c1f511003756db2363"
+  integrity sha512-342hCUxTaBJeTbCrQv2t8N8NTNGFc0O+Q3r5aFuXF7qINxMueD/CoZ5TC8L28Nba52YPrDqF2xVV7xvzyT8O2A==
 
-"@micro-app/plugin-vuepress@^0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.14.tgz#c7ead9713d198558ee8c7639ef20639791aa18b4"
-  integrity sha512-29KL86iHLdubJuNAKr/SgEw7dSbiHw/W2NhhclmywznIeizeVviXdYbAVIvy+ETLZTpy9QLyrDSMaiD1uY8rOw==
+"@micro-app/plugin-vuepress@^0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.15.tgz#71756fff24e89d6eb3175c798dffdc823d597878"
+  integrity sha512-NLrfuBJzvI2csC2a7+qmxZ/N71LP++1V1GNqQadC4qE+EABFTDpF+TWhu27IcsBXES/mfOEWOlHFVmVUxmGaVQ==
   dependencies:
     "@micro-app/cli" "^0.3.0-alpha.2"
     "@micro-app/shared-utils" "^0.1.11"
@@ -7319,6 +7317,18 @@ mime-db@1.43.0, "mime-db@>= 1.43.0 < 2":
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.43.0.tgz#0a12e0502650e473d735535050e7c8f4eb4fae58"
   integrity sha512-+5dsGEEovYbT8UY9yD7eE4XTc4UwJ1jBYlgaQQF38ENsKR3wj/8q8RFZrF9WIZpB2V1ArTVFUva8sAul1NzRzQ==
 
+mime-db@~1.25.0:
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.25.0.tgz#c18dbd7c73a5dbf6f44a024dc0d165a1e7b1c392"
+  integrity sha1-wY29fHOl2/b0SgJNwNFloeexw5I=
+
+mime-types@2.1.13:
+  version "2.1.13"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.13.tgz#e07aaa9c6c6b9a7ca3012c69003ad25a39e92a88"
+  integrity sha1-4HqqnGxrmnyjASxpADrSWjnpKog=
+  dependencies:
+    mime-db "~1.25.0"
+
 mime-types@^2.1.12, mime-types@^2.1.18, mime-types@~2.1.17, mime-types@~2.1.19, mime-types@~2.1.24:
   version "2.1.26"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.26.tgz#9c921fc09b7e149a65dfdc0da4d20997200b0a06"
@@ -9488,6 +9498,14 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rss@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/rss/-/rss-1.2.2.tgz#50a1698876138133a74f9a05d2bdc8db8d27a921"
+  integrity sha1-UKFpiHYTgTOnT5oF0r3I240nqSE=
+  dependencies:
+    mime-types "2.1.13"
+    xml "1.0.1"
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
@@ -11649,6 +11667,11 @@ xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==
+
+xml@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
+  integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=
 
 xmlbuilder@^13.0.0:
   version "13.0.2"

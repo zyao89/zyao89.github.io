@@ -50,6 +50,7 @@ module.exports = {
 
     blogConfig: {
         siteUrl: 'https://zyao89.cn',
+        rss: true,
         comment: {
             type: 'vssue', // default: vssue
             platform: 'github-v4',
