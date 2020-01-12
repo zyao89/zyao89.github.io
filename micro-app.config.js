@@ -2,7 +2,7 @@
 
 const config = {
     plugins: [
-        '@micro-app/plugin-deploy-command',
+        '@micro-app/plugin-deploy',
     ],
 };
 
