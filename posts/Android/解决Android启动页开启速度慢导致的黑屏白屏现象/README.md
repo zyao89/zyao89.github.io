@@ -30,13 +30,13 @@ Android Studio，任何正常的Android手机
 ### 案例思路
 
 1. 首先在res/drawable下新建一个layer-list，名字随便取，比如loading_bg.xml。
-![上面是背景颜色，下面是一张图片，其他参数随意。](IMG_001.png)
+![上面是背景颜色，下面是一张图片，其他参数随意。](./IMG_001.png)
 
 2. 设置LoadingActivity的主题和参数。
-![这里主要是设置windowBackground的图片值。](IMG_002.png)
+![这里主要是设置windowBackground的图片值。](./IMG_002.png)
 
 3. 在AndroidManifest.xml中定义LoadingActivity的theme的主题为SplashTheme。
-![主题为SplashTheme。](IMG_003.png)
+![主题为SplashTheme。](./IMG_003.png)
 
 4. 其他的都是正常启动Activity了，这里甚至可以在onCreate()启动时，不需要不要调用setContentView()方法。
 

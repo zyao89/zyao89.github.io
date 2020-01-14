@@ -10,7 +10,7 @@ categories: [Android]
 
 Kotlin 是一个基于 JVM 的新的编程语言，由 [**JetBrains**](https://www.jetbrains.com/)开发。
 
-![What does it look like?](144513_oDxt_2720166.png)
+![What does it look like?](./144513_oDxt_2720166.png)
 
 <!--more-->
 
