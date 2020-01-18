@@ -4,6 +4,8 @@ module.exports = {
     type: 'blog',
     // logo: '/logo.png',
 
+    shortLinks: true, // 开启短链接
+
     lang: 'zh-CN',
     title: "Zyao89's Blogs",
     description: '这家伙真的很懒。擅长Web前端、Android开发。专业程序员一枚。',

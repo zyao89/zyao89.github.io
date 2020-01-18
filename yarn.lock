@@ -986,10 +986,10 @@
   resolved "https://registry.yarnpkg.com/@micro-app/plugin-deploy/-/plugin-deploy-0.0.3.tgz#267f898647a63730271c5fbabd106a23d25498f6"
   integrity sha512-s2nNZgyIaXeRsjDH3y3DNSW8vYHllqCFEddCeOEBRcOl/iZDDue2aaoIVnA7seSuVuCjqZOOvvnngH/GiNsMHg==
 
-"@micro-app/plugin-vuepress@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.16.tgz#a8453249c06f1831c09104376c20d3872881be8d"
-  integrity sha512-EDNYQCE4ws40yvDfttgZW+njN4f23AcgtTlflDQBJVOJD/IVZr/+cWEPQds5a+JUUkcL69sS/FTPFN8NMuFMOA==
+"@micro-app/plugin-vuepress@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.17.tgz#39b5cba311650e958c9e1bb459c9868d46f1a9b4"
+  integrity sha512-+IxoNvvKvoeZe725DyMVptHhWXleofMd2Q+ICtPoWhFTWPfpgrHq2gnpQZa2q3epO+dNUgYcJZ7kSm7vBF3Zhg==
   dependencies:
     "@micro-app/cli" "^0.3.0-alpha.2"
     "@micro-app/shared-utils" "^0.1.13"
