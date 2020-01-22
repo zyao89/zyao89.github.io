@@ -9,12 +9,13 @@ module.exports = {
     lang: 'zh-CN',
     title: "Zyao89's Blogs",
     description: '这家伙真的很懒。擅长Web前端、Android开发。专业程序员一枚。',
+    keywords: '二圆三土,二圆与三土,Zyao89,Zyao89 Blogs,Android,移动开发,手机APP,javascript,html5,开发者,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek',
     head: [
         [ 'link', { rel: 'icon', href: '/favicon.png' }],
         [ 'link', { rel: 'manifest', href: '/manifest.json' }],
-        [ 'meta', { name: 'keywords', content: '二圆三土,二圆与三土,Zyao89,Zyao89 Blogs,Android,移动开发,手机APP,javascript,html5,开发者,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek' }],
         [ 'meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         [ 'meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+        [ 'meta', { name: 'google-site-verification', content: '8sZJLe_q5uzLQR19aq4O6V5Y7YPj-mLjb7b-jlBloNo' }],
     ],
     author: 'Zyao89',
     avatar: '/favicon.png',
@@ -22,16 +23,8 @@ module.exports = {
     lastUpdated: '上次编辑时间',
 
     sidebar: 'auto',
-    nav: getNav(),
-
     sidebarDepth: 2,
-    // algolia: {
-    //     indexName: "cli_vuejs",
-    //     apiKey: "f6df220f7d246aff64a56300b7f19f21"
-    // },
-    // search: false,
-    // searchMaxSuggestions: 10,
-    // displayAllHeaders: true // 默认值：false
+    nav: getNav(),
 
     svgIconsDir: 'icons',
     copyright: '2017 - present, Zyao89',
@@ -64,17 +57,29 @@ module.exports = {
             labels: [ 'comments' ],
             // admins: [ 'zyao89' ],
         },
+        sitemap: true,
     },
 
-    GAID: process.env.GAID || false,
+    baidu: {
+        autoPush: true,
+        hmtID: process.env.BAIDU_HMT_ID,
+    },
 
-    deploy: {
-        repo: 'git@github.com:zyao89/zyao89.github.io.git',
-        branch: 'master',
-        CNAME: 'zyao89.cn',
-        name: 'Zyao89',
-        email: 'zyao89@gmail.com',
-        message: 'Deploying',
+    GAID: process.env.GAID,
+
+    command: {
+        deploy: {
+            repo: 'git@github.com:zyao89/zyao89.github.io.git',
+            branch: 'master',
+            CNAME: 'zyao89.cn',
+            name: 'Zyao89',
+            email: 'zyao89@gmail.com',
+            message: 'Deploying',
+        },
+        create: {
+            categories: [],
+            tags: [],
+        },
     },
 };
 

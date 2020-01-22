@@ -5,8 +5,6 @@ tags: [移动开发,Kotlin,自定义View]
 categories: [Android]
 ---
 
-## Kotlin 引言
-
 > **Google IO 2017 宣布了 Kotlin 会成为 Android 官方开发语言。**
 
 Kotlin 是一个基于 JVM 的新的编程语言，由 [JetBrains](http://baike.baidu.com/item/JetBrains) 开发。

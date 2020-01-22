@@ -1,7 +1,7 @@
 ---
 title: 使用Nodejs建立临时本地服务器，运行调试开发.md
 date: 2017-03-12 23:04:56
-tags: Nodejs
+tags: [静态服务,Server]
 categories: [Nodejs]
 ---
 
