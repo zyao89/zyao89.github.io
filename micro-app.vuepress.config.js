@@ -43,9 +43,10 @@ module.exports = {
     //     },
     // ],
 
+    siteUrl: 'https://zyao89.cn',
     blogConfig: {
-        siteUrl: 'https://zyao89.cn',
         rss: true,
+        sitemap: true,
         comment: {
             type: 'vssue', // default: vssue
             platform: 'github-v4',
@@ -57,7 +58,6 @@ module.exports = {
             labels: [ 'comments' ],
             // admins: [ 'zyao89' ],
         },
-        sitemap: true,
     },
 
     baidu: {
