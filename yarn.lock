@@ -990,10 +990,10 @@
   dependencies:
     release-it "^12.4.3"
 
-"@micro-app/plugin-vuepress@0.0.17-alpha.2":
-  version "0.0.17-alpha.2"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.17-alpha.2.tgz#7b4708020f02ea71680275fd38a741d36b79b1a8"
-  integrity sha512-uFFvdYuu6KAvpBP1+WXm1tnIaydpnfbanVWMBi7c7EkE/x1S3bX9v9dot0pn94aP+nJ/1xs1MlvNQyxUdqlrMg==
+"@micro-app/plugin-vuepress@0.0.17-alpha.3":
+  version "0.0.17-alpha.3"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.0.17-alpha.3.tgz#c25036f6bf94f587ef436ae7d6f81a5a9588f774"
+  integrity sha512-WZpxJy8DJm+AB9aYEfUGZ0tZvpKXkQ+2Q1umkg6dUeiwj+ULXlzEjwwJHEDJU5U3e3tpfSgSUU1FF8tN2mxipg==
   dependencies:
     "@micro-app/cli" "^0.3.0-alpha.5"
     "@micro-app/shared-utils" "0.1.14-alpha.1"

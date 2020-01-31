@@ -44,7 +44,7 @@
     },
     "devDependencies": {
         "@micro-app/plugin-deploy": "0.0.3-alpha.1",
-        "@micro-app/plugin-vuepress": "0.0.17-alpha.2",
+        "@micro-app/plugin-vuepress": "0.0.17-alpha.3",
         "@types/jest": "^24.0.25",
         "babel-eslint": "^10.0.3",
         "eslint": "^5.16.0",
