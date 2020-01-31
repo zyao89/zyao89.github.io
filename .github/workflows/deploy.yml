@@ -19,14 +19,9 @@ jobs:
                   GAID: ${{ secrets.GAID }}
                   GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
                   GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+                  BAIDU_HMT_ID: ${{ secrets.BAIDU_HMT_ID }}
 
             - name: Deploy
               run: npm run-script deploy
               env:
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-            # - name: Deploy
-            #   uses: JamesIves/github-pages-deploy-action@release/v3
-            #   with:
-            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            #       BRANCH: master
-            #       FOLDER: .vuepress/dist
