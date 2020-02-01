@@ -1,5 +1,7 @@
 'use strict';
 
+const SITE_URL = 'https://zyao89.cn';
+
 module.exports = {
     type: 'blog',
     // logo: '/logo.png',
@@ -43,7 +45,7 @@ module.exports = {
     //     },
     // ],
 
-    siteUrl: 'https://zyao89.cn',
+    siteUrl: SITE_URL,
     blogConfig: {
         rss: true,
         sitemap: true,
@@ -110,7 +112,7 @@ function getNav() {
             text: '更多',
             icon: 'mores',
             items: [
-                { text: 'NPM', link: 'https://www.npmjs.com/~zyao89', icon: 'npm' },
+                { text: 'RSS', link: `${SITE_URL}/rss.xml`, icon: 'rss' },
                 { text: 'GitHub', link: 'https://github.com/zyao89', icon: 'github' },
                 { text: 'Email', link: 'mailto:zyao89@gmail.com', icon: 'email' },
             ],

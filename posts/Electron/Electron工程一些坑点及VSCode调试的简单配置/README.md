@@ -1,7 +1,7 @@
 ---
 title: Electron工程一些坑点及VSCode调试的简单配置
 date: 2019-02-28 16:57:44
-tags: [Electron]
+tags: [VSCode,解决问题]
 categories: [Electron]
 ---
 
