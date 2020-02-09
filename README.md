@@ -1,6 +1,6 @@
 ---
 home: true
-# banner: /banner-blog.jpg
+banner: /banner.jpg
 heroText: 'STAY HUNGRY STAY FOOLISH'
 tagline: 'No one can call back yesterday.'
 # features:
