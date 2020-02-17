@@ -24,7 +24,15 @@ date: 2020-02-15 17:14:48
 
 在上一步骤购买VPS及使用ssh进行远程连接你已经购买的VPS进行了远程连接，这里假设你已经使用root用户登录成功了。下面开始安装：
 
-### 安装wget
+### 安装v2ray
+
+```sh
+bash <(curl -L -s https://install.direct/go.sh)
+```
+
+或者执行以下步骤：
+
+#### 安装wget
 
 在登录完成的窗口输入下面命令并回车进行wget安装：
 
@@ -32,7 +40,7 @@ date: 2020-02-15 17:14:48
 yum -y install wget
 ```
 
-### 下载脚本
+#### 下载脚本
 
 安装完wget之后就可以进行下载安装v2ray的脚本了，输入如下命令并回车：
 
@@ -40,7 +48,7 @@ yum -y install wget
 wget https://install.direct/go.sh
 ```
 
-### 执行安装
+#### 执行安装
 
 输入下面的命令并回车执行安装
 
@@ -108,10 +116,19 @@ systemctl enable v2ray
 ```sh
 ## 查看已开放端口
 firewall-cmd --zone=public --list-ports
+```
 
+```sh
 ## 添加开放端口
-firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --zone=public --permanent --add-port=80/tcp
+```
 
+```sh
+## 删除开放端口
+firewall-cmd --zone=public --permanent --remove-port=80/tcp
+```
+
+```sh
 ## 重启防火墙
 firewall-cmd --reload
 ```
