@@ -16,7 +16,7 @@ date: 2020-02-15 17:14:48
 
 ## 准备工作
 
-购买一个VPS服务器，可用 [vultr.com](https://www.vultr.com/?ref=8413306-6G)
+购买一个VPS服务器，可选用 [vultr.com](https://www.vultr.com/?ref=8413306-6G)
 
 *如果已有服务器，可跳过此步骤。*
 
@@ -96,13 +96,19 @@ vim /etc/v2ray/config.json
 ```sh
 ## 启动
 systemctl start v2ray
+```
 
+```sh
 ## 停止
 systemctl stop v2ray
+```
 
+```sh
 ## 重启
 systemctl restart v2ray
+```
 
+```sh
 ## 开机自启
 systemctl enable v2ray
 ```
