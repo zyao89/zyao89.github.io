@@ -61,14 +61,14 @@ vim /etc/nginx/conf.d/www.conf
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
-    server_name www.zyao89.c n;
+    server_name www.zyao89.cn;
 
     charset utf-8;
 
     ssl on;
     # 证书
-    ssl_certificate       /root/cert/zyao89.cn.crt;
-    ssl_certificate_key   /root/cert/zyao89.cn.key;
+    ssl_certificate       /etc/nginx/cert/zyao89.cn.crt;
+    ssl_certificate_key   /etc/nginx/cert/zyao89.cn.key;
     ssl_protocols         TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers           HIGH:!aNULL:!MD5;
     ssl_prefer_server_ciphers on;
@@ -80,13 +80,6 @@ server {
     root /root/wwwroot;
     index index.html index.php index.htm;
 
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    error_page 404 = /404.html;
-
-
     # 图片缓存时间设置
     location ~ .*.(gif|jpg|jpeg|png|bmp|swf)$ {
         expires 180d;
@@ -97,6 +90,11 @@ server {
         expires 30d;
     }
 
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    error_page 404 = /404.html;
 
 }
 
@@ -120,7 +118,7 @@ upstream API_WS {
 }
 
 server {
-    location /api {
+    location ^~ /api {
         proxy_redirect off;
         proxy_pass http://API_WS;
         proxy_http_version 1.1;
@@ -148,8 +146,8 @@ server {
     charset utf-8;
 
     ssl on;
-    ssl_certificate       /root/cert/zyao89.cn.crt;
-    ssl_certificate_key   /root/cert/zyao89.cn.key;
+    ssl_certificate       /etc/nginx/cert/zyao89.cn.crt;
+    ssl_certificate_key   /etc/nginx/cert/zyao89.cn.key;
     ssl_protocols         TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers           HIGH:!aNULL:!MD5;
     ssl_prefer_server_ciphers on;
@@ -161,11 +159,7 @@ server {
     root /root/wwwroot;
     index index.html index.php index.htm;
 
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    location /api {
+    location ^~ /api {
         proxy_redirect off;
         proxy_pass http://API_WS;
         proxy_http_version 1.1;
@@ -173,9 +167,6 @@ server {
         proxy_set_header Connection "upgrade";
         proxy_set_header Host $http_host;
     }
-
-    error_page 404 = /404.html;
-
 
     # 图片缓存时间设置
     location ~ .*.(gif|jpg|jpeg|png|bmp|swf)$ {
@@ -186,6 +177,12 @@ server {
     location ~ .*.(js|css)?$ {
         expires 30d;
     }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    error_page 404 = /404.html;
 
 }
 
@@ -241,9 +238,9 @@ source ~/.bashrc
 ```
 
 ```sh
-mkdir /root/cert/
+mkdir /etc/nginx/cert/
 # 其中的 zyao89.cn 信息请自行替换
-~/.acme.sh/acme.sh --installcert -d zyao89.cn -d *.zyao89.cn --fullchainpath /root/cert/zyao89.cn.crt --keypath /root/cert/zyao89.cn.key --ecc
+~/.acme.sh/acme.sh --installcert -d zyao89.cn -d *.zyao89.cn --fullchainpath /etc/nginx/cert/zyao89.cn.crt --keypath /etc/nginx/cert/zyao89.cn.key --ecc
 ```
 
 开启证书过期自动更新服务
@@ -256,11 +253,21 @@ mkdir /root/cert/
 
 启动 nginx 服务，或者重启服务器完成配置。
 
+:::tip 提示
+如果 nginx 启动失败，错位为没有权限时，请关注以下几点：
+
+- nginx.conf 配置顶部 `user` 应配置为 `root`
+- [Linux下查看SELinux状态和关闭SELinux的方法](../../后端开发/Linux下查看SELinux状态和关闭SELinux的方法/README.md)
+- `cloudflare` 中的 `SSL/TLS` 界面开启 `Full` 模式
+
+:::
+
 ## 其它资源
 
 ### 静态站点源码
 
 ```sh
+mkdir /root/wwwroot
 cd /root/wwwroot
 git clone https://github.com/zyao89/WebStackPage.git  ./
 ```
