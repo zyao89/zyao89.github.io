@@ -21,33 +21,33 @@ Clash：一个 GO 开发的、基于规则的多平台代理客户端，兼容 S
 
 # 代理节点
 Proxy:
-# shadowsocks
-# 所支持的加密方式与 go-shadowsocks2 保持一致
-# 支持加密方式：
-#   aes-128-gcm aes-192-gcm aes-256-gcm
-#   aes-128-cfb aes-192-cfb aes-256-cfb
-#   aes-128-ctr aes-192-ctr aes-256-ctr
-#   rc4-md5 chacha20 chacha20-ietf xchacha20
-#   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
+    # shadowsocks
+    # 所支持的加密方式与 go-shadowsocks2 保持一致
+    # 支持加密方式：
+    #   aes-128-gcm aes-192-gcm aes-256-gcm
+    #   aes-128-cfb aes-192-cfb aes-256-cfb
+    #   aes-128-ctr aes-192-ctr aes-256-ctr
+    #   rc4-md5 chacha20 chacha20-ietf xchacha20
+    #   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
 
-  - name: "测试1号"
-    type: ss
-    server: server
-    port: 443
-    cipher: chacha20-ietf-poly1305
-    password: "password"
-    # udp: true
+    - name: "测试1号"
+      type: ss
+      server: server
+      port: 443
+      cipher: chacha20-ietf-poly1305
+      password: "password"
 
-  - name: "测试2号"
-    type: ss
-    server: server
-    port: 443
-    cipher: AEAD_CHACHA20_POLY1305
-    password: "password"
-    plugin: obfs
-    plugin-opts:
-      mode: tls # 混淆模式，可以选择 http 或 tls
-      host: bing.com # 混淆域名，需要和服务器配置保持一致
+      # udp: true
+    - name: "测试2号"
+      type: ss
+      server: server
+      port: 443
+      cipher: AEAD_CHACHA20_POLY1305
+      password: "password"
+      plugin: obfs
+      plugin-opts:
+          mode: tls # 混淆模式，可以选择 http 或 tls
+          host: bing.com # 混淆域名，需要和服务器配置保持一致
 
 ```
 
@@ -58,66 +58,65 @@ Proxy:
 ```yaml
 # 代理组策略
 Proxy Group:
-
     # url-test 通过指定的 URL 测试并选择延迟最低的节点
     - name: "自动节点选择"
-    type: url-test
-    proxies:
+      type: url-test
+      proxies:
         - "测试1号"
         - "测试2号"
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
 
     # fallback 可以尽量按照用户书写的服务器顺序，在确保服务器可用的情况下，自动选择服务器
     - name: "fallback-auto"
-        type: fallback
-        proxies:
+      type: fallback
+      proxies:
         - "测试1号"
         - "测试2号"
-        url: 'http://www.gstatic.com/generate_204'
-        interval: 300
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
 
     # load-balance 可以使相同 eTLD 请求在同一条代理线路上
     - name: "load-balance"
-        type: load-balance
-        proxies:
+      type: load-balance
+      proxies:
         - "测试1号"
         - "测试2号"
-        url: 'http://www.gstatic.com/generate_204'
-        interval: 300
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
 
     # 代理节点选择
     - name: "PROXY"
-    type: select
-    proxies:
+      type: select
+      proxies:
         - "自动节点选择"
         - "测试1号"
         - "测试2号"
 
     # Apple 服务代理
     - name: "Apple"
-    type: select
-    proxies:
+      type: select
+      proxies:
         - "DIRECT"
         - "PROXY"
 
     # 运营商及声名狼藉网站劫持
     - name: "Hijacking"
-    type: select
-    proxies:
+      type: select
+      proxies:
         - "REJECT"
         - "DIRECT"
 
     # 白名单模式 PROXY，黑名单模式 DIRECT
     - name: "FINAL"
-    type: select
-    proxies:
+      type: select
+      proxies:
         - "PROXY"
         - "DIRECT"
 
 ```
 
-## DNS配置
+## DNS 配置
 
 ```yaml
 dns:
@@ -147,7 +146,6 @@ dns:
         - tls://1.0.0.1:853
         - tls://dns.google:853
         - tls://dns.google
-
         # - https://dns.rubyfish.cn/dns-query
         # - https://cloudflare-dns.com/dns-query
         # - https://dns.google/dns-query
@@ -155,4 +153,6 @@ dns:
 
 ## 更多规则
 
-<a target="_blank" :href="require('./rule.file.yaml')">规则订阅链接</a>
+参考: [yaml](https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml)
+
+规则: <a target="_blank" :href="require('./rule.file.yaml')">订阅链接</a>
