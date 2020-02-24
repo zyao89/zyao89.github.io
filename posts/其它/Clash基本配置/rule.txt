@@ -1,7 +1,7 @@
 ###############################################################
 # 本范例来源为网络
 # 只包含规则节点信息
-# 原文发布地址 https://www.zyao89.cn/s-2d33f33c
+# 原文发布地址 https://zyao89.cn/s-aa59ab74
 # 更多配置可参考 https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml
 ###############################################################
 
