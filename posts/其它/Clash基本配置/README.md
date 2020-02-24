@@ -153,6 +153,6 @@ dns:
 
 ## 更多规则
 
-参考: [yaml](https://github.com/Hackl0us/SS-Rule-Snippet/blob/master/LAZY_RULES/clash.yaml)
+参考: [yaml](https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/master/LAZY_RULES/clash.yaml)
 
-规则: <a target="_blank" :href="require('./rule.file.yaml')">订阅链接</a>
+规则: <a target="_blank" :href="require('./rule.txt')">订阅链接</a>
