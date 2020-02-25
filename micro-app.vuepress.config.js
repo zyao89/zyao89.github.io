@@ -114,7 +114,7 @@ function getNav() {
             items: [
                 { text: 'RSS', link: `${SITE_URL}/rss.xml`, icon: 'rss' },
                 { text: 'GitHub', link: 'https://github.com/zyao89', icon: 'github' },
-                { text: 'Email', link: 'mailto:zyao89@gmail.com', icon: 'email' },
+                { text: 'Email', link: 'mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&body=邮件正文, 请认真填写!', icon: 'email' },
             ],
         },
     ];
