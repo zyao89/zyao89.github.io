@@ -57,7 +57,7 @@ fallback-filter:
 
 dns:
     enable: true
-    ipv6: false
+    ipv6: true
     # listen: 0.0.0.0:53
     # enhanced-mode: redir-host # 或 fake-ip
     # # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改
@@ -88,6 +88,22 @@ dns:
 Rule:
     # 自定义规则
     ## 您可以在此处插入您补充的自定义规则（请注意保持缩进）
+
+    # 抗 DNS 污染
+    - DOMAIN-KEYWORD,amazon,PROXY
+    - DOMAIN-KEYWORD,google,PROXY
+    - DOMAIN-KEYWORD,gmail,PROXY
+    - DOMAIN-KEYWORD,youtube,PROXY
+    - DOMAIN-KEYWORD,facebook,PROXY
+    - DOMAIN-SUFFIX,fb.me,PROXY
+    - DOMAIN-SUFFIX,fbcdn.net,PROXY
+    - DOMAIN-KEYWORD,twitter,PROXY
+    - DOMAIN-KEYWORD,instagram,PROXY
+    - DOMAIN-KEYWORD,dropbox,PROXY
+    - DOMAIN-SUFFIX,twimg.com,PROXY
+    - DOMAIN-KEYWORD,blogspot,PROXY
+    - DOMAIN-SUFFIX,youtu.be,PROXY
+    - DOMAIN-KEYWORD,whatsapp,PROXY
 
     # Apple
     - DOMAIN,safebrowsing.urlsec.qq.com,Apple # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 Hijacking 策略。
@@ -236,22 +252,6 @@ Rule:
     - DOMAIN-SUFFIX,zhimg.com,DIRECT
     - DOMAIN-SUFFIX,zimuzu.tv,DIRECT
     - DOMAIN-SUFFIX,zoho.com,DIRECT
-
-    # 抗 DNS 污染
-    - DOMAIN-KEYWORD,amazon,PROXY
-    - DOMAIN-KEYWORD,google,PROXY
-    - DOMAIN-KEYWORD,gmail,PROXY
-    - DOMAIN-KEYWORD,youtube,PROXY
-    - DOMAIN-KEYWORD,facebook,PROXY
-    - DOMAIN-SUFFIX,fb.me,PROXY
-    - DOMAIN-SUFFIX,fbcdn.net,PROXY
-    - DOMAIN-KEYWORD,twitter,PROXY
-    - DOMAIN-KEYWORD,instagram,PROXY
-    - DOMAIN-KEYWORD,dropbox,PROXY
-    - DOMAIN-SUFFIX,twimg.com,PROXY
-    - DOMAIN-KEYWORD,blogspot,PROXY
-    - DOMAIN-SUFFIX,youtu.be,PROXY
-    - DOMAIN-KEYWORD,whatsapp,PROXY
 
     # 常见广告域名屏蔽
     - DOMAIN-KEYWORD,admarvel,Hijacking
