@@ -155,4 +155,4 @@ dns:
 
 参考: [yaml](https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/master/LAZY_RULES/clash.yaml)
 
-规则: <a target="_blank" :href="require('./rule.txt')">订阅链接</a>
+规则: <Link :href="require('./ClashProxyRules.txt')">链接</Link>

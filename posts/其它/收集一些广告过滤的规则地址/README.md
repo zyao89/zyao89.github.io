@@ -5,11 +5,17 @@ tags: [广告过滤,过滤规则,规则地址]
 date: 2020-02-20 13:55:09
 ---
 
-收集一些可以去广告的规则说不定以后用AdGuard Home的时候会用上.
+收集一些可以去广告的规则说不定以后用 AdGuard Home 的时候会用上.
 
 <!--more-->
 
 ## abp复合规则Host规则
+
+### EasyList
+
+```
+https://easylist.to/easylist/easylist.txt
+```
 
 ### Easylist China
 
@@ -55,12 +61,6 @@ http://tools.yiclear.com/ChinaList2.0.txt
 https://fanboy.co.nz/r/fanboy-ultimate.txt
 ```
 
-### N2OList China
-
-```
-https://fanboy.co.nz/r/fanboy-ultimate.txt
-```
-
 ### 乘风 广告过滤规则
 
 ```
@@ -72,3 +72,7 @@ https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt
 ```
 http://tools.yiclear.com/baidu-lite.txt
 ```
+
+## AdGuardHome 配置
+
+配置: <Link :href="require('./AdGuardHomeRules.txt')">链接</Link>
