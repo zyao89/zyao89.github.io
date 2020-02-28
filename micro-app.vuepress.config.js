@@ -18,6 +18,7 @@ module.exports = {
         [ 'meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         [ 'meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
         [ 'meta', { name: 'google-site-verification', content: '8sZJLe_q5uzLQR19aq4O6V5Y7YPj-mLjb7b-jlBloNo' }],
+        [ 'meta', { name: 'baidu-site-verification', content: 'D4YhVrZwXf' }],
     ],
     author: 'Zyao89',
     avatar: '/favicon.png',
