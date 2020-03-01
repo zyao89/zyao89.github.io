@@ -7,14 +7,14 @@ categories: [移动开发]
 
 由于时间问题，只是先入个门，用一用，后面还会做进一步的学习。
 
+<!-- more -->
+
 ### 引入Gradle
 
 ```groovy
 compile 'io.reactivex.rxjava2:rxjava:2.0.6'
 compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
 ```
-
-<!-- more -->
 
 ### 代码
 

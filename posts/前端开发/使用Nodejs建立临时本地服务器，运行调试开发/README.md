@@ -5,6 +5,8 @@ tags: [Nodejs,静态服务,Server]
 categories: [前端开发]
 ---
 
+<!-- more -->
+
 ## First
 
 安装Nodejs，略（自行百度）
@@ -13,8 +15,6 @@ categories: [前端开发]
 
 安装必要组件；
 > npm install url fs http path --save
-
-<!-- more -->
 
 ## Final
 

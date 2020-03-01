@@ -33,7 +33,7 @@
     ],
     "devDependencies": {
         "@micro-app/plugin-deploy": "^0.0.4",
-        "@micro-app/plugin-vuepress": "^0.1.8",
+        "@micro-app/plugin-vuepress": "^0.1.9",
         "@types/jest": "^24.9.1",
         "babel-eslint": "^10.0.3",
         "eslint": "^5.16.0",

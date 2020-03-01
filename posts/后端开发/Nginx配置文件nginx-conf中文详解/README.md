@@ -5,7 +5,9 @@ categories: [后端开发]
 tags: [Nginx]
 ---
 
-**Nginx配置参数中文说明**
+<!-- more -->
+
+## Nginx配置参数中文说明
 
 ```
 .\conf\             *- 配置文件目录*
@@ -18,8 +20,6 @@ tags: [Nginx]
 *HTTP默认端口：* TCP 80
 *HTTPS*默认端口：* TCP 443
 ```
-
-<!-- more -->
 
 ## nginx.conf
 

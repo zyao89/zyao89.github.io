@@ -8,12 +8,12 @@ categories: [移动开发]
 
 **实现效果在最后，GIF有点大，手机流量慎重。**
 
+<!-- more -->
+
 ## 介绍
 
 首先声明做这个动画的初衷是为了学习和分享，所以从这里起，我准备做一个系列的加载动画（截止时间：我放弃的时候）。
 上一个动画连接：[Android自定义动画-ClockLoadingView](https://zyao89.cn/2017/03/20/Android自定义动画-ClockLoadingView/)
-
-<!-- more -->
 
 ## 正文
 

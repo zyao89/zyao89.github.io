@@ -5,6 +5,8 @@ categories: [后端开发]
 tags: [Nginx]
 ---
 
+<!-- more -->
+
 ## 安装 Nginx
 
 **系统平台：** CentOS
@@ -14,8 +16,6 @@ tags: [Nginx]
 ```sh
 yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel
 ```
-
-<!-- more -->
 
 二、首先要安装 PCRE
 PCRE 作用是让 Ngnix 支持 Rewrite 功能。
