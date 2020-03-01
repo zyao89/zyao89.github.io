@@ -14,7 +14,7 @@ categories: [前端开发]
 安装必要组件；
 > npm install url fs http path --save
 
-<!--more-->
+<!-- more -->
 
 ## Final
 

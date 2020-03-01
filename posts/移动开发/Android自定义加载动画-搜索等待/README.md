@@ -6,7 +6,7 @@ categories: [移动开发]
 ---
 Android自定义动画系列十，先介绍下第九个Loading动画（TextBuilder），只是个简单的文字动画，不做仔细介绍了，效果如下：
 
-<!--more-->
+<!-- more -->
 
 ![系列九动画](./text_loading.gif)
 

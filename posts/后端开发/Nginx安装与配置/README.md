@@ -15,7 +15,7 @@ tags: [Nginx]
 yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel
 ```
 
-<!--more-->
+<!-- more -->
 
 二、首先要安装 PCRE
 PCRE 作用是让 Ngnix 支持 Rewrite 功能。

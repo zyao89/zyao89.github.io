@@ -1,11 +1,11 @@
 ---
 title: Freenom+Cloudflare+Nginx搭建静态站点
 categories: [其它]
-tags: [Cloudflare,Freenom,Nginx,TLS,科学上网]
+tags: [Cloudflare,Freenom,Nginx,科学上网]
 date: 2020-02-22 16:46:15
 ---
 
-<!--more-->
+<!-- more -->
 
 ## 环境信息
 

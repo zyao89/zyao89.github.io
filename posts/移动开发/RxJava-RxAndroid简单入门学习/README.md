@@ -14,7 +14,7 @@ compile 'io.reactivex.rxjava2:rxjava:2.0.6'
 compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
 ```
 
-<!--more-->
+<!-- more -->
 
 ### 代码
 

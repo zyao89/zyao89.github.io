@@ -4,15 +4,16 @@ date: 2017-06-03 02:37:01
 tags: [JavaScript,Kotlin,Vue.js]
 categories: [移动开发]
 ---
-## Kotlin介绍
 
 基于 JVM 的编程语言 **Kotlin**
 
 Kotlin 是一个基于 JVM 的新的编程语言，由 [**JetBrains**](https://www.jetbrains.com/)开发。
 
-![What does it look like?](./144513_oDxt_2720166.png)
+<!-- more -->
 
-<!--more-->
+## Kotlin介绍
+
+![What does it look like?](./img.png)
 
 其主要设计目标：
 创建一种兼容 Java 的语言

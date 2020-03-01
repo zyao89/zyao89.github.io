@@ -63,6 +63,10 @@ module.exports = {
         },
     },
 
+    markdown: {
+        lineNumbers: true,
+    },
+
     baidu: {
         autoPush: true,
         hmtID: process.env.BAIDU_HMT_ID,

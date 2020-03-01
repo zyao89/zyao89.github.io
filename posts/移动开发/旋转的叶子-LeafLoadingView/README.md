@@ -14,7 +14,7 @@ Android自定义动画系列三，今天来分享第三个自定义Loaidng动画
 首先依旧是声明，做这些动画的初衷是为了学习和分享，所以希望大家可以指点错误，让我更好的进步。从这里起，我做一个系列的加载动画（截止时间：我放弃的时候）。
 上一个动画链接：[Android自定义动画-StarLoadingView](https://zyao89.cn/2017/03/22/Android自定义动画-StarLoadingView/)
 
-<!--more-->
+<!-- more -->
 
 ## 正文
 

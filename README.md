@@ -1,5 +1,6 @@
 ---
 home: true
+# heroImage: /banner.jpg
 banner: /banner.jpg
 heroText: 'STAY HUNGRY STAY FOOLISH'
 tagline: 'No one can call back yesterday.'
