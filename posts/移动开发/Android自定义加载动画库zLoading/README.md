@@ -47,7 +47,7 @@ Android自定义动画总结更新一下，增加了对话框Dialog模式，今�
 
 [第四个，DoubleCircleBuilder](../Android自定义加载动画-DoubleCircleBuilder/README.md)
 
-[第五个，PacManBuilder](../2017/03/26/Android自定义加载动画-PacMan/README.md)
+[第五个，PacManBuilder](../Android自定义加载动画-PacMan/README.md)
 
 [第六个，ElasticBallBuilder](../Android自定义加载动画-颤抖吧！球球/README.md)
 
