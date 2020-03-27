@@ -16,7 +16,7 @@ date: 2020-03-26 17:18:27
 
 ## 正文
 
-![官方文档](images/2020-03-26-18-06-13.png)
+![官方文档](./images/2020-03-26-18-06-13.png)
 
 官方文档如图所示，简单的介绍了 `devServer.proxy` 的用法。并给出了对应的 [`http-proxy-middleware`](https://github.com/chimurai/http-proxy-middleware#proxycontext-config) 链接，告诉我们 `完整选项请查阅`.
 
@@ -140,7 +140,7 @@ return Object.assign({}, defaultConfig, config, entry)
 
 但是当后端采用一些框架如 `koa` 时，本身代理的 `host` 是没有问题的。
 
-![Koa文档](images/2020-03-26-18-46-30.png)
+![Koa文档](./images/2020-03-26-18-46-30.png)
 
 看文档，当 `app.proxy = true` 时，`http-proxy-middleware` 本身是不会修改 `X-Forwarded-Host` 这个参数的。所以你需要认为干预一下。
 
