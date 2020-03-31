@@ -1069,20 +1069,20 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@micro-app/cli@^0.3.10":
-  version "0.3.10"
-  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.10.tgz#2081d92f9e1f97d74729def5328ae67401b03493"
-  integrity sha512-pTUzHEs+oa0zw1CSEiaT0qCIf2DszZh3MqsPmYgbAKaZYP5SAU3+L4lasUKYBlHH82LZqBM5AWDfRkIQQA6Nrg==
+"@micro-app/cli@^0.3.11":
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.11.tgz#b570284d25950fd3bf3cec9922a19b75a547def7"
+  integrity sha512-BOUBSBaSjNWbg6jd3SvjJ5W6mXQr9m4sZjGf33eLoh6GpVcf7XF2XGnwKyLVQwcVKj7oJ75aL/+9vrxkc/utNA==
   dependencies:
-    "@micro-app/core" "^0.3.19"
+    "@micro-app/core" "^0.3.20"
     "@zkochan/cmd-shim" "^4.3.0"
     read-cmd-shim "^2.0.0"
     update-notifier "^4.1.0"
 
-"@micro-app/core@^0.3.19":
-  version "0.3.19"
-  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.19.tgz#4a2b67a9b110a9cb9454ee641c14a526076963be"
-  integrity sha512-u6AUTtn2pGCCanRakEG2WdWfqThpR6OLekEfZiXGKnC/O3palCDCOXtBkkndiU5HxI/8/O1xhgF0sF+6xkuGDw==
+"@micro-app/core@^0.3.20":
+  version "0.3.21"
+  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.21.tgz#43315fa1713580d7500900f5ef90e183b9455b56"
+  integrity sha512-k7KOtQ6pxJbRAaMW8xF3jmuJxOQXjHXLCHtLNayU3ma1SNxOTGBbGbF7VyOBoo7V1sGlC40UjMaMJiqfvdE5lw==
   dependencies:
     "@micro-app/shared-utils" "^0.1.16"
     dotenv "^8.2.0"
@@ -1096,12 +1096,12 @@
     "@release-it/conventional-changelog" "^1.1.0"
     release-it "^13.1.1"
 
-"@micro-app/plugin-vuepress@^0.1.13":
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.1.13.tgz#6429464984491e9f3b58a26874ad590e9bad2311"
-  integrity sha512-9IFxylj+dbPUMOxxlkqIkvZUoR/A94H/W7Wy9oRet5S0eRqKIWQSu0+d8q3UH515sdUVBvzdQGr4xs8DBol6sg==
+"@micro-app/plugin-vuepress@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.1.14.tgz#34698c7b6f46a7c68ac70d54ce3e406b8d10aefe"
+  integrity sha512-ft6rgCYb+bIhMmSnE/98RW6BrMNL1VSSFs6kqR94x5tn0RtwJVSUUcLJcDOR5WFfsH+/EnVvRXThT7zy05KJ/Q==
   dependencies:
-    "@micro-app/cli" "^0.3.10"
+    "@micro-app/cli" "^0.3.11"
     "@vssue/api-github-v4" "^1.4.0"
     "@vssue/vuepress-plugin-vssue" "^1.4.3"
     "@vuepress/plugin-back-to-top" "^1.4.0"

@@ -1,7 +1,7 @@
 ---
 title: 从零开始搭建V2Ray教程
-categories: [其它]
-tags: [V2Ray,科学上网,VPS]
+categories: [网络]
+tags: [V2Ray,VPN,VPS]
 date: 2020-02-15 17:14:48
 ---
 

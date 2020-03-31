@@ -1,6 +1,6 @@
 ---
 title: 开启SSH允许root用户远程登录
-categories: [其它]
+categories: [后端开发]
 tags: [CentOS,SSH,远程登录]
 date: 2020-02-25 02:11:42
 ---

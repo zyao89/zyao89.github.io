@@ -1,7 +1,7 @@
 ---
 title: Freenom+Cloudflare+Nginx搭建静态站点
-categories: [其它]
-tags: [Cloudflare,Freenom,Nginx,科学上网]
+categories: [网络]
+tags: [Cloudflare,Freenom,VPN]
 date: 2020-02-22 16:46:15
 ---
 

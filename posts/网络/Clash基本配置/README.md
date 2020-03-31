@@ -1,7 +1,7 @@
 ---
 title: Clash基本配置
-categories: [其它]
-tags: [Clash,优化配置,科学上网]
+categories: [网络]
+tags: [Clash,优化配置,VPN]
 date: 2020-02-24 20:40:20
 ---
 

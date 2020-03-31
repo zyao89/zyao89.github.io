@@ -1,7 +1,7 @@
 ---
 title: ES6之箭头函数中的this
 categories: [前端开发]
-tags: [es6]
+tags: [ES6]
 date: 2020-03-30 15:23:53
 ---
 
