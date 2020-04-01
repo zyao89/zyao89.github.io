@@ -1096,10 +1096,10 @@
     "@release-it/conventional-changelog" "^1.1.0"
     release-it "^13.1.1"
 
-"@micro-app/plugin-vuepress@^0.1.14":
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.1.14.tgz#34698c7b6f46a7c68ac70d54ce3e406b8d10aefe"
-  integrity sha512-ft6rgCYb+bIhMmSnE/98RW6BrMNL1VSSFs6kqR94x5tn0RtwJVSUUcLJcDOR5WFfsH+/EnVvRXThT7zy05KJ/Q==
+"@micro-app/plugin-vuepress@^0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.1.15.tgz#b36d5905fd3d71af754507fc31628964ddddf424"
+  integrity sha512-zfKqWWgF6cGYARej4lJ+XFa9wGA1oWeyVYKicrjmH4b4MnzSZQDJwmdohYXRMxiIVoJ8E76RQQ5ZKfFVwJ1yOg==
   dependencies:
     "@micro-app/cli" "^0.3.11"
     "@vssue/api-github-v4" "^1.4.0"
