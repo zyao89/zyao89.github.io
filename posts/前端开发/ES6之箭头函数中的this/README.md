@@ -37,6 +37,11 @@ var obj = {
 obj.dbl();
 var func = obj.dbl;
 func();
+```
+
+输出:
+
+```js
 // 输出结果
 2 4 8 8
 ```
@@ -74,7 +79,11 @@ var obj = {
 obj.say();
 ```
 
-输出：obj
+输出:
+
+```js
+obj
+```
 
 此时的 this指的是定义它的对象：obj, 而不是 window。
 
@@ -126,9 +135,11 @@ obj.say()
 }).call({ x: 'outer' });
 ```
 
-输出：
+输出:
 
+```js
 ["outer"]
+```
 
 由于箭头函数没有自己的this，所以使用bind()方法无法改变this的指向。
 

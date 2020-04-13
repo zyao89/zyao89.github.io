@@ -14,29 +14,29 @@ Build beautiful native apps in record time
 
 1. 下载
 
-   ```html
-   https://flutter.io/sdk-archive/#macos
-   ```
+```sh
+https://flutter.io/sdk-archive/#macos
+```
 
-2. 解压
+1. 解压
 
-3. 添加`flutter`相关工具到path中：
+2. 添加`flutter`相关工具到path中：
 
-   ```shell
-   export PATH=`pwd`/flutter/bin:$PATH
-   ```
+```sh
+export PATH=`pwd`/flutter/bin:$PATH
+```
 
 ## 配置编辑器
 
 ### 配置环境变量
 
 ```bash
-  export PATH=/Users/用户名/Documents/flutter/flutter/bin:$PATH
-  export ANDROID_HOME="/Users/用户名/Documents/android_sdk" //android sdk目录，替换为你自己的即可
-  export PATH=${PATH}:${ANDROID_HOME}/tools
-  export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-  export PUB_HOSTED_URL=https://pub.flutter-io.cn
-  export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+export PATH=/Users/用户名/Documents/flutter/flutter/bin:$PATH
+export ANDROID_HOME="/Users/用户名/Documents/android_sdk" //android sdk目录，替换为你自己的即可
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 ```
 
 运行以下命令查看是否需要安装其它依赖项来完成安装：
@@ -111,15 +111,15 @@ flutter emulators --create [--name xyz]
 1. 在 pubspec.yaml 中引入依赖
 
 ```
-  english_words: ^3.1.0
+english_words: ^3.1.0
 ```
 
 2. 在 `main.dart` 中使用
 
 ```dart
-    final wordPair = new WordPair.random();
+final wordPair = new WordPair.random();
 
-    new Text(wordPair.asPascalCase),
+new Text(wordPair.asPascalCase),
 ```
 
 ### Stateless Widget 无状态的部件

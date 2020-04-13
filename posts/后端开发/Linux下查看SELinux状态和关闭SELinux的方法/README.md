@@ -31,7 +31,7 @@ SELinux 的结构及配置非常复杂，而且有大量概念性的东西，要
 
 显示如下：
 
-```config
+```sh
 SELinux status: enabled
 ```
 
