@@ -20,7 +20,7 @@ date: 2020-03-26 17:18:27
 
 官方文档如图所示，简单的介绍了 `devServer.proxy` 的用法。并给出了对应的 [`http-proxy-middleware`](https://github.com/chimurai/http-proxy-middleware#proxycontext-config) 链接，告诉我们 `完整选项请查阅`.
 
-### 问题
+## 问题
 
 现在问题来了，这个参数真的和官方文档所说的一样兼容吗？
 
