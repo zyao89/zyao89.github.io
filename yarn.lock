@@ -997,22 +997,22 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@micro-app/cli@^0.3.15":
-  version "0.3.15"
-  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.15.tgz#3cbcb455675deda5bb8dbcae2f42e6c60d71d87b"
-  integrity sha512-RUvrH5e0KtWZAd2dlR3K5fWmovXLzM01wM9yEm347zwZceeBQgMlSv5GRBTCS5HNjVFsfpsfpVWEWk4E+B3NJA==
+"@micro-app/cli@^0.3.16":
+  version "0.3.16"
+  resolved "https://registry.yarnpkg.com/@micro-app/cli/-/cli-0.3.16.tgz#35173825493341cb57e08548f06b79cff12d174f"
+  integrity sha512-1fbKmWEJE3Zt3GMtNqJzZ3V6m7RhOX25nWv9woQyvTc3xk8PRtXg5lheql9EdaMd0xNcDuVKBxnbdA4yZgNLiQ==
   dependencies:
-    "@micro-app/core" "^0.3.23"
+    "@micro-app/core" "^0.3.29"
     "@zkochan/cmd-shim" "^4.3.0"
     read-cmd-shim "^2.0.0"
     update-notifier "^4.1.0"
 
-"@micro-app/core@^0.3.23":
-  version "0.3.25"
-  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.25.tgz#d59e752598b5d4d6f56c49ba2fdbcc587ee6dedf"
-  integrity sha512-9r1DOe2ATk0qu4TQtvGP+J1Hiym2qNBawXXFy5WC+a2EkVGEtEcOOOW1/sSjZs2G7RFLpLKTeOW5Y5r/NHgzbg==
+"@micro-app/core@^0.3.29":
+  version "0.3.29"
+  resolved "https://registry.yarnpkg.com/@micro-app/core/-/core-0.3.29.tgz#855f0ee436b554dec486286bdd7d21acada71fa5"
+  integrity sha512-IHMCEhs2qX506yc7LiUSTDnzDDAfYsU0brMx0gTFQijPE1gLk+VB2F55fSwKMcLJDC+poJcc2xYht+Rmsxpzfg==
   dependencies:
-    "@micro-app/shared-utils" "^0.1.17"
+    "@micro-app/shared-utils" "^0.1.19"
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
@@ -1024,12 +1024,12 @@
     "@release-it/conventional-changelog" "^1.1.0"
     release-it "^13.1.1"
 
-"@micro-app/plugin-vuepress@^0.1.23":
-  version "0.1.23"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.1.23.tgz#357dafc93e1f49f7e60da09d8f66b3d55f95b840"
-  integrity sha512-VnsU3gaKjbDA9DfR/BIhXZVQtCI5TqhGSk/H5pchJQuYu1zyEvXLUiYbLKyc3BElMAUSzUtq8aWgrXur9KcEZw==
+"@micro-app/plugin-vuepress@^0.1.24":
+  version "0.1.24"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.1.24.tgz#aa6f42f613668c8e4feceb8a07a6f2da119e17ab"
+  integrity sha512-8gRzrsgTFMtZ7UbdsA2rj38zkWyNoAdepO5mX1T1l/m8fDwG1tLiXx162m8HQt3KX8sU0VmXnVMQAUBmJT8WLg==
   dependencies:
-    "@micro-app/cli" "^0.3.15"
+    "@micro-app/cli" "^0.3.16"
     "@vssue/api-github-v4" "^1.4.0"
     "@vssue/vuepress-plugin-vssue" "^1.4.3"
     "@vuepress/plugin-back-to-top" "^1.4.1"
@@ -1055,12 +1055,12 @@
     vuepress-plugin-flowchart "^1.4.3"
     vuepress-plugin-redirect "^1.2.3"
 
-"@micro-app/shared-utils@^0.1.17":
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@micro-app/shared-utils/-/shared-utils-0.1.17.tgz#e99b9aa4385cf4eefe5f96f0f553162ab9342743"
-  integrity sha512-XI1uFnvjPaFZvLLMoARZeUqUya2i2z4aJ1oT23bahQL+5dHgXj2p1o/1agJ7G0K1KStasLRjPXNuHEpBpK1Weg==
+"@micro-app/shared-utils@^0.1.19":
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/@micro-app/shared-utils/-/shared-utils-0.1.19.tgz#0bfa8b5b179a2634c783b872a11eb0dc034b4e5f"
+  integrity sha512-HrrhB4GcqmpFreq4v699Wcr2AL1ymLxeLp3DZwo5l/rr/iO8DnFXXP/n7NC75PolsVyZBgmX02N0LrYcYjLMOQ==
   dependencies:
-    ajv "^6.10.2"
+    ajv "^6.12.0"
     ajv-keywords "^3.4.1"
     assert "^2.0.0"
     chalk "^3.0.0"
@@ -1070,7 +1070,7 @@
     execa "^3.4.0"
     fs-extra "^8.1.0"
     git-url-parse "^11.1.2"
-    glob-parent "^5.1.0"
+    glob-parent "^5.1.1"
     globby "^10.0.2"
     hash-sum "^2.0.0"
     import-fresh "^3.2.1"
@@ -1087,12 +1087,12 @@
     semver "^6.3.0"
     semver-regex "^3.1.1"
     shelljs "^0.8.3"
-    signal-exit "^3.0.2"
+    signal-exit "^3.0.3"
     stream-to-string "^1.2.0"
     stringify-object "^3.3.0"
     try-require "^1.2.1"
-    yaml "^1.8.2"
-    yargs-parser "^18.1.1"
+    yaml "^1.9.0"
+    yargs-parser "^18.1.3"
     yargs-unparser "^1.5.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
@@ -5534,7 +5534,7 @@ glob-parent@^3.1.0:
     is-glob "^3.1.0"
     path-dirname "^1.0.0"
 
-glob-parent@^5.0.0, glob-parent@^5.1.0:
+glob-parent@^5.0.0, glob-parent@^5.1.0, glob-parent@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.1.tgz#b6c1ef417c4e5663ea498f1c45afac6916bbc229"
   integrity sha512-FnI+VGOpnlGHWZxthPGR+QhR78fuiK0sNLkHQv+bL9fQi57lNNdquIbna/WrfROrolq8GK5Ek6BiMwqL/voRYQ==
@@ -10560,7 +10560,7 @@ side-channel@^1.0.2:
     es-abstract "^1.17.0-next.1"
     object-inspect "^1.7.0"
 
-signal-exit@^3.0.0, signal-exit@^3.0.2:
+signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
@@ -12638,14 +12638,21 @@ yallist@^3.0.2:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
   integrity sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
 
-yaml@1.8.3, yaml@^1.7.2, yaml@^1.8.2:
+yaml@1.8.3, yaml@^1.7.2:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.8.3.tgz#2f420fca58b68ce3a332d0ca64be1d191dd3f87a"
   integrity sha512-X/v7VDnK+sxbQ2Imq4Jt2PRUsRsP7UcpSl3Llg6+NRRqWLIvxkMFYtH1FmvwNGYRKKPa+EPA4qDBlI9WVG1UKw==
   dependencies:
     "@babel/runtime" "^7.8.7"
 
-yargs-parser@18.1.2, yargs-parser@^18.1.1:
+yaml@^1.9.0:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.9.2.tgz#f0cfa865f003ab707663e4f04b3956957ea564ed"
+  integrity sha512-HPT7cGGI0DuRcsO51qC1j9O16Dh1mZ2bnXwsi0jrSpsLz0WxOLSLXfkABVl6bZO629py3CU+OMJtpNHDLB97kg==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
+
+yargs-parser@18.1.2:
   version "18.1.2"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-18.1.2.tgz#2f482bea2136dbde0861683abea7756d30b504f1"
   integrity sha512-hlIPNR3IzC1YuL1c2UwwDKpXlNFBqD1Fswwh1khz5+d8Cq/8yc/Mn0i+rQXduu8hcrFKvO7Eryk+09NecTQAAQ==
@@ -12672,6 +12679,14 @@ yargs-parser@^13.1.2:
   version "13.1.2"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-13.1.2.tgz#130f09702ebaeef2650d54ce6e3e5706f7a4fb38"
   integrity sha512-3lbsNRf/j+A4QuSZfDRA7HRSfWrzO0YjqTJd5kjAq37Zep1CEgaYmrH9Q3GwPiB9cHyd1Y1UwggGhJGoxipbzg==
+  dependencies:
+    camelcase "^5.0.0"
+    decamelize "^1.2.0"
+
+yargs-parser@^18.1.3:
+  version "18.1.3"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-18.1.3.tgz#be68c4975c6b2abf469236b0c870362fab09a7b0"
+  integrity sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==
   dependencies:
     camelcase "^5.0.0"
     decamelize "^1.2.0"

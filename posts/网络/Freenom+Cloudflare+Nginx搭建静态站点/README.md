@@ -2,7 +2,7 @@
 title: Freenom+Cloudflare+Nginx搭建静态站点
 categories: [网络]
 tags: [Cloudflare,Freenom,VPN]
-date: 2020-02-22 16:46:15
+date: 2019-08-22 16:46:15
 ---
 
 <!-- more -->

@@ -2,7 +2,7 @@
 title: Linux下查看SELinux状态和关闭SELinux的方法
 categories: [后端开发]
 tags: [Linux,SELinux]
-date: 2020-02-23 01:53:36
+date: 2019-08-23 01:53:36
 ---
 
 <!-- more -->
