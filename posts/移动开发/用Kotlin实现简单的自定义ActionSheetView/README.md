@@ -1,7 +1,7 @@
 ---
 title: 用Kotlin实现简单的自定义ActionSheetView
 date: 2017-05-24 23:11:09
-tags: [Android,Kotlin,自定义View]
+tags: [Android,Kotlin]
 categories: [移动开发]
 ---
 

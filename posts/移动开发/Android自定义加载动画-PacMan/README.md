@@ -1,7 +1,7 @@
 ---
 title: Android自定义加载动画-PacMan
 date: 2017-03-26 03:48:56
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 categories: [移动开发]
 ---
 Android自定义动画系列五，今天来分享第五个自定义Loaidng动画（PacManBuilder），名字就叫`PacMan`吧，哎，这个动画并不是我想要的结果，还是老规矩先介绍，后上图。

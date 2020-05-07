@@ -1,7 +1,7 @@
 ---
 title: Android自定义加载动画-画两个圈圈
 categories: [移动开发]
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 date: 2017-03-25 16:01:19
 ---
 

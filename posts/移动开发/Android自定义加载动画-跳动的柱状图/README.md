@@ -1,7 +1,7 @@
 ---
 title: Android自定义加载动画-跳动的柱状图
 categories: [移动开发]
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 date: 2018-03-17 04:08:57
 ---
 

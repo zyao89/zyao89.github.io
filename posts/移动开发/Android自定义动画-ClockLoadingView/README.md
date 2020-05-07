@@ -1,7 +1,7 @@
 ---
 title: Android自定义动画-ClockLoadingView
 date: 2017-03-20 22:58:03
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 categories: [移动开发]
 ---
 

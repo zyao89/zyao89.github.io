@@ -1,7 +1,7 @@
 ---
 title: Android自定义加载动画-感染体
 date: 2017-04-06 00:56:13
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 categories: [移动开发]
 ---
 Android自定义动画系列七，今天来分享第七个自定义Loaidng动画（InfectionBallBuilder），看上去感觉有种病毒源被感染的感觉，所以名字就叫`感染体`，这个动画做出来的效果，我不怎么满意，但是实现方式还是可以介绍介绍的。效果图如下：

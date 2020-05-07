@@ -1,7 +1,7 @@
 ---
 title: Clash基本配置
 categories: [网络]
-tags: [Clash,优化,VPN]
+tags: [VPN]
 date: 2019-06-24 20:40:20
 ---
 
@@ -155,4 +155,4 @@ dns:
 
 参考: [yaml](https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/master/LAZY_RULES/clash.yaml)
 
-规则: <Link :href="require('./ClashProxyRules.txt')">链接</Link>
+规则: <Link :href="require('./demo/ClashProxyRules.yaml')">链接</Link>

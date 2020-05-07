@@ -1,7 +1,7 @@
 ---
 title: Android过渡动画-Transition-Animation
 date: 2017-03-12 23:38:09
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 categories: [移动开发]
 ---
 

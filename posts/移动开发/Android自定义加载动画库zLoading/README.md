@@ -1,7 +1,7 @@
 ---
 title: Android自定义加载动画库zLoading
 date: 2017-04-10 23:14:18
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 categories: [移动开发]
 ---
 Android自定义动画总结更新一下，增加了对话框Dialog模式，今天来简单的分享下如何使用吧。效果图如下：

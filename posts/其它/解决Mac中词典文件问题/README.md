@@ -1,7 +1,7 @@
 ---
 title: 解决Mac中词典文件问题
 categories: [其它]
-tags: [解决问题,Mac词典,MacOS]
+tags: [解决问题,MacOS]
 date: 2019-07-20 16:48:16
 ---
 

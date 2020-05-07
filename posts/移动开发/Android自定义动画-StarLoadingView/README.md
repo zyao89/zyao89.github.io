@@ -1,7 +1,7 @@
 ---
 title: Android自定义动画-StarLoadingView
 date: 2017-03-22 01:30:02
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 categories: [移动开发]
 ---
 今天来分享第二个自定义loading的动画，起了个名字叫 `蹦跶的星星` ，还是老规矩先介绍，后上图。

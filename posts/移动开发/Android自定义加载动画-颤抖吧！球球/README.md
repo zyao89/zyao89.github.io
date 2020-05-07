@@ -1,7 +1,7 @@
 ---
 title: Android自定义加载动画-颤抖吧！球球
 date: 2017-03-27 20:22:27
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 categories: [移动开发]
 ---
 Android自定义动画系列六，今天来分享第六个自定义Loaidng动画（ElasticBallBuilder），我给他起了一个逼格很高的名字，叫`颤抖吧！球球`，这个动画让我绞尽脑汁，算数算的晕乎乎，不过结果还是很满意的，还是老规矩先介绍，效果图在最后面。

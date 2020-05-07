@@ -1,7 +1,7 @@
 ---
 title: Android自定义加载动画-交织
 date: 2017-04-06 01:40:26
-tags: [Android,ZLoading,动画]
+tags: [Android,ZLoading]
 categories: [移动开发]
 ---
 Android自定义动画系列八，今天来分享第八个自定义Loaidng动画（IntertwineBuilder），名字就叫`交织`，这个动画效果一般，简单分享下吧。效果图如下：

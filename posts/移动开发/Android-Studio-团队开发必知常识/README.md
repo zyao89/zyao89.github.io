@@ -1,7 +1,7 @@
 ---
 title: Android Studio 团队开发必知常识
 date: 2017-03-15 00:22:28
-tags: [Android,插件]
+tags: [Android,Plugin]
 categories: [移动开发]
 ---
 俗话说的好 **“工欲善其事，必先利其器”**，想必*Android Studio*（后面简称`AS`）已成为主流标准的开发工具了，相信大家已经使用的相当顺手了，在这里我给大家介绍几个AS的功能或者插件，也许可以帮大家进一步提升工作效率。
