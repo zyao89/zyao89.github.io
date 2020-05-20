@@ -1,7 +1,7 @@
 ---
 title: Docker基于pm2制作Python运行环境基础镜像
 categories: [后端开发]
-tags: [Nodejs,docker]
+tags: [Nodejs,Docker]
 date: 2020-05-13 17:04:18
 ---
 
