@@ -1,5 +1,5 @@
 ---
-title: iptables重启后自动生效
+title: 使iptables重启后自动生效
 categories: [网络]
 tags: [解决问题,Linux]
 date: 2020-06-05 15:14:41
