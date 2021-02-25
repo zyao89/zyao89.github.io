@@ -1,6 +1,6 @@
 ---
 title: k8s批量删除Evicted Pods
-categories: [后端开发]
+categories: [服务端]
 tags: [解决问题,Linux]
 date: 2020-05-08 12:09:55
 ---

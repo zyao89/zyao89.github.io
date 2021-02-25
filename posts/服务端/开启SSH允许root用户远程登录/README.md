@@ -1,6 +1,6 @@
 ---
 title: 开启SSH允许root用户远程登录
-categories: [后端开发]
+categories: [服务端]
 tags: [Linux,SSH]
 date: 2019-11-25 02:11:42
 ---

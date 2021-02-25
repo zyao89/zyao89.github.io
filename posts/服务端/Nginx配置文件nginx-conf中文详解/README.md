@@ -1,7 +1,7 @@
 ---
 title: Nginx配置文件nginx-conf中文详解
 date: 2017-03-12 23:13:31
-categories: [后端开发]
+categories: [服务端]
 tags: [Nginx]
 ---
 

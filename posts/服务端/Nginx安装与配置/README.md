@@ -1,7 +1,7 @@
 ---
 title: Nginx安装与配置
 date: 2017-03-12 23:13:05
-categories: [后端开发]
+categories: [服务端]
 tags: [Nginx]
 ---
 

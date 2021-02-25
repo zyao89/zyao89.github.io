@@ -10,7 +10,7 @@ module.exports = {
 
     lang: 'zh-CN',
     title: "Zyao89's Blogs",
-    description: '这家伙真的很懒。擅长Web前端、Android开发。专业程序员一枚。',
+    description: '神秘，暂无任何描述',
     keywords: '二圆三土,二圆与三土,Zyao89,Zyao89 Blogs,Android,移动开发,手机APP,javascript,html5,开发者,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek',
     head: [
         [ 'link', { rel: 'icon', href: '/favicon.png' }],
@@ -84,7 +84,7 @@ module.exports = {
             message: 'Deploying',
         },
         create: {
-            categories: [ '其它', '前端开发', '移动开发', '后端开发', '数据库' ],
+            categories: [ '其它', '前端开发', '移动开发', '服务端', '数据库' ],
             tags: [],
         },
     },

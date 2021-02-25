@@ -1,6 +1,6 @@
 ---
 title: Docker删除所有none镜像
-categories: [后端开发]
+categories: [服务端]
 tags: [解决问题,Docker]
 date: 2020-05-13 17:01:04
 ---

@@ -1,6 +1,6 @@
 ---
 title: vim粘贴模式-保持原格式
-categories: [后端开发]
+categories: [服务端]
 tags: [解决问题]
 private: true
 date: 2020-05-15 15:34:08

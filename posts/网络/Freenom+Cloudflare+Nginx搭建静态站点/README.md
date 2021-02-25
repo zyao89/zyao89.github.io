@@ -257,7 +257,7 @@ mkdir /etc/nginx/cert/
 如果 nginx 启动失败，错位为没有权限时，请关注以下几点：
 
 - nginx.conf 配置顶部 `user` 应配置为 `root`
-- [Linux下查看SELinux状态和关闭SELinux的方法](../../后端开发/Linux下查看SELinux状态和关闭SELinux的方法/README.md)
+- [Linux下查看SELinux状态和关闭SELinux的方法](../../服务端/Linux下查看SELinux状态和关闭SELinux的方法/README.md)
 - `cloudflare` 中的 `SSL/TLS` 界面开启 `Full` 模式
 
 :::
