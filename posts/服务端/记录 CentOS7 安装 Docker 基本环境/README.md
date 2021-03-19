@@ -1,7 +1,7 @@
 ---
 title: 记录 CentOS7 安装 Docker 基本环境
 categories: [服务端]
-tags: [Docker]
+tags: [CentOS,Docker]
 date: 2021-02-25 15:57:01
 ---
 
@@ -124,19 +124,19 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 curl -sSL https://get.daocloud.io/docker | sh
 ```
 
-#### 启动
+### 启动
 
 ```sh
 systemctl start docker
 ```
 
-#### 开机启动
+### 开机启动
 
 ```sh
 systemctl enable docker
 ```
 
-#### Docker 换源
+### Docker 换源
 
 > 注意：如果拉取速度没问题，可以不用换
 
@@ -160,6 +160,8 @@ nano /etc/docker/daemon.json
 
 Portainer是一个可视化的容器镜像的图形管理工具，利用Portainer可以轻松构建，管理和维护Docker环境。 而且完全免费，基于容器化的安装方式，方便高效部署。
 
+![](./images/2021-03-19-15-46-11.png)
+
 ```sh
 # 安装 Portainer：
 docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v ~/AppData/portainer:/data --name portainer --restart=always portainer/portainer
@@ -168,6 +170,8 @@ docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v ~/App
 ### Speedtest
 
 内网测速
+
+![](./images/2021-03-19-15-47-14.png)
 
 ```sh
 # 安装 Speedtest：
@@ -178,6 +182,8 @@ docker run -d -p 6688:80 --restart=always --name speedtest ilemonrain/html5-spee
 
 Node-RED是一种基于Node.js的编程工具，用于以新颖有趣的方式将硬件设备，API和在线服务连接在一起。它提供了一个基于浏览器的编辑器，可以使用调色板中的各种节点轻松地将流连接在一起，只需单击即可将其部署到运行时。
 
+![](./images/2021-03-19-15-47-44.png)
+
 ```sh
 docker run -d --restart=always --name="nodered" -p 1880:1880 nodered/node-red:latest-minimal
 ```
@@ -185,6 +191,8 @@ docker run -d --restart=always --name="nodered" -p 1880:1880 nodered/node-red:la
 ### ESPHome
 
 ESP8266 系列开发框架，通过配置实现简单的 IOT
+
+![](./images/2021-03-19-15-48-10.png)
 
 ```sh
 docker run -d \
@@ -203,6 +211,8 @@ docker run -d \
 
 Home Assistant 是一款基于 Python 的智能家居开源系统，支持众多品牌的智能家居设备，可以轻松实现设备的语音控制、自动化等。
 
+![](./images/2021-03-19-15-48-33.png)
+
 ```sh
 docker run -d \
 --name=home_assistant \
@@ -220,6 +230,8 @@ homeassistant/home-assistant:stable
 ### Jellyfin
 
 开源的家庭影音中心
+
+![](./images/2021-03-19-15-49-17.png)
 
 ```sh
 docker run -d \
@@ -243,6 +255,8 @@ docker run -d \
 
 自建DNS广告拦截器
 
+![](./images/2021-03-19-15-54-23.png)
+
 ```sh
 docker run --name adguardhome \
     -v ~/AppData/adguardhome/workdir:/opt/adguardhome/work \
@@ -262,6 +276,8 @@ docker run --name adguardhome \
 
 最好用的地址导航
 
+![](./images/2021-03-19-15-54-42.png)
+
 ```sh
 docker run -d \
     --name=heimdall \
@@ -278,6 +294,8 @@ docker run -d \
 ### unifi-controller
 
 unifi-controller 路由控制器
+
+![](./images/2021-03-19-15-56-26.png)
 
 > 此操作可能找不到设备，需要通过 `Ubiquiti Device Discovery Tool` 工具查找并修改 `set-inform` 地址
 > set-inform http://x.x.x.x:8080/inform
@@ -303,6 +321,8 @@ docker run -d \
 ### tinymediamanager
 
 自动收集影音资源图片，并且可以整理文件夹等
+
+![](./images/2021-03-19-15-56-58.png)
 
 ```sh
 docker run -d --name=tinymediamanager \
@@ -335,6 +355,8 @@ docker run --rm --name=tinymediamanagerscript \
 
 下载神器
 
+![](./images/2021-03-19-15-57-18.png)
+
 ```
 docker run -d \
     --name=transmission \
@@ -355,6 +377,8 @@ docker run -d \
 ### aria2
 
 下载工具
+
+![](./images/2021-03-19-15-57-39.png)
 
 ```sh
 docker run -d \
@@ -388,6 +412,8 @@ docker run -d \
 
 文件管理器
 
+![](./images/2021-03-19-15-58-06.png)
+
 ```sh
 docker run -d \
     --name filebrowser \
@@ -419,6 +445,8 @@ docker run -d \
 ### netdata
 
 监控，可以监控 docker 容器状态
+
+![](./images/2021-03-19-15-58-43.png)
 
 ```sh
 docker run -d --name=netdata \
