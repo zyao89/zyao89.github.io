@@ -8,13 +8,99 @@ date: 2021-03-30 18:56:11
 
 <!-- more -->
 
+<!-- /s/36ba1dc1.html -->
+
 ## js基础
 
 ![js](./images/2021-03-30-18-53-56.png)
 
+
+### 说一下事件代理？
+
+事件委托是指将事件绑定到目标元素的父元素上，利用冒泡机制触发该事件
+
+```js
+ulEl.addEventListener('click', function(e){
+    var target = event.target || event.srcElement;
+    if(!!target && target.nodeName.toUpperCase() === "LI"){
+        console.log(target.innerHTML);
+    }
+}, false);
+```
+
+### 说一下宏任务和微任务？
+
+- 宏任务：当前调用栈中执行的任务称为宏任务。（主代码快，定时器等等）。
+- 微任务： 当前（此次事件循环中）宏任务执行完，在下一个宏任务开始之前需要执行的任务为微任务。（可以理解为回调事件，promise.then，proness.nextTick等等）。
+- 宏任务中的事件放在callback queue中，由事件触发线程维护；微任务的事件放在微任务队列中，由js引擎线程维护。
+
+### 说一下闭包？
+
+闭包的实质是因为函数嵌套而形成的作用域链
+
+闭包的定义即：函数 A 内部有一个函数 B，函数 B 可以访问到函数 A 中的变量，那么函数 B 就是闭包
+
+
+
 ## css基础
 
 ![css](./images/2021-03-30-21-32-44.png)
+
+### css水平、垂直居中的写法，请至少写出4种？
+
+> 这题考查的是css的基础知识是否全面，所以平时一定要注意多积累
+
+水平居中
+
+- 行内元素: `text-align: center`
+- 块级元素: `margin: 0 auto`
+- `position:absolute` + `left:50%` + `transform:translateX(-50%)`
+- `display:flex` + `justify-content: center`
+
+垂直居中
+
+- 设置`line-height` 等于`height`
+- `position：absolute` + `top:50%` + `transform:translateY(-50%)`
+- `display:flex` + `align-items: center`
+- `display:table` + `display:table-cell` + `vertical-align: middle`
+
+### 说一下盒模型？
+
+> 盒模型是css中重要的基础知识，也是必考的基础知识
+
+盒模型的组成，由里向外content,padding,border,margin.
+在IE盒子模型中，width表示content+padding+border这三个部分的宽度
+在标准的盒子模型中，width指content部分的宽度
+
+box-sizing的使用:
+```
+box-sizing: content-box 是W3C盒子模型
+box-sizing: border-box 是IE盒子模型
+```
+box-sizing的默认属性是 content-box
+
+### 清除浮动的几种方式，及原理？
+
+> 清除浮动简单，但这题要引出的是BFC，BFC也是必考的基础知识点
+
+- `::after` / `<br>` / `clear: both`
+- 创建父级 BFC(overflow:hidden)
+- 父级设置高度
+
+> BFC （块级格式化上下文），是一个独立的渲染区域，让处于 BFC 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
+
+触发条件:
+- 根元素
+- position: absolute/fixed
+- display: inline-block / table
+- float 元素
+- ovevflow !== visible
+
+规则:
+- 属于同一个 BFC 的两个相邻 Box 垂直排列
+- 属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠
+- BFC 的区域不会与 float 的元素区域重叠
+- 计算 BFC 的高度时，浮动子元素也参与计算
 
 ### scoped
 
@@ -224,6 +310,12 @@ vue框架中状态管理。
 
 ### 前端如何优化网站性能
 
+```
+- 你在前端性能优化方面有什么心得？
+- 在类似webpack／gulp的自动化工具使用上，你有什么优化经验／心得？
+- 如果网站首页加载速度很慢，你会怎样定位问题？
+```
+
 1.减少 HTTP 请求数量
 > 在浏览器与服务器进行通信时，主要是通过 HTTP 进行通信。浏览器与服务器需要经过三次握手，每次握手需要花费大量时间。而且不同浏览器对资源文件并发请求数量有限（不同浏览器允许并发数），一旦 HTTP 请求数量达到一定数量，资源请求就存在等待状态，这是很致命的，因此减少 HTTP 的请求数量可以很大程度上对网站性能进行优化。
 	1.CSS Sprites：
@@ -307,6 +399,349 @@ vue框架中状态管理。
 - 函数和箭头函数
 - Promise 和 async/await
 - 作用域，let 和 const，解构赋值
+
+
+## 一些简单的笔试题
+
+### 用js递归的方式写1到100求和？
+
+> 递归我们经常用到，vue在实现双向绑定进行数据检验的时候用的也是递归，但要我们面试的时候手写一个递归，如果对递归的概念理解不透彻，可能还是会有一些问题。
+
+```js
+function add(num1,num2){
+	var num = num1+num2;
+        if(num2+1>100){
+	 return num;
+	}else{
+	  return add(num,num2+1)
+        }
+ }
+var sum =add(1,2); 
+```
+
+### 数组去重？
+
+> 此题看着简单，但要想面试官给你高分还是有难度的。至少也要写出几种方法
+
+```js
+var arr=['12','32','89','12','12','78','12','32'];
+// 最简单数组去重法
+function unique1(array){
+    var n = []; //一个新的临时数组
+    for(var i = 0; i < array.length; i++){ //遍历当前数组
+        if (n.indexOf(array[i]) == -1)
+            n.push(array[i]);
+    }
+    return n;
+}
+arr=unique1(arr);
+// 速度最快， 占空间最多（空间换时间）
+function unique2(array){
+    var n = {}, r = [], type;
+    for (var i = 0; i < array.length; i++) {
+        type = typeof array[i];
+        if (!n[array[i]]) {
+            n[array[i]] = [type];
+            r.push(array[i]);
+        } else if (n[array[i]].indexOf(type) < 0) {
+            n[array[i]].push(type);
+            r.push(array[i]);
+        }
+    }
+    return r;
+}
+//数组下标判断法
+function unique3(array){
+    var n = [array[0]]; //结果数组
+    for(var i = 1; i < array.length; i++) { //从第二项开始遍历
+        if (array.indexOf(array[i]) == i) 
+            n.push(array[i]);
+    }
+    return n;
+}
+```
+
+```js
+// es6方法数组去重
+const arr=[...new Set(arr)];
+// es6方法数组去重，第二种方法
+function dedupe(array) {
+  return Array.from(new Set(array));       //Array.from()能把set结构转换为数组
+}
+```
+
+### 防抖函数和节流函数
+
+> 用JS实现防抖函数（短时间内多次触发同一事件，只执行最后一次）和节流函数（指连续触发事件但是在n秒中只执行一次函数）
+
+#### 防抖函数
+
+持续触发事件时，在设定时间段内没有被触发，才去调用事件处理函数，在设定时间段内如果事件又被触发，则不调用事件处理函数，并从触发事件时间重新开始延时。
+
+- 设计思路：在setTimeout中调用事件处理函数，如果在定时器触发函数执行之前又触发函数，清除定时器。
+
+
+#### 节流函数
+
+当事件被持续触发时，在设定时间内只让事件处理函数触发一次。
+
+- 定时器实现模式：定时器在延时时间执行过后，重置为null, 定时器为null时，重新设置定时器，如此循环。
+- 时间戳实现模式：初始化时获取时间，每次触发事件时再次获取时间，两次时间间隔等于或大于设定时间，执行事件，初始化时间重置为当前时间，如此循环。
+
+### 用css实现一个左右布局，右边固定300px宽，高度顶满，左边撑开顶满剩余位置
+### CSS如何实现三列布局（左右固定宽度，中间自适应）？
+
+### 消息队列限制并发请求数量
+
+### 实现一个深拷贝
+
+### 拉平的数据构建成一颗树
+
+写一个函数tree,实现如下功能
+
+```js
+function tree(list) {
+  //todo...
+}
+
+let list = [
+  {
+    code: '1001',
+    parentCode: '',
+    name: '北京'
+  },
+  {
+    code: '10011',
+    parentCode: '1001',
+    name: '海淀'
+  },
+  {
+    code: '10012',
+    parentCode: '1001',
+    name: '大兴'
+  },
+  {
+    code: '100112',
+    parentCode: '10011',
+    name: '五道口'
+  },
+  {
+    code: '1002',
+    parentCode: '',
+    name: '上海'
+  },
+  {
+    code: '10022',
+    parentCode: '1002',
+    name: '徐汇'
+  },
+  {
+    code: '1003',
+    parentCode: '',
+    name: '武汉'
+  }
+
+]
+
+
+let newList = tree(list)
+console.log(newList)
+
+/*
+[
+  {
+    code: '1001',
+    parentCode: '',
+    name: '北京',
+    children: [
+      {
+        code: '10011',
+        parentCode: '1001',
+        name: '海淀',
+        children: [
+          {
+            code: '100112',
+            parentCode: '10011',
+            name: '五道口',
+            children: []
+          }
+        ]
+      },
+      {
+        code: '10012',
+        parentCode: '1001',
+        name: '大兴',
+        children: []
+      }
+    ]
+  },
+  {
+    code: '1002',
+    parentCode: '',
+    name: '上海',
+    children: [
+      {
+        code: '10022',
+        parentCode: '1002',
+        name: '徐汇',
+        children: []
+      }
+    ]
+  },
+  {
+    code: '1003',
+    parentCode: '',
+    name: '武汉',
+    children: []
+  }
+
+]
+
+*/
+```
+
+### 循环/闭包/setTimeout/Promise 综合
+
+- 控制台显示内容为？
+
+> 答案：5 个 5
+
+```js
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, 1000 * i);
+}
+```
+
+
+- 如何在 `setTimeout` 中输出 1，2，3，4，5
+
+```js
+for (var i = 0; i < 5; i++) {
+  (function(i) {
+    setTimeout(function() {
+      console.log(i);
+    }, i * 1000);
+  })(i);
+}
+```
+
+- 下面的输出结果是多少？
+
+> 答案： 2，3，5，4，1
+
+```js
+setTimeout(function() {
+  console.log(1)
+}, 0);
+new Promise(function executor(resolve) {
+  console.log(2);
+  for( var i=0 ; i<10000 ; i++ ) {
+    i == 9999 && resolve();
+  }
+  console.log(3);
+}).then(function() {
+  console.log(4);
+});
+console.log(5);
+```
+
+### JS 作用域、原型链
+
+```js
+function Foo() {
+    getName = function () { 
+    	console.log('1');
+    };
+    return this;
+}
+Foo.getName = function () {
+	console.log('2');
+};
+Foo.prototype.getName = function () { 
+	console.log('3');
+};
+var getName = function () { 
+	console.log('4');
+};
+function getName() { 
+	console.log(5);
+}
+
+Foo.getName();  
+getName();	
+Foo().getName(); 
+getName();  
+new Foo.getName(); 
+new Foo().getName();   
+new new Foo().getName();
+```
+
+请问上述代码在浏览器环境下，输出结果是多少？
+
+### 业务数据处理题
+
+#### 列表数据处理
+
+从某数据库接口得到如下值：
+
+```js
+{
+ rows: [
+  ["Lisa", 16, "Female", "2000-12-01"],
+  ["Bob", 22, "Male", "1996-01-21"]
+ ],
+ metaData: [
+  {name: "name", note: ''},
+  {name: "age", note: ''},
+  {name: "gender", note: ''},
+  {name: "birthday", note: ''}
+ ]
+}
+```
+
+rows是数据，metaData是对数据的说明。现写一个函数，将上面的Object转化为期望的数组：
+
+```js
+[
+ {name: "Lisa", age: 16, gender: "Female", birthday: "2000-12-01"},
+ {name: "Bob", age: 22, gender: "Male", birthday: "1996-01-21"},
+]
+```
+
+#### 两个数组数据合并
+
+数组一
+
+```js
+a = [
+{id: 10001, name: "Lisa", age: 16},
+{id: 10002, name: "Bob", age: 22},
+{id: 10003, name: "Alice", age: 20},
+];
+```
+
+数组二
+
+```js
+b = [
+{id: 10001, gender: "Female"},
+{id: 10002, name: "Bob King", birthday: "1996-01-22"},
+{id: 10005, name: "Tom", birthday: "2000-01-01"},
+];
+```
+
+写一个函数按id用b更新a,期望得到的结果为：
+
+```js
+[
+{id: 10001, name: "Lisa", age: 16, gender: "Female"},
+{id: 10002, name: "Bob King", birthday: "1996-01-22", age: 22},
+{id: 10003, name: "Alice", age: 20},
+{id: 10005, name: "Tom", birthday: "2000-01-01"},
+]
+```
 
 ## 参考
 

@@ -2,7 +2,7 @@
 title: Sketch Plugin - 2O3T Tools
 date: 2019-01-31 22:45:59
 tags: [Sketch, Plugin]
-categories: [Sketch]
+categories: [其它]
 ---
 
 ## 安装
