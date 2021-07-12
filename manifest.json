@@ -1,0 +1,13 @@
+{
+    "name": "Zyao89's Blogs",
+    "short_name": "Zyao89's Blogs",
+    "icons": [{
+        "src": "favicon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }],
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#f11c5b"
+}

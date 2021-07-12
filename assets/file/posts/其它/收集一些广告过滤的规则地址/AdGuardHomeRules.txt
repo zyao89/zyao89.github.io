@@ -1,0 +1,182 @@
+bind_host: 0.0.0.0
+bind_port: 3000
+users:
+- name: admin
+  password: $2a$10$YzyCoWiH6jZj3/wx8dcY4OPA6aQoARV0Aam5ULtuHkLzUWxmhtDEy
+language: zh-cn
+rlimit_nofile: 0
+web_session_ttl: 720
+dns:
+  bind_host: 0.0.0.0
+  port: 5353
+  statistics_interval: 1
+  querylog_enabled: true
+  querylog_interval: 90
+  querylog_memsize: 0
+  protection_enabled: true
+  blocking_mode: nxdomain
+  blocking_ipv4: ""
+  blocking_ipv6: ""
+  blocked_response_ttl: 60
+  ratelimit: 0
+  ratelimit_whitelist: []
+  refuse_any: true
+  bootstrap_dns:
+  - 1.1.1.1:53
+  - 1.0.0.1:53
+  all_servers: true
+  edns_client_subnet: false
+  allowed_clients: []
+  disallowed_clients: []
+  blocked_hosts: []
+  parental_block_host: family-block.dns.adguard.com
+  safebrowsing_block_host: standard-block.dns.adguard.com
+  cache_size: 4194304
+  upstream_dns:
+  - https://1.1.1.1/dns-query
+  - https://1.0.0.1/dns-query
+  - tls://dns.google
+  - 223.5.5.5
+  - 223.6.6.6
+  - 114.114.114.114
+  - 114.114.115.115
+  - 119.29.29.29
+  - 119.28.28.28
+  filtering_enabled: true
+  filters_update_interval: 72
+  parental_sensitivity: 13
+  parental_enabled: true
+  safesearch_enabled: true
+  safebrowsing_enabled: true
+  safebrowsing_cache_size: 1048576
+  safesearch_cache_size: 1048576
+  parental_cache_size: 1048576
+  cache_time: 30
+  rewrites: []
+  blocked_services: []
+tls:
+  enabled: false
+  server_name: ""
+  force_https: false
+  port_https: 443
+  port_dns_over_tls: 853
+  allow_unencrypted_doh: false
+  certificate_chain: ""
+  private_key: ""
+  certificate_path: ""
+  private_key_path: ""
+filters:
+- enabled: true
+  url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+  name: AdGuard Simplified Domain Names filter
+  id: 1
+- enabled: true
+  url: https://adaway.org/hosts.txt
+  name: AdAway
+  id: 2
+- enabled: true
+  url: https://hosts-file.net/ad_servers.txt
+  name: hpHosts - Ad and Tracking servers only
+  id: 3
+- enabled: true
+  url: https://www.malwaredomainlist.com/hostslist/hosts.txt
+  name: MalwareDomainList.com Hosts List
+  id: 4
+- enabled: true
+  url: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjxlist.txt
+  name: CJX's EasyList Lite
+  id: 1582732324
+- enabled: true
+  url: https://easylist-downloads.adblockplus.org/easylistchina.txt
+  name: EasyList China
+  id: 1582732326
+- enabled: true
+  url: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
+  name: CJX's Annoyance List
+  id: 1582732327
+- enabled: true
+  url: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+  name: StevenBlack/hosts
+  id: 1582732328
+- enabled: true
+  url: https://fanboy.co.nz/r/fanboy-ultimate.txt
+  name: Fanboy+Easylist-Merged Ultimate List
+  id: 1582732330
+- enabled: true
+  url: https://raw.githubusercontent.com/xinggsf/Adblock-Plus-Rule/master/ABP-FX.txt
+  name: ABP-FX
+  id: 1582732331
+- enabled: true
+  url: https://easylist.to/easylist/easylist.txt
+  name: EasyList
+  id: 1582732332
+- enabled: true
+  url: https://easylist-downloads.adblockplus.org/easyprivacy.txt
+  name: EasyPrivacy
+  id: 1582732333
+user_rules:
+- '@@mps.ts'
+- '|http://www.sohu.com/adbyby_list'
+- '!百度广告'
+- '||cbjs.baidu.com/adbyby'
+- '||list.video.baidu.com/adbyby'
+- '||nsclick.baidu.com/adbyby'
+- '||play.baidu.com/adbyby'
+- '||sclick.baidu.com/adbyby'
+- '||tieba.baidu.com/adbyby'
+- '||baidustatic.com/adbyby'
+- '||bdimg.com/adbyby'
+- '||bdstatic.com/adbyby'
+- '||share.baidu.com/adbyby'
+- '||hm.baidu.com/adbyby'
+- '!视频广告'
+- '||v.baidu.com/adbyby'
+- '||1000fr.net/adbyby'
+- '||56.com/adbyby'
+- '||v-56.com/adbyby'
+- '||acfun.com/adbyby'
+- '||acfun.tv/adbyby'
+- '||baofeng.com/adbyby'
+- '||baofeng.net/adbyby'
+- '||cntv.cn/adbyby'
+- '||hoopchina.com.cn/adbyby'
+- '||funshion.com/adbyby'
+- '||fun.tv/adbyby'
+- '||hitvs.cn/adbyby'
+- '||hljtv.com/adbyby'
+- '||iqiyi.com/adbyby'
+- '||qiyi.com/adbyby'
+- '||agn.aty.sohu.com/adbyby'
+- '||itc.cn/adbyby'
+- '||kankan.com/adbyby'
+- '||ku6.com/adbyby'
+- '||letv.com/adbyby'
+- '||letvcloud.com/adbyby'
+- '||letvimg.com/adbyby'
+- '||pplive.cn/adbyby'
+- '||pps.tv/adbyby'
+- '||ppsimg.com/adbyby'
+- '||pptv.com/adbyby'
+- '||v.qq.com/adbyby'
+- '||l.qq.com/adbyby'
+- '||video.sina.com.cn/adbyby'
+- '||tudou.com/adbyby'
+- '||wasu.cn/adbyby'
+- '||analytics-union.xunlei.com/adbyby'
+- '||kankan.xunlei.com/adbyby'
+- '||youku.com/adbyby'
+- '||hunantv.com/adbyby'
+- '||zimuzu.tv/adbyby_list'
+dhcp:
+  enabled: false
+  interface_name: ""
+  gateway_ip: ""
+  subnet_mask: ""
+  range_start: ""
+  range_end: ""
+  lease_duration: 86400
+  icmp_timeout_msec: 1000
+clients: []
+log_file: ""
+verbose: false
+schema_version: 6
