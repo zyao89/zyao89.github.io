@@ -119,6 +119,70 @@ box-sizing的默认属性是 content-box
 Sass支持条件语句，可以使用if{}else{},for{}循环等等。而Less不支持;
 Sass是基于Ruby的，是在服务端处理的，而Less是需要引入less.js来处理Less代码输出Css到浏览器
 
+## 网络相关
+
+### get、post的区别
+
+1.get传参方式是通过地址栏URL传递，是可以直接看到get传递的参数，post传参方式参数URL不可见，get把请求的数据在URL后通过？连接，通过&进行参数分割。psot将参数存放在HTTP的包体内
+
+2.get传递数据是通过URL进行传递，对传递的数据长度是受到URL大小的限制，URL最大长度是2048个字符。post没有长度限制
+
+3.get后退不会有影响，post后退会重新进行提交
+
+4.get请求可以被缓存，post不可以被缓存
+
+5.get请求只URL编码，post支持多种编码方式
+
+6.get请求的记录会留在历史记录中，post请求不会留在历史记录
+
+7.get只支持ASCII字符，post没有字符类型限制
+
+### 你所知道的http的响应码及含义？
+
+1xx(临时响应)
+
+100: 请求者应当继续提出请求。
+
+101(切换协议) 请求者已要求服务器切换协议，服务器已确认并准备进行切换。
+
+2xx(成功)
+
+200：正确的请求返回正确的结果
+
+201：表示资源被正确的创建。比如说，我们 POST 用户名、密码正确创建了一个用户就可以返回 201。
+
+202：请求是正确的，但是结果正在处理中，这时候客户端可以通过轮询等机制继续请求。
+
+3xx(已重定向)
+
+300：请求成功，但结果有多种选择。
+
+301：请求成功，但是资源被永久转移。
+
+303：使用 GET 来访问新的地址来获取资源。
+
+304：请求的资源并没有被修改过
+
+4xx(请求错误)
+
+400：请求出现错误，比如请求头不对等。
+
+401：没有提供认证信息。请求的时候没有带上 Token 等。
+
+402：为以后需要所保留的状态码。
+
+403：请求的资源不允许访问。就是说没有权限。
+
+404：请求的内容不存在。
+
+5xx(服务器错误)
+
+500：服务器错误。
+
+501：请求还没有被实现。
+
+
+
 ## git相关
 
 1. 列举工作中常用的几个git命令？
@@ -277,6 +341,255 @@ vue框架中状态管理。
 - 项目中有使用过ElementUI吗？有遇到过哪些问题？它的使用场景主要是哪些？
 
 
+## React 相关
+
+### 基础问题
+
+- 问题1：什么是虚拟DOM？
+> 虚拟 DOM (VDOM)是真实 DOM 在内存中的表示。UI 的表示形式保存在内存中，并与实际的 DOM 同步。这是一个发生在渲染函数被调用和元素在屏幕上显示之间的步骤，整个过程被称为调和。
+
+- 问题2：类组件和函数组件之间的区别是啥？
+> 类组件可以使用其他特性，如状态 state 和生命周期钩子。
+当组件只是接收 props 渲染到页面时，就是无状态组件，就属于函数组件，也被称为哑组件或展示组件。
+函数组件和类组件当然是有区别的，而且函数组件的性能比类组件的性能要高，因为类组件使用的时候要实例化，而函数组件直接执行函数取返回结果即可。为了提高性能，尽量使用函数组件。
+
+| 区别 | 函数 | 组件 |
+| --- | --- | --- |
+| 类组件是否有 this | 没有 | 有 | 
+| 是否有生命周期 | 没有 | 有 | 
+| 是否有状态 state | 没有 | 有 | 
+
+
+- React 中 refs 干嘛用的？
+> Refs 提供了一种访问在render方法中创建的 DOM 节点或者 React 元素的方法。在典型的数据流中，props 是父子组件交互的唯一方式，想要修改子组件，需要使用新的pros重新渲染它。凡事有例外，某些情况下咱们需要在典型数据流外，强制修改子代，这个时候可以使用 Refs。
+
+- 问题 4：在 React 中如何处理事件
+> 为了解决跨浏览器的兼容性问题，SyntheticEvent 实例将被传递给你的事件处理函数，SyntheticEvent是 React 跨浏览器的浏览器原生事件包装器，它还拥有和浏览器原生事件相同的接口，包括 stopPropagation() 和 preventDefault()。
+
+> 比较有趣的是，React 实际上并不将事件附加到子节点本身。React 使用单个事件侦听器侦听顶层的所有事件。这对性能有好处，也意味着 React 在更新 DOM 时不需要跟踪事件监听器。
+
+- 问题 5：state 和 props 区别是啥？
+> props和state是普通的 JS 对象。虽然它们都包含影响渲染输出的信息，但是它们在组件方面的功能是不同的。即:
+state 是组件自己管理数据，控制自己的状态，可变；
+props 是外部传入的数据参数，不可变；
+没有state的叫做无状态组件，有state的叫做有状态组件；
+多用 props，少用 state，也就是多写无状态组件。
+
+- 问题 6：如何创建 refs
+> Refs 是使用 React.createRef() 创建的，并通过 ref 属性附加到 React 元素。在构造组件时，通常将 Refs 分配给实例属性，以便可以在整个组件中引用它们。
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+  render() {
+    return <div ref={this.myRef} />;
+  }
+}
+```
+或者这样用：
+```js
+class UserForm extends Component {
+  handleSubmit = () => {
+    console.log("Input Value is: ", this.input.value)
+  }
+  render () {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type='text'
+          ref={(input) => this.input = input} /> // Access DOM input in handle submit
+        <button type='submit'>Submit</button>
+      </form>
+    )
+  }
+}
+```
+
+- 问题 7：什么是高阶组件？
+> 高阶组件(HOC)是接受一个组件并返回一个新组件的函数。基本上，这是一个模式，是从 React 的组合特性中衍生出来的，称其为纯组件，因为它们可以接受任何动态提供的子组件，但不会修改或复制输入组件中的任何行为。
+```js
+const EnhancedComponent = higherOrderComponent(WrappedComponent);
+```
+> HOC 可以用于以下许多用例
+代码重用、逻辑和引导抽象
+渲染劫持
+state 抽象和操作
+props 处理
+
+- 问题 8：在构造函数调用 super 并将 props 作为参数传入的作用是啥？
+> 在调用 super() 方法之前，子类构造函数无法使用this引用，ES6 子类也是如此。将 props 参数传递给 super() 调用的主要原因是在子构造函数中能够通过this.props来获取传入的 props。
+
+- 问题 9：什么是控制组件？
+> 在 HTML 中，表单元素如 `<input>`、`<textarea>`和`<select>`通常维护自己的状态，并根据用户输入进行更新。当用户提交表单时，来自上述元素的值将随表单一起发送。
+
+> 而 React 的工作方式则不同。包含表单的组件将跟踪其状态中的输入值，并在每次回调函数(例如onChange)触发时重新渲染组件，因为状态被更新。以这种方式由 React 控制其值的输入表单元素称为受控组件。
+
+- 问题 10：如何 React.createElement ？
+```js
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+)
+```
+上述代码如何使用 React.createElement 来实现:
+```js
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+```
+
+- 问题 11：讲讲什么是 JSX ？
+> 当 Facebook 第一次发布 React 时，他们还引入了一种新的 JS 方言 JSX，将原始 HTML 模板嵌入到 JS 代码中。JSX 代码本身不能被浏览器读取，必须使用Babel和webpack等工具将其转换为传统的JS。很多开发人员就能无意识使用 JSX，因为它已经与 React 结合在一直了。
+
+- 问题 13：为什么不直接更新 state 呢 ?
+> 如果试图直接更新 state ，则不会重新渲染组件。
+```js
+// 错误
+This.state.message = 'Hello world';
+```
+需要使用setState()方法来更新 state。它调度对组件state对象的更新。当state改变时，组件通过重新渲染来响应：
+```js
+// 正确做法
+This.setState({message: 'Hello World'});
+```
+
+- 问题 14：React 组件生命周期有哪些不同阶段？
+> 在组件生命周期中有四个不同的阶段：
+Initialization：在这个阶段，组件准备设置初始化状态和默认属性。
+Mounting：react 组件已经准备好挂载到浏览器 DOM 中。这个阶段包括componentWillMount和componentDidMount生命周期方法。
+Updating：在这个阶段，组件以两种方式更新，发送新的 props 和 state 状态。此阶段包括shouldComponentUpdate、componentWillUpdate和componentDidUpdate生命周期方法。
+Unmounting：在这个阶段，组件已经不再被需要了，它从浏览器 DOM 中卸载下来。这个阶段包含 componentWillUnmount 生命周期方法。
+
+
+> 除以上四个常用生命周期外，还有一个错误处理的阶段：
+Error Handling：在这个阶段，不论在渲染的过程中，还是在生命周期方法中或是在任何子组件的构造函数中发生错误，该组件都会被调用。这个阶段包含了 componentDidCatch 生命周期方法。
+
+![](./images/2021-07-12-16-14-10.png)
+
+- 问题 15：React 的生命周期方法有哪些？
+> componentWillMount:在渲染之前执行，用于根组件中的 App 级配置。
+componentDidMount：在第一次渲染之后执行，可以在这里做AJAX请求，DOM 的操作或状态更新以及设置事件监听器。
+componentWillReceiveProps：在初始化render的时候不会执行，它会在组件接受到新的状态(Props)时被触发，一般用于父组件状态更新时子组件的重新渲染
+shouldComponentUpdate：确定是否更新组件。默认情况下，它返回true。如果确定在 state 或 props 更新后组件不需要在重新渲染，则可以返回false，这是一个提高性能的方法。
+componentWillUpdate：在shouldComponentUpdate返回 true 确定要更新组件之前件之前执行。
+componentDidUpdate：它主要用于更新DOM以响应props或state更改。
+componentWillUnmount：它用于取消任何的网络请求，或删除与组件关联的所有事件监听器。
+
+- 问题 17：使用 React Hooks 好处是啥？
+> 首先，Hooks 通常支持提取和重用跨多个组件通用的有状态逻辑，而无需承担高阶组件或渲染 props 的负担。Hooks 可以轻松地操作函数组件的状态，而不需要将它们转换为类组件。
+Hooks 在类中不起作用，通过使用它们，咱们可以完全避免使用生命周期方法，例如 componentDidMount、componentDidUpdate、componentWillUnmount。相反，使用像useEffect这样的内置钩子。
+
+- 问题 18：什么是 React Hooks？
+> Hooks是 React 16.8 中的新添加内容。它们允许在不编写类的情况下使用state和其他 React 特性。使用 Hooks，可以从组件中提取有状态逻辑，这样就可以独立地测试和重用它。Hooks 允许咱们在不改变组件层次结构的情况下重用有状态逻辑，这样在许多组件之间或与社区共享 Hooks 变得很容易。
+
+- 问题 19：React 中的 useState() 是什么？
+> 下面说明useState(0)的用途：
+```js
+...
+const [count, setCounter] = useState(0);
+const [moreStuff, setMoreStuff] = useState(...);
+...
+
+const setCount = () => {
+    setCounter(count + 1);
+    setMoreStuff(...);
+    ...
+};
+```
+> useState 是一个内置的 React Hook。useState(0) 返回一个元组，其中第一个参数count是计数器的当前状态，setCounter 提供更新计数器状态的方法。
+咱们可以在任何地方使用setCounter方法更新计数状态-在这种情况下，咱们在setCount函数内部使用它可以做更多的事情，使用 Hooks，能够使咱们的代码保持更多功能，还可以避免过多使用基于类的组件。
+
+- 问题 20：React 中的StrictMode(严格模式)是什么？
+> React 的StrictMode是一种辅助组件，可以帮助咱们编写更好的 react 组件，可以使用`<StrictMode />`包装一组组件，并且可以帮咱们以下检查：
+验证内部组件是否遵循某些推荐做法，如果没有，会在控制台给出警告。
+验证是否使用的已经废弃的方法，如果有，会在控制台给出警告。
+通过识别潜在的风险预防一些副作用。
+
+
+- 问题 21：为什么类方法需要绑定到类实例？
+> 在 JS 中，this 值会根据当前上下文变化。在 React 类组件方法中，开发人员通常希望 this 引用组件的当前实例，因此有必要将这些方法绑定到实例。通常这是在构造函数中完成的:
+```js
+class SubmitButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFormSubmitted: false
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit() {
+    this.setState({
+      isFormSubmitted: true
+    });
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleSubmit}>Submit</button>
+    )
+  }
+}
+```
+
+- 问题 22：什么是 prop drilling，如何避免？
+> 在构建 React 应用程序时，在多层嵌套组件来使用另一个嵌套组件提供的数据。最简单的方法是将一个 prop 从每个组件一层层的传递下去，从源组件传递到深层嵌套组件，这叫做prop drilling。
+prop drilling的主要缺点是原本不需要数据的组件变得不必要地复杂，并且难以维护。
+为了避免prop drilling，一种常用的方法是使用React Context。通过定义提供数据的Provider组件，并允许嵌套的组件通过Consumer组件或useContext Hook 使用上下文数据。
+
+- 问题 23：描述 Flux 与 MVC？
+> 传统的 MVC 模式在分离数据(Model)、UI(View和逻辑(Controller)方面工作得很好，但是 MVC 架构经常遇到两个主要问题:
+数据流不够清晰:跨视图发生的级联更新常常会导致混乱的事件网络，难于调试。
+缺乏数据完整性:模型数据可以在任何地方发生突变，从而在整个UI中产生不可预测的结果。
+
+> 使用 Flux 模式的复杂用户界面不再遭受级联更新，任何给定的React 组件都能够根据 store 提供的数据重建其状态。Flux 模式还通过限制对共享数据的直接访问来加强数据完整性。
+
+
+- 问题 26：什么是 React Context?
+> Context 通过组件树提供了一个传递数据的方法，从而避免了在每一个层级手动的传递 props 属性。
+
+- 问题 27：什么是 React Fiber?
+> Fiber 是 React 16 中新的协调引擎或重新实现核心算法。它的主要目标是支持虚拟DOM的增量渲染。React Fiber 的目标是提高其在动画、布局、手势、暂停、中止或重用等方面的适用性，并为不同类型的更新分配优先级，以及新的并发原语。
+
+> React Fiber 的目标是增强其在动画、布局和手势等领域的适用性。它的主要特性是增量渲染:能够将渲染工作分割成块，并将其分散到多个帧中。
+
+- 问题 29：在 React 中使用构造函数和 getInitialState 有什么区别？
+> 构造函数和getInitialState之间的区别就是ES6和ES5本身的区别。在使用ES6类时，应该在构造函数中初始化state，并在使用React.createClass时定义getInitialState方法。
+```js
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { /* initial state */ };
+  }
+}
+```
+等价于
+```js
+var MyComponent = React.createClass({
+  getInitialState() {
+    return { /* initial state */ };
+  },
+});
+```
+
+- 问题 32：如何避免组件的重新渲染？
+> React 中最常见的问题之一是组件不必要地重新渲染。React 提供了两个方法，在这些情况下非常有用：
+React.memo():这可以防止不必要地重新渲染函数组件
+PureComponent:这可以防止不必要地重新渲染类组件
+这两种方法都依赖于对传递给组件的props的浅比较，如果 props 没有改变，那么组件将不会重新渲染。虽然这两种工具都非常有用，但是浅比较会带来额外的性能损失，因此如果使用不当，这两种方法都会对性能产生负面影响。
+
+> 通过使用 React Profiler，可以在使用这些方法前后对性能进行测量，从而确保通过进行给定的更改来实际改进性能。
+
+- 问题 34：当调用setState时，React render 是如何工作的？
+> 咱们可以将"render"分为两个步骤：
+虚拟 DOM 渲染:当render方法被调用时，它返回一个新的组件的虚拟 DOM 结构。当调用setState()时，render会被再次调用，因为默认情况下shouldComponentUpdate总是返回true，所以默认情况下 React 是没有优化的。
+原生 DOM 渲染:React 只会在虚拟DOM中修改真实DOM节点，而且修改的次数非常少——这是很棒的React特性，它优化了真实DOM的变化，使React变得更快。
+
 ## 工具基础
 
 - 了解前端常用工具：npm、VSCode 等。
@@ -288,11 +601,93 @@ vue框架中状态管理。
 - Koa 简介
 - http-proxy 如何实现代理
 
+- 在服务端应用中如何获得客户端 IP
+> 如果有 `x-forwarded-for` 的请求头，则取其中的第一个 IP，否则取建立连接 socket 的 `remoteAddr`。
+
+
 ## 业务相关
 
 ### 登录鉴权
 
 ### 请求嵌套
+
+## 前端安全性问题
+
+<!-- https://www.jianshu.com/p/f8e47a132e1c -->
+### 跨站脚本攻击（XSS攻击）
+1、xss跨站脚本攻击（原理、如何进行的、防御手段是什么，要说清楚）
+
+### 跨站请求伪造(CSRF攻击)
+2、CSRF跨站请求伪造（如何伪造法？怎么防御？等等都要说清楚）
+
+### SQL注入攻击
+3、sql脚本注入（注入方式，防御方式）
+
+### 文件上传漏洞
+4、上传漏洞 （防御方式）
+
+### 数据加密
+
+<!-- TODO 数据加密 -->
+
+## 跨域问题的处理
+
+### 常见的跨域场景
+
+![](./images/2021-07-12-18-32-36.png)
+
+### 9种跨域解决方案
+
+<!-- https://www.imooc.com/article/291931 -->
+
+#### JSONP跨域
+
+#### 跨域资源共享（CORS）
+
+#### nginx代理跨域
+
+
+#### nodejs中间件代理跨域
+
+#### document.domain + iframe跨域
+
+#### location.hash + iframe跨域
+
+#### window.name + iframe跨域
+
+#### postMessage跨域
+
+#### WebSocket协议跨域
+
+### 其它
+
+- CORS 如果需要指定多个域名怎么办？
+> CORS 通过控制 Access-Control-Allow-Origin 控制哪些域名可以共享资源，取值如下
+```js
+Access-Control-Allow-Origin: <origin> | *
+```
+> 其中 * 代表所有域名，origin 代表指定特定域名，那如何设置多个域名了？
+此时需要通过代码实现，根据请求头中的 `Origin` 来设置响应头 `Access-Control-Allow-Origin`，思路如下:
+1.总是设置 Vary: Origin，避免 CDN 缓存破坏 CORS 配置
+2.如果请求头不带有 Origin，证明未跨域，则不作任何处理
+3.如果请求头带有 Origin，证明浏览器访问跨域，根据 Origin 设置相应的 Access-Control-Allow-Origin: `<Origin>`
+
+> 使用伪代码实现如下:
+```js
+// 获取 Origin 请求头
+const requestOrigin = ctx.get('Origin');
+
+ctx.set('Vary', 'Origin')
+
+// 如果没有，则跳过
+if (!requestOrigin) {
+  return await next();
+}
+
+// 设置响应头
+ctx.set('Access-Control-Allow-Origin', requestOrigin)
+```
+
 
 ## 通用能力判断
 
@@ -368,6 +763,22 @@ vue框架中状态管理。
 - 删除数组用delete和Vue.delete有什么区别？
 - 动态给vue的data添加一个新的属性时会发生什么？怎样解决？
 - v-show和v-if有什么区别？使用场景分别是什么？
+- vue不能检测哪些属性变化？
+```
+    数组
+    - 使用下标更新数组元素
+    - 使用赋值方式改变数组长度
+    - 使用下标增删数组元素
+
+    官方应对方法： - Vue.set( target, key, value ) - vm.items.splice(indexOfItem, 1, newValue)
+
+    对象
+    - 增删元素
+
+    官方应对方法：
+    Vue.set(target, propertyName, value);
+    Vue.delete( target, propertyName/index )
+```
 
 ### vue-router
 
@@ -383,6 +794,8 @@ vue框架中状态管理。
 - vuex中actions和mutations有什么区别？
 - 你觉得vuex有什么缺点？
 - 你觉得要是不用vuex的话会带来哪些问题？
+
+- vuex数据流？为什么要遵循这个数据流？假如在页面中直接修改state,而不是通过mutation 的commit方式修改，会怎么样？
 
 
 ### ElementUI
@@ -400,6 +813,98 @@ vue框架中状态管理。
 - Promise 和 async/await
 - 作用域，let 和 const，解构赋值
 
+
+### Nodejs 相关
+
+- 请介绍一下require的模块加载机制
+```js
+// 1、先计算模块路径
+// 2、如果模块在缓存里面，取出缓存
+// 3、加载模块
+// 4、的输出模块的exports属性即可
+
+// require 其实内部调用 Module._load 方法
+Module._load = function(request, parent, isMain) {
+ // 计算绝对路径
+ var filename = Module._resolveFilename(request, parent);
+
+ // 第一步：如果有缓存，取出缓存
+ var cachedModule = Module._cache[filename];
+ if (cachedModule) {
+ return cachedModule.exports;
+
+ // 第二步：是否为内置模块
+ if (NativeModule.exists(filename)) {
+ return NativeModule.require(filename);
+ }
+ 
+ /********************************这里注意了**************************/
+ // 第三步：生成模块实例，存入缓存
+ // 这里的Module就是我们上面的1.1定义的Module
+ var module = new Module(filename, parent);
+ Module._cache[filename] = module;
+
+ /********************************这里注意了**************************/
+ // 第四步：加载模块
+ // 下面的module.load实际上是Module原型上有一个方法叫Module.prototype.load
+ try {
+ module.load(filename);
+ hadException = false;
+ } finally {
+ if (hadException) {
+  delete Module._cache[filename];
+ }
+ }
+
+ // 第五步：输出模块的exports属性
+ return module.exports;
+};
+```
+
+- 加载模块时，为什么每个模块都有__dirname,__filename属性呢，那么这两个属性是从哪里来的?
+
+```js
+// 上面(1.2部分)的第四步module.load(filename)
+// 这一步，module模块相当于被包装了，包装形式如下
+// 加载js模块，相当于下面的代码（加载node模块和json模块逻辑不一样）
+(function (exports, require, module, __filename, __dirname) {
+ // 模块源码
+ // 假如模块代码如下
+ var math = require('math');
+ exports.area = function(radius){
+  return Math.PI * radius * radius
+ }
+});
+```
+
+- V8的内存分代和回收算法请简单讲一讲
+
+> 在V8中，主要将内存分为新生代和老生代两代。新生代中的对象存活时间较短的对象，老生代中的对象存活时间较长，或常驻内存的对象。
+
+![](./images/2021-06-16-18-45-26.png)
+
+1. 新生代
+
+> 新生代中的对象主要通过Scavenge算法进行垃圾回收。这是一种采用复制的方式实现的垃圾回收算法。它将堆内存一份为二，每一部分空间成为semispace。在这两个semispace空间中，只有一个处于使用中，另一个处于闲置状态。处于使用状态的semispace空间称为From空间，处于闲置状态的空间称为To空间。
+
+![](./images/2021-06-16-18-45-10.png)
+
+> a. 当开始垃圾回收的时候，会检查From空间中的存活对象，这些存活对象将被复制到To空间中，而非存活对象占用的空间将会被释放。完成复制后，From空间和To空间发生角色对换。
+> b. 应为新生代中对象的生命周期比较短，就比较适合这个算法。
+> c. 当一个对象经过多次复制依然存活，它将会被认为是生命周期较长的对象。这种新生代中生命周期较长的对象随后会被移到老生代中。
+
+2. 老生代
+
+> 老生代主要采取的是标记清除的垃圾回收算法。与Scavenge复制活着的对象不同，标记清除算法在标记阶段遍历堆中的所有对象，并标记活着的对象，只清理死亡对象。活对象在新生代中只占叫小部分，死对象在老生代中只占较小部分，这是为什么采用标记清除算法的原因。
+
+3. 标记清楚算法的问题
+
+主要问题是每一次进行标记清除回收后，内存空间会出现不连续的状态
+
+![](./images/2021-06-16-18-46-51.png)
+
+> a. 这种内存碎片会对后续内存分配造成问题，很可能出现需要分配一个大对象的情况，这时所有的碎片空间都无法完成此次分配，就会提前触发垃圾回收，而这次回收是不必要的。
+> b. 为了解决碎片问题，标记整理被提出来。就是在对象被标记死亡后，在整理的过程中，将活着的对象往一端移动，移动完成后，直接清理掉边界外的内存。
 
 ## 一些简单的笔试题
 
@@ -680,6 +1185,12 @@ new new Foo().getName();
 
 请问上述代码在浏览器环境下，输出结果是多少？
 
+> 2,4,1,1,2,3,3
+
+### 实现一个 Promise.allSettled()
+
+> 该Promise.allSettled()方法返回一个在所有给定的promise都已经fulfilled或rejected后的promise，并带有一个对象数组，每个对象表示对应的promise结果。
+
 ### 业务数据处理题
 
 #### 列表数据处理
@@ -699,11 +1210,10 @@ new new Foo().getName();
   {name: "birthday", note: ''}
  ]
 }
-```
 
-rows是数据，metaData是对数据的说明。现写一个函数，将上面的Object转化为期望的数组：
+// ------------
+// rows是数据，metaData是对数据的说明。现写一个函数，将上面的Object转化为期望的数组：
 
-```js
 [
  {name: "Lisa", age: 16, gender: "Female", birthday: "2000-12-01"},
  {name: "Bob", age: 22, gender: "Male", birthday: "1996-01-21"},
