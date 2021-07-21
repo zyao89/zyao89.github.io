@@ -1,5 +1,5 @@
 ---
-title: ESXI 6.7 中直通挂载本地 SATA 硬盘
+title: ESXI6.7中直通挂载本地 SATA 硬盘
 categories: [其它]
 tags: [软路由,ESXI]
 date: 2020-07-19 21:43:24

@@ -28,6 +28,27 @@ JavaScript的单线程，与它的用途有关。作为浏览器脚本语言，J
 
 以 Chrome 浏览器中为例，当你打开一个 Tab 页时，其实就是创建了一个进程，一个进程中可以有多个线程（下文会详细介绍），比如渲染线程、JS 引擎线程、HTTP 请求线程等等。当你发起一个请求时，其实就是创建了一个线程，当请求结束后，该线程可能就会被销毁。
 
+- GUI 渲染线程:
+  负责渲染页面，解析 HTML，CSS 构成 DOM 树等，当页面重绘或者由于某种操作引起回流都会调起该线程。
+  和 JS 引擎线程是互斥的，当 JS 引擎线程在工作的时候，GUI 渲染线程会被挂起，GUI 更新被放入在 JS 任务队列中，等待 JS 引擎线程空闲的时候继续执行。
+
+- JS 引擎线程:
+  单线程工作，负责解析运行 JavaScript 脚本。
+  和 GUI 渲染线程互斥，JS 运行耗时过长就会导致页面阻塞。
+
+- 事件触发线程:
+  当事件符合触发条件被触发时，该线程会把对应的事件回调函数添加到任务队列的队尾，等待 JS 引擎处理。
+
+- 定时器触发线程:
+  浏览器定时计数器并不是由 JS 引擎计数的，阻塞会导致计时不准确。
+  开启定时器触发线程来计时并触发计时，计时完成后会被添加到任务队列中，等待 JS 引擎处理。
+
+- http 请求线程:
+  http 请求的时候会开启一条请求线程。
+  请求完成有结果了之后，将请求的回调函数添加到任务队列中，等待 JS 引擎处理。
+
+![](./images/2021-07-14-14-19-29.png)
+
 ## 任务队列
 
 ### 同步任务 VS 异步任务
@@ -54,10 +75,10 @@ for(var i = 0; i < 10; i++ ) {
 
 ### MacroTask VS MicroTask
 
-事件循环中的异步队列有两种：macro（宏任务）队列和 micro（微任务）队列。宏任务队列可以有多个，微任务队列只有一个。
+事件循环中的异步队列有两种：`macro`（宏任务）队列和 `micro`（微任务）队列。宏任务队列可以有多个，微任务队列只有一个。
 
-- 常见的 macro-task 比如：setTimeout、setInterval、 setImmediate、script（整体代码）、 I/O 操作、UI 渲染等。
-- 常见的 micro-task 比如: process.nextTick、new Promise().then(回调)、MutationObserver(html5 新特性) 等。
+- 常见的 `macro-task` 比如：`setTimeout`、`setInterval`、 `setImmediate`、`script`（整体代码）、 `I/O 操作`、`UI 渲染`等。
+- 常见的 `micro-task` 比如: `process.nextTick`、`new Promise().then(回调)`、`MutationObserver`(html5 新特性) 等。
 
 ### Event Loop 过程解析
 
