@@ -743,6 +743,45 @@ ctx.set('Access-Control-Allow-Origin', requestOrigin)
 
 ## 精简问题点
 
+### js基础
+
+- 字符串和数组的常用方法
+- 函数和箭头函数
+- Promise 和 async/await
+- 作用域，let 和 const，解构赋值
+
+- 说一下js执行过程？
+- 闭包的变量存储在哪？
+- JS基本数据类型，存储在内存的什么位置
+- symbol有什么特殊的，用来做什么
+
+### css基础
+
+- position有哪些值？
+- 盒模型
+- flex每个值指什么？
+> flex属性是flex-grow, flex-shrink 和 flex-basis
+> flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+> flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+> flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+
+- 执行如下代码，abc 会是什么颜色？ 并且说明原因。
+```html
+<style>
+  #p1 {
+    color: red;
+  }
+  p.container {
+    color: blue;
+  }
+  .p {
+    color: yellow;
+  }
+</style>
+<p id="p1" class="container p">abc</p>
+```
+
+
 ### vue
 
 - 你知道v-model的原理吗？说说看
@@ -780,6 +819,10 @@ ctx.set('Access-Control-Allow-Origin', requestOrigin)
     Vue.delete( target, propertyName/index )
 ```
 
+- vue2和vue3的响应式原理?
+- vue3做了哪些优化?
+- vue和react比较?
+
 ### vue-router
 
 - vue-router怎么配置404页面？
@@ -806,15 +849,41 @@ ctx.set('Access-Control-Allow-Origin', requestOrigin)
 - ElementUI使用表格组件时有遇到过问题吗？
 - 项目中有使用过ElementUI吗？有遇到过哪些问题？它的使用场景主要是哪些？
 
-### js基础
+### webpack
 
-- 字符串和数组的常用方法
-- 函数和箭头函数
-- Promise 和 async/await
-- 作用域，let 和 const，解构赋值
+- 都使用了webpack的哪些loader和plugin，用来做什么？
+- 如何写一个plugin？
+- webpack的工作流程说一下？
+- webpack做过哪些优化?
+- webpack如何做的tree shaking, 基于es6的module引用机制，为什么es6之前不行？
+
+### React
+
+- react 的setState是异步的还是同步的，为什么这样设计?
+- react 的diff讲一下？
+- react 中如何调用元素？
+- react 兄弟组件通信？
+- react 生命周期？
+- react hooks和class的区别？
+- react 优化组件重复渲染
+
+### 网络相关
+
+- 强缓存和协商缓存
+- 跨域的理解
+- jsonp原理
+- cookie是怎么存储的？
+- http和https的区别？
+- http和http2的不同点？
+
+- 如何收集页面性能? 实现错误上报的原理?
 
 
 ### Nodejs 相关
+
+- node 如何实现进程守护的？
+- node 进程间通信方式
+- PM2用来做什么？PM2如何实现的进程守护？
 
 - 请介绍一下require的模块加载机制
 ```js
@@ -905,6 +974,17 @@ Module._load = function(request, parent, isMain) {
 
 > a. 这种内存碎片会对后续内存分配造成问题，很可能出现需要分配一个大对象的情况，这时所有的碎片空间都无法完成此次分配，就会提前触发垃圾回收，而这次回收是不必要的。
 > b. 为了解决碎片问题，标记整理被提出来。就是在对象被标记死亡后，在整理的过程中，将活着的对象往一端移动，移动完成后，直接清理掉边界外的内存。
+
+
+### 综合问题
+
+- 浏览器安全了解哪些？
+- 项目中遇到的比较深刻的问题、如何一步步解决的？
+- 前端工程化？
+- 带团队遇到的问题？
+- 团队沟通、协作？
+- 职业规划？
+
 
 ## 一些简单的笔试题
 
@@ -1000,7 +1080,7 @@ function dedupe(array) {
 
 ### 实现一个深拷贝
 
-### 拉平的数据构建成一颗树
+### ⭐️拉平的数据构建成一颗树
 
 写一个函数tree,实现如下功能
 
@@ -1257,3 +1337,4 @@ b = [
 
 - [vue 248+个知识点（面试题）为你保驾护航](https://zhuanlan.zhihu.com/p/71229672)
 - [复习知识点总结（简单脑图版本）](https://juejin.cn/post/6939707197135781924#heading-13)
+- [2021年我的前端面试准备](https://juejin.cn/post/6989422484722286600)
