@@ -1200,7 +1200,7 @@ for (var i = 0; i < 5; i++) {
 ```
 
 
-- 如何在 `setTimeout` 中输出 1，2，3，4，5
+- 如何在 `setTimeout` 中输出 0，1，2，3，4
 
 ```js
 for (var i = 0; i < 5; i++) {
