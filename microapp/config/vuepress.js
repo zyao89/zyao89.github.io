@@ -34,7 +34,10 @@ module.exports = {
     footer: {
         powerby: true,
         copyright: true,
-        beian: '浙ICP备17039012号-1',
+        beian: {
+            text: '浙ICP备17039012号-1',
+            link: 'https://beian.miit.gov.cn/',
+        },
     },
 
     // friendLinks: [
