@@ -15,5 +15,5 @@ module.exports = {
         name: 'Zyao89',
         email: 'zyao89@gmail.com',
     },
-    cname: 'blog.zyao89.cn',
+    cname: 'zyao89.cn',
 };
