@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Android编译时注解APT实战（AbstractProcessor） | Zyao89&#39;s Blogs</title>
+    <meta name="generator" content="VuePress 1.8.3">
+    <link rel="icon" href="/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="神秘，暂无任何描述">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" data-auto-meta="true" data-update-meta="true">
+    <meta rel="alternate" title="Zyao89&#39;s Blogs" href="https://zyao89.cn/rss.xml" link="alternate" content="rss" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:published_time" content="2017-03-12T23:57:11.000Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:modified_time" content="2023-11-27T11:25:12.671Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:site_name" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:type" content="article" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:url" content="https://zyao89.cn/s/c116b5c2.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:url" content="https://zyao89.cn/s/c116b5c2.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:card" content="summary_large_image" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label1" content="Written by" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:data2" content="Android,Java,注解" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label2" content="Filed under" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:tag" content="注解" data-auto-meta="true" data-update-meta="true">
+    <meta name="keywords" content="移动开发,Android,Java,注解" data-auto-meta="true" data-update-meta="true">
+    <meta name="powerby" content="Micro-App" data-auto-meta="true" data-update-meta="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="google-site-verification" content="8sZJLe_q5uzLQR19aq4O6V5Y7YPj-mLjb7b-jlBloNo">
+    <meta name="baidu-site-verification" content="D4YhVrZwXf">
+    
+    <link rel="preload" href="/assets/css/0.styles.bd01dee5.css" as="style"><link rel="preload" href="/assets/js/app.6169d5d9.js" as="script"><link rel="preload" href="/assets/js/1.381a88b1.js" as="script"><link rel="preload" href="/assets/js/17.7be3556f.js" as="script"><link rel="preload" href="/assets/js/36.8f745991.js" as="script"><link rel="preload" href="/assets/js/23.b5979579.js" as="script"><link rel="preload" href="/assets/js/25.78ef3fa2.js" as="script"><link rel="prefetch" href="/assets/js/10.6ae44f0d.js"><link rel="prefetch" href="/assets/js/100.ce30b411.js"><link rel="prefetch" href="/assets/js/101.430c2297.js"><link rel="prefetch" href="/assets/js/102.c8909a76.js"><link rel="prefetch" href="/assets/js/103.b9dba89c.js"><link rel="prefetch" href="/assets/js/104.27de0e8c.js"><link rel="prefetch" href="/assets/js/105.b8801b53.js"><link rel="prefetch" href="/assets/js/106.a416b83f.js"><link rel="prefetch" href="/assets/js/107.15d0221f.js"><link rel="prefetch" href="/assets/js/108.ee17e077.js"><link rel="prefetch" href="/assets/js/109.9b8800f9.js"><link rel="prefetch" href="/assets/js/11.54ed8a83.js"><link rel="prefetch" href="/assets/js/110.cb8e98f3.js"><link rel="prefetch" href="/assets/js/111.2ddcd088.js"><link rel="prefetch" href="/assets/js/112.4b546485.js"><link rel="prefetch" href="/assets/js/113.c36d1452.js"><link rel="prefetch" href="/assets/js/114.dae28062.js"><link rel="prefetch" href="/assets/js/115.0ca7de2b.js"><link rel="prefetch" href="/assets/js/116.8dab3bf5.js"><link rel="prefetch" href="/assets/js/117.f4f6c6f1.js"><link rel="prefetch" href="/assets/js/118.86cbf460.js"><link rel="prefetch" href="/assets/js/119.adde92b6.js"><link rel="prefetch" href="/assets/js/12.04cb229a.js"><link rel="prefetch" href="/assets/js/120.73bf71ee.js"><link rel="prefetch" href="/assets/js/121.0f189cac.js"><link rel="prefetch" href="/assets/js/122.5c45dc1c.js"><link rel="prefetch" href="/assets/js/13.5a00df16.js"><link rel="prefetch" href="/assets/js/14.a26fae10.js"><link rel="prefetch" href="/assets/js/15.e9537b9f.js"><link rel="prefetch" href="/assets/js/16.06683abd.js"><link rel="prefetch" href="/assets/js/18.ec51fb25.js"><link rel="prefetch" href="/assets/js/19.488ea1ee.js"><link rel="prefetch" href="/assets/js/20.29ddea1c.js"><link rel="prefetch" href="/assets/js/21.9109ebb0.js"><link rel="prefetch" href="/assets/js/22.9133d4c6.js"><link rel="prefetch" href="/assets/js/24.a6ef82b5.js"><link rel="prefetch" href="/assets/js/26.1219245c.js"><link rel="prefetch" href="/assets/js/27.fe2ae86a.js"><link rel="prefetch" href="/assets/js/28.bec255d5.js"><link rel="prefetch" href="/assets/js/29.010b6565.js"><link rel="prefetch" href="/assets/js/30.97f83566.js"><link rel="prefetch" href="/assets/js/31.6119500d.js"><link rel="prefetch" href="/assets/js/32.46261414.js"><link rel="prefetch" href="/assets/js/33.0d04d42c.js"><link rel="prefetch" href="/assets/js/34.c6f32b75.js"><link rel="prefetch" href="/assets/js/35.0ee096ff.js"><link rel="prefetch" href="/assets/js/37.dfe9efd3.js"><link rel="prefetch" href="/assets/js/38.bec066ef.js"><link rel="prefetch" href="/assets/js/39.b14031d8.js"><link rel="prefetch" href="/assets/js/40.800552a7.js"><link rel="prefetch" href="/assets/js/41.e57d40b9.js"><link rel="prefetch" href="/assets/js/42.7f256ae5.js"><link rel="prefetch" href="/assets/js/43.5a80c8e2.js"><link rel="prefetch" href="/assets/js/44.52e26885.js"><link rel="prefetch" href="/assets/js/45.a42e8e25.js"><link rel="prefetch" href="/assets/js/46.6764b81d.js"><link rel="prefetch" href="/assets/js/47.eaf53807.js"><link rel="prefetch" href="/assets/js/48.14338a4d.js"><link rel="prefetch" href="/assets/js/49.526d110c.js"><link rel="prefetch" href="/assets/js/50.b33cc987.js"><link rel="prefetch" href="/assets/js/51.bbcc75ed.js"><link rel="prefetch" href="/assets/js/52.394ca397.js"><link rel="prefetch" href="/assets/js/53.27695e37.js"><link rel="prefetch" href="/assets/js/54.5ad339f1.js"><link rel="prefetch" href="/assets/js/55.7c915336.js"><link rel="prefetch" href="/assets/js/56.e01cebf5.js"><link rel="prefetch" href="/assets/js/57.1d7fecfe.js"><link rel="prefetch" href="/assets/js/58.ffd7b1b3.js"><link rel="prefetch" href="/assets/js/59.f8db9595.js"><link rel="prefetch" href="/assets/js/60.a5f1c4aa.js"><link rel="prefetch" href="/assets/js/61.b7803c9d.js"><link rel="prefetch" href="/assets/js/62.2ba48c7c.js"><link rel="prefetch" href="/assets/js/63.a865f1ec.js"><link rel="prefetch" href="/assets/js/64.7aa3fc9c.js"><link rel="prefetch" href="/assets/js/65.52d5335b.js"><link rel="prefetch" href="/assets/js/66.cea5fc3f.js"><link rel="prefetch" href="/assets/js/67.2d0f72dc.js"><link rel="prefetch" href="/assets/js/68.777bd562.js"><link rel="prefetch" href="/assets/js/69.71c5f7ec.js"><link rel="prefetch" href="/assets/js/7.4cf3e922.js"><link rel="prefetch" href="/assets/js/70.1f4316df.js"><link rel="prefetch" href="/assets/js/71.997b8615.js"><link rel="prefetch" href="/assets/js/72.9b8dcbc7.js"><link rel="prefetch" href="/assets/js/73.1b58fd72.js"><link rel="prefetch" href="/assets/js/74.32aa822b.js"><link rel="prefetch" href="/assets/js/75.6bb7df3b.js"><link rel="prefetch" href="/assets/js/76.520f2311.js"><link rel="prefetch" href="/assets/js/77.740ea264.js"><link rel="prefetch" href="/assets/js/78.0c97a8a8.js"><link rel="prefetch" href="/assets/js/79.557ccb7a.js"><link rel="prefetch" href="/assets/js/8.56f0b2e1.js"><link rel="prefetch" href="/assets/js/80.1aa8feae.js"><link rel="prefetch" href="/assets/js/81.8f9a55ed.js"><link rel="prefetch" href="/assets/js/82.6cdf60b1.js"><link rel="prefetch" href="/assets/js/83.29956407.js"><link rel="prefetch" href="/assets/js/84.e92374a3.js"><link rel="prefetch" href="/assets/js/85.6421d767.js"><link rel="prefetch" href="/assets/js/86.4f19d0eb.js"><link rel="prefetch" href="/assets/js/87.3e568c7e.js"><link rel="prefetch" href="/assets/js/88.163feac5.js"><link rel="prefetch" href="/assets/js/89.a4ab5d2b.js"><link rel="prefetch" href="/assets/js/9.b2dc3a8e.js"><link rel="prefetch" href="/assets/js/90.ec038868.js"><link rel="prefetch" href="/assets/js/91.d2368531.js"><link rel="prefetch" href="/assets/js/92.7054f0b3.js"><link rel="prefetch" href="/assets/js/93.029176c6.js"><link rel="prefetch" href="/assets/js/94.0d33f8b6.js"><link rel="prefetch" href="/assets/js/95.8b96ae84.js"><link rel="prefetch" href="/assets/js/96.7bb3a166.js"><link rel="prefetch" href="/assets/js/97.10a3a72c.js"><link rel="prefetch" href="/assets/js/98.4cb6e2ae.js"><link rel="prefetch" href="/assets/js/99.01121ed2.js"><link rel="prefetch" href="/assets/js/icon-svg.c49b1031.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.b053b093.js"><link rel="prefetch" href="/assets/js/vendors~icon-svg.6232fe9b.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.5e89e0f4.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.bd01dee5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="navbar-inner"><div class="navbar-crumb"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zyao89's Blogs</span></a></div> <div class="navbar-action"><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav></div></div></div></header> <!----> <div class="main-wrapper wrapper_2N9oDuL6"><div class="sidebar-mask"></div> <div class="aside"><aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav> <div class="sidebar-links root_2Q8rAuh1"><div class="sidebar-group"><p class="sidebar-heading"><span>相关推荐</span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2017/03/15/android-studio-团队开发必知常识.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android Studio 团队开发必知常识</a></li><li><a href="/posts/2017/03/26/android自定义加载动画-pacman.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-PacMan</a></li><li><a href="/posts/2017/04/06/android自定义加载动画-感染体.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-感染体</a></li><li><a href="/posts/2017/04/06/android自定义加载动画-交织.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-交织</a></li><li><a href="/posts/2017/04/12/android自定义加载动画-搜索等待.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-搜索等待</a></li></ul></div></div>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Android编译时注解APT实战（AbstractProcessor）</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#基本概念" class="sidebar-link">基本概念</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#抽象处理器-abstractprocessor" class="sidebar-link">抽象处理器 AbstractProcessor</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#简单实践" class="sidebar-link">简单实践</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#处理器" class="sidebar-link">处理器</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#基础工具解析" class="sidebar-link">基础工具解析</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#搜索-zyaoannotation注解" class="sidebar-link">搜索@ZyaoAnnotation注解</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#代码生成" class="sidebar-link">代码生成</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#运行" class="sidebar-link">运行</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/12/android%E7%BC%96%E8%AF%91%E6%97%B6%E6%B3%A8%E8%A7%A3apt%E5%AE%9E%E6%88%98-abstractprocessor.html#演示图" class="sidebar-link">演示图</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside></div> <!----> <div class="main-content content_2RZ9sgU8"><main class="page root_2M_Qi7kG"> <div class="theme-default-content root_2-7WkaDt"><h1 class="title_1j35tYhd">
+        Android编译时注解APT实战（AbstractProcessor）
+        <!----></h1> <div class="rows_1p4yuwM6"><span class="categories_xVucymjQ"><span class="categoriesItem_25QzbJMw">移动开发</span></span> <span class="tags_3eRugDkG"><span class="tagItem_BVRgjoUO">Android</span><span class="tagItem_BVRgjoUO">Java</span><span class="tagItem_BVRgjoUO">注解</span></span></div> <div class="rows_1p4yuwM6"><span class="author_26qEzl24"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>Zyao89</span></span> <span><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>2017年3月12日星期日 23:57</span></span></div></div> <div role="content" class="theme-default-content content__default content_1Lffc1Nr"><p>Java中的注解(Annotation)是一个很神奇的东西，特别现在有很多Android库都是使用注解的方式来实现的。<br>
+我们并不讨论那些在运行时（Runtime）通过反射机制运行处理的注解，而是讨论在编译时（Compile time）处理的注解。下面便入手学习下Java注解处理器。</p> <h2 id="基本概念"><a href="#基本概念" class="header-anchor">#</a> 基本概念</h2> <p><strong>注解处理器</strong>是一个在javac中的，用来编译时扫描和处理的注解的工具。你可以为特定的注解，注册你自己的注解处理器。<br>
+注解处理器可以生成Java代码，这些生成的Java代码会组成 <code>.java</code> 文件，但不能修改已经存在的Java类（即不能向已有的类中添加方法）。而这些生成的Java文件，会同时与其他普通的手写Java源代码一起被javac编译。</p> <h2 id="抽象处理器-abstractprocessor"><a href="#抽象处理器-abstractprocessor" class="header-anchor">#</a> 抽象处理器 AbstractProcessor</h2> <blockquote><p>import javax.annotation.processing.AbstractProcessor;</p></blockquote> <p>我们每一个注解处理器都要继承于AbstractProcessor，如下所示：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyProcessor</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractProcessor</span>
+<span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">ProcessingEnvironment</span> processingEnvironment<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>processingEnvironment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">TypeElement</span><span class="token punctuation">&gt;</span></span> set<span class="token punctuation">,</span> <span class="token class-name">RoundEnvironment</span> roundEnvironment<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> <span class="token function">getSupportedAnnotationTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getSupportedAnnotationTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">SourceVersion</span> <span class="token function">getSupportedSourceVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getSupportedSourceVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="public class MyProcessor extends AbstractProcessor
+{
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnvironment)
+    {
+        super.init(processingEnvironment);
+    }
+
+    @Override
+    public boolean process(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment)
+    {
+        return false;
+    }
+
+    @Override
+    public Set&lt;String&gt; getSupportedAnnotationTypes()
+    {
+        return super.getSupportedAnnotationTypes();
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion()
+    {
+        return super.getSupportedSourceVersion();
+    }
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><ul><li><code>init(ProcessingEnvironment processingEnvironment)</code>: 每一个注解处理器类都必须有一个空的构造函数。然而，这里有一个特殊的init()方法，它会被注解处理工具调用，并输入ProcessingEnviroment参数。ProcessingEnviroment提供很多有用的<strong>工具类Elements,Types和Filer</strong>。后面我们将看到详细的内容。</li> <li><code>process(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment)</code>: 这相当于每个处理器的主函数main()。你在这里写你的扫描、评估和处理注解的代码，以及生成Java文件。输入参数RoundEnviroment，可以让你查询出包含特定注解的被注解元素。后面我们将看到详细的内容。</li> <li><code>getSupportedAnnotationTypes()</code>: 这里你必须指定，这个注解处理器是注册给哪个注解的。注意，它的返回值是一个字符串的集合，包含本处理器想要处理的注解类型的合法全称。换句话说，你在这里定义你的注解处理器注册到哪些注解上。</li> <li><code>getSupportedSourceVersion()</code>: 用来指定你使用的Java版本。通常这里返回SourceVersion.latestSupported()。然而，如果你有足够的理由只支持Java 7的话，你也可以返回SourceVersion.RELEASE_7。我推荐你使用前者。</li></ul> <p>在Java 7以后，你也可以使用注解来代替getSupportedAnnotationTypes()和getSupportedSourceVersion()，像这样：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token annotation punctuation">@SupportedSourceVersion</span><span class="token punctuation">(</span><span class="token class-name">SourceVersion</span><span class="token punctuation">.</span>RELEASE_7<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SupportedAnnotationTypes</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;com.zyao89.ZyaoAnnotation&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyProcessor</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractProcessor</span>
+<span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">ProcessingEnvironment</span> processingEnvironment<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>processingEnvironment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">TypeElement</span><span class="token punctuation">&gt;</span></span> set<span class="token punctuation">,</span> <span class="token class-name">RoundEnvironment</span> roundEnvironment<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@SupportedSourceVersion(SourceVersion.RELEASE_7)
+@SupportedAnnotationTypes({
+        &quot;com.zyao89.ZyaoAnnotation&quot;
+})
+public class MyProcessor extends AbstractProcessor
+{
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnvironment)
+    {
+        super.init(processingEnvironment);
+    }
+
+    @Override
+    public boolean process(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment)
+    {
+        return false;
+    }
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="简单实践"><a href="#简单实践" class="header-anchor">#</a> 简单实践</h2> <ol><li>首先我们来创建一个 <code>@ZyaoAnnotation</code> 注解，后面我们将用这个注解来自动生成一个java文件。</li></ol> <p>我们先来看下 <code>@ ZyaoAnnotation</code> 注解：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token class-name">ElementType</span><span class="token punctuation">.</span>TYPE<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span><span class="token class-name">RetentionPolicy</span><span class="token punctuation">.</span>CLASS<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">ZyaoAnnotation</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">String</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">&quot;undefined&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">String</span> <span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.CLASS)
+public @interface ZyaoAnnotation
+{
+    String name() default &quot;undefined&quot;;
+
+    String text() default &quot;&quot;;
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>这时候我们可以在需要注解的类上增加我们的注解了，如：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token annotation punctuation">@ZyaoAnnotation</span><span class="token punctuation">(</span>
+        name <span class="token operator">=</span> <span class="token string">&quot;Zyao&quot;</span><span class="token punctuation">,</span>
+        text <span class="token operator">=</span> <span class="token string">&quot;Hello !!! Welcome &quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span>
+<span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token class-name">Bundle</span> savedInstanceState<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@ZyaoAnnotation(
+        name = &quot;Zyao&quot;,
+        text = &quot;Hello !!! Welcome &quot;
+)
+public class MainActivity extends AppCompatActivity
+{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>这时，注解都注解完了，那我们该怎么运行呢？请看下面。</p> <h2 id="处理器"><a href="#处理器" class="header-anchor">#</a> 处理器</h2> <p>这里我们通过代码加注释的方式，来一步步构建我们想要的处理器。代码如下：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token annotation punctuation">@AutoService</span><span class="token punctuation">(</span><span class="token class-name">Processor</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyProcessor</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractProcessor</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">Types</span>    mTypeUtils<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Elements</span> mElementUtils<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Filer</span>    mFiler<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Messager</span> mMessager<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">ProcessingEnvironment</span> processingEnvironment<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>processingEnvironment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//初始化我们需要的基础工具</span>
+        mTypeUtils <span class="token operator">=</span> processingEnv<span class="token punctuation">.</span><span class="token function">getTypeUtils</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mElementUtils <span class="token operator">=</span> processingEnv<span class="token punctuation">.</span><span class="token function">getElementUtils</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mFiler <span class="token operator">=</span> processingEnv<span class="token punctuation">.</span><span class="token function">getFiler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mMessager <span class="token operator">=</span> processingEnv<span class="token punctuation">.</span><span class="token function">getMessager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">SourceVersion</span> <span class="token function">getSupportedSourceVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//支持的java版本</span>
+        <span class="token keyword">return</span> <span class="token class-name">SourceVersion</span><span class="token punctuation">.</span><span class="token function">latestSupported</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> <span class="token function">getSupportedAnnotationTypes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//支持的注解</span>
+        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> annotations <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        annotations<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">ZyaoAnnotation</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getCanonicalName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> annotations<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">TypeElement</span><span class="token punctuation">&gt;</span></span> set<span class="token punctuation">,</span> <span class="token class-name">RoundEnvironment</span> roundEnvironment<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//这里开始处理我们的注解解析了，以及生成Java文件</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@AutoService(Processor.class)
+public class MyProcessor extends AbstractProcessor
+{
+    private Types    mTypeUtils;
+    private Elements mElementUtils;
+    private Filer    mFiler;
+    private Messager mMessager;
+
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnvironment)
+    {
+        super.init(processingEnvironment);
+
+        //初始化我们需要的基础工具
+        mTypeUtils = processingEnv.getTypeUtils();
+        mElementUtils = processingEnv.getElementUtils();
+        mFiler = processingEnv.getFiler();
+        mMessager = processingEnv.getMessager();
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion()
+    {
+        //支持的java版本
+        return SourceVersion.latestSupported();
+    }
+
+    @Override
+    public Set&lt;String&gt; getSupportedAnnotationTypes()
+    {
+        //支持的注解
+        Set&lt;String&gt; annotations = new LinkedHashSet&lt;&gt;();
+        annotations.add(ZyaoAnnotation.class.getCanonicalName());
+        return annotations;
+    }
+
+    @Override
+    public boolean process(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment)
+    {
+        //这里开始处理我们的注解解析了，以及生成Java文件
+        return false;
+    }
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>大家看到第一行<code>@AutoService(Processor.class)</code> 这个有木有？这是一个注解处理器，是Google开发的，用来生成META-INF/services/javax.annotation.processing.Processor文件的。</p> <p>Gradle引入方式：</p> <blockquote><p>compile 'com.google.auto.service:auto-service:1.0-rc2'</p></blockquote> <p>在<code>getSupportedAnnotationTypes()</code>中，我们指定本处理器将处理 <code>@ZyaoAnnotation</code> 注解。</p> <h2 id="基础工具解析"><a href="#基础工具解析" class="header-anchor">#</a> 基础工具解析</h2> <p>在init()中我们获得如下引用：</p> <ul><li><strong>Elements</strong>：一个用来处理Element的工具类，源代码的每一个部分都是一个特定类型的Element，例如：</li></ul> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example</span><span class="token punctuation">;</span>    <span class="token comment">// PackageElement</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token punctuation">{</span>        <span class="token comment">// TypeElement</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> a<span class="token punctuation">;</span>      <span class="token comment">// VariableElement</span>
+    <span class="token keyword">private</span> <span class="token class-name">Foo</span> other<span class="token punctuation">;</span>  <span class="token comment">// VariableElement</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>    <span class="token comment">// ExecuteableElement</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> setA <span class="token punctuation">(</span>  <span class="token comment">// ExecuteableElement</span>
+                     <span class="token keyword">int</span> newA   <span class="token comment">// TypeElement</span>
+                     <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="package com.example;    // PackageElement
+
+public class Foo {        // TypeElement
+
+    private int a;      // VariableElement
+    private Foo other;  // VariableElement
+
+    public Foo () {}    // ExecuteableElement
+
+    public void setA (  // ExecuteableElement
+                     int newA   // TypeElement
+                     ) {}
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>举例来说，假如你有一个代表public class Foo类的TypeElement元素，你可以遍历它的孩子，如下：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token class-name">TypeElement</span> fooClass <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Element</span> e <span class="token operator">:</span> fooClass<span class="token punctuation">.</span><span class="token function">getEnclosedElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// iterate over children</span>
+    <span class="token class-name">Element</span> parent <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">getEnclosingElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// parent == fooClass</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="TypeElement fooClass = ... ;
+for (Element e : fooClass.getEnclosedElements()){ // iterate over children
+    Element parent = e.getEnclosingElement();  // parent == fooClass
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>TypeElement并不包含类本身的信息。你可以从TypeElement中获取类的名字，但是你获取不到类的信息，例如它的父类。这种信息需要通过TypeMirror获取。你可以通过调用elements.asType()获取元素的TypeMirror。</p> <ul><li><p><strong>Types</strong>：一个用来处理TypeMirror的工具类；（后面会使用到，在进行讲解）</p></li> <li><p><strong>Filer</strong>：正如这个名字所示，使用Filer你可以创建文件。</p></li></ul> <h2 id="搜索-zyaoannotation注解"><a href="#搜索-zyaoannotation注解" class="header-anchor">#</a> 搜索@ZyaoAnnotation注解</h2> <div class="language- line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-text"><code>    @Override
+    public boolean process(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment)
+    {//这里开始处理我们的注解解析了，以及生成Java文件
+
+        // 遍历所有被注解了@Factory的元素
+        for (Element annotatedElement : roundEnvironment.getElementsAnnotatedWith(ZyaoAnnotation.class)) {
+            ...
+        }
+
+
+        return false;
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@Override
+    public boolean process(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment)
+    {//这里开始处理我们的注解解析了，以及生成Java文件
+
+        // 遍历所有被注解了@Factory的元素
+        for (Element annotatedElement : roundEnvironment.getElementsAnnotatedWith(ZyaoAnnotation.class)) {
+            ...
+        }
+
+
+        return false;
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p><code>roundEnvironment.getElementsAnnotatedWith(ZyaoAnnotation.class)</code>返回所有被注解了@Factory的元素的列表。你可能已经注意到，我们并没有说“所有被注解了@Factory的类的列表”，因为它真的是返回Element的列表。请记住：Element可以是类、方法、变量等。所以，接下来，我们必须检查这些Element是否是一个类：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token comment">// 遍历所有被注解了@Factory的元素</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Element</span> annotatedElement <span class="token operator">:</span> roundEnvironment<span class="token punctuation">.</span><span class="token function">getElementsAnnotatedWith</span><span class="token punctuation">(</span><span class="token class-name">ZyaoAnnotation</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 检查被注解为@Factory的元素是否是一个类</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>annotatedElement<span class="token punctuation">.</span><span class="token function">getKind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token class-name">ElementKind</span><span class="token punctuation">.</span>CLASS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">error</span><span class="token punctuation">(</span>annotatedElement<span class="token punctuation">,</span> <span class="token string">&quot;Only classes can be annotated with @%s&quot;</span><span class="token punctuation">,</span>
+                        <span class="token class-name">ZyaoAnnotation</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// 退出处理</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">//解析，并生成代码</span>
+            <span class="token function">analysisAnnotated</span><span class="token punctuation">(</span>annotatedElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="// 遍历所有被注解了@Factory的元素
+        for (Element annotatedElement : roundEnvironment.getElementsAnnotatedWith(ZyaoAnnotation.class)) {
+            // 检查被注解为@Factory的元素是否是一个类
+            if (annotatedElement.getKind() != ElementKind.CLASS) {
+                error(annotatedElement, &quot;Only classes can be annotated with @%s&quot;,
+                        ZyaoAnnotation.class.getSimpleName());
+                return true; // 退出处理
+            }
+
+            //解析，并生成代码
+            analysisAnnotated(annotatedElement);
+        }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>这里就配合了<code>TypeMirror</code>使用<code>EmentKind</code>或者<code>TypeKind</code>进行元素类型判断。</p> <p><code>error()</code>日志和错误信息打印：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token class-name">Element</span> e<span class="token punctuation">,</span> <span class="token class-name">String</span> msg<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mMessager<span class="token punctuation">.</span><span class="token function">printMessage</span><span class="token punctuation">(</span>
+                <span class="token class-name">Diagnostic<span class="token punctuation">.</span>Kind</span><span class="token punctuation">.</span>ERROR<span class="token punctuation">,</span>
+                <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>msg<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="private void error(Element e, String msg, Object... args) {
+        mMessager.printMessage(
+                Diagnostic.Kind.ERROR,
+                String.format(msg, args),
+                e);
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>除了<code>Diagnostic.Kind.ERROR</code>日志等级，还有其它，如：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">enum</span> <span class="token class-name">Kind</span> <span class="token punctuation">{</span>
+        ERROR<span class="token punctuation">,</span>
+        WARNING<span class="token punctuation">,</span>
+        MANDATORY_WARNING<span class="token punctuation">,</span>
+        NOTE<span class="token punctuation">,</span>
+        OTHER<span class="token punctuation">;</span>
+
+        <span class="token keyword">private</span> <span class="token class-name">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="public static enum Kind {
+        ERROR,
+        WARNING,
+        MANDATORY_WARNING,
+        NOTE,
+        OTHER;
+
+        private Kind() {
+        }
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="代码生成"><a href="#代码生成" class="header-anchor">#</a> 代码生成</h2> <p>编写解析和生成的代码格式：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> SUFFIX <span class="token operator">=</span> <span class="token string">&quot;$$ZYAO&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">analysisAnnotated</span><span class="token punctuation">(</span><span class="token class-name">Element</span> classElement<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token class-name">ZyaoAnnotation</span> annotation <span class="token operator">=</span> classElement<span class="token punctuation">.</span><span class="token function">getAnnotation</span><span class="token punctuation">(</span><span class="token class-name">ZyaoAnnotation</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> name <span class="token operator">=</span> annotation<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> text <span class="token operator">=</span> annotation<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//        TypeElement superClassName = mElementUtils.getTypeElement(name);</span>
+        <span class="token class-name">String</span> newClassName <span class="token operator">=</span> name <span class="token operator">+</span> SUFFIX<span class="token punctuation">;</span>
+
+        <span class="token class-name">StringBuilder</span> builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;package com.zyao89.demoprocessor.auto;\n\n&quot;</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;public class &quot;</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>newClassName<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot; {\n\n&quot;</span><span class="token punctuation">)</span> <span class="token comment">// open class</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;\tpublic String getMessage() {\n&quot;</span><span class="token punctuation">)</span> <span class="token comment">// open method</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;\t\treturn \&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// this is appending to the return statement</span>
+        builder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot; !\\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+        builder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;\&quot;;\n&quot;</span><span class="token punctuation">)</span> <span class="token comment">// end return</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;\t}\n&quot;</span><span class="token punctuation">)</span> <span class="token comment">// close method</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;}\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// close class</span>
+
+
+        <span class="token keyword">try</span> <span class="token punctuation">{</span> <span class="token comment">// write the file</span>
+            <span class="token class-name">JavaFileObject</span> source <span class="token operator">=</span> mFiler<span class="token punctuation">.</span><span class="token function">createSourceFile</span><span class="token punctuation">(</span><span class="token string">&quot;com.zyao89.demoprocessor.auto.&quot;</span><span class="token operator">+</span>newClassName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">Writer</span> writer <span class="token operator">=</span> source<span class="token punctuation">.</span><span class="token function">openWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            writer<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>builder<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            writer<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            writer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Note: calling e.printStackTrace() will print IO errors</span>
+            <span class="token comment">// that occur from the file already existing after its first run, this is normal</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;&gt;&gt;&gt; analysisAnnotated is finish... &lt;&lt;&lt;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="private static final String SUFFIX = &quot;$$ZYAO&quot;;
+
+private void analysisAnnotated(Element classElement)
+    {
+        ZyaoAnnotation annotation = classElement.getAnnotation(ZyaoAnnotation.class);
+        String name = annotation.name();
+        String text = annotation.text();
+
+//        TypeElement superClassName = mElementUtils.getTypeElement(name);
+        String newClassName = name + SUFFIX;
+
+        StringBuilder builder = new StringBuilder()
+                .append(&quot;package com.zyao89.demoprocessor.auto;\n\n&quot;)
+                .append(&quot;public class &quot;)
+                .append(newClassName)
+                .append(&quot; {\n\n&quot;) // open class
+                .append(&quot;\tpublic String getMessage() {\n&quot;) // open method
+                .append(&quot;\t\treturn \&quot;&quot;);
+
+        // this is appending to the return statement
+        builder.append(text).append(name).append(&quot; !\\n&quot;);
+
+
+        builder.append(&quot;\&quot;;\n&quot;) // end return
+                .append(&quot;\t}\n&quot;) // close method
+                .append(&quot;}\n&quot;); // close class
+
+
+        try { // write the file
+            JavaFileObject source = mFiler.createSourceFile(&quot;com.zyao89.demoprocessor.auto.&quot;+newClassName);
+            Writer writer = source.openWriter();
+            writer.write(builder.toString());
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            // Note: calling e.printStackTrace() will print IO errors
+            // that occur from the file already existing after its first run, this is normal
+        }
+
+        info(&quot;&gt;&gt;&gt; analysisAnnotated is finish... &lt;&lt;&lt;&quot;);
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>以上的连接字符串工作，可以使用<code>JavaPoet</code>开源库进行编写，提升效率。</p> <div class="language-groovy line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-groovy"><code>compile <span class="token string">'com.squareup:javapoet:1.7.0'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="compile 'com.squareup:javapoet:1.7.0'" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>最后build一下工程，生成最终的java文件 <code>Zyao$$ZYAO.java</code></p> <blockquote><p>生成的文件路径：<br>
+/DemoAbstractProcessor/app/build/generated/source/apt/debug/com/zyao89/demoprocessor/auto/Zyao$$ZYAO.java</p></blockquote> <p>文件内容：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>zyao89<span class="token punctuation">.</span>demoprocessor<span class="token punctuation">.</span>auto</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Zyao</span>$$ZYAO <span class="token punctuation">{</span>
+
+ <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token string">&quot;Hello !!! Welcome Zyao !\n&quot;</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="package com.zyao89.demoprocessor.auto;
+
+public class Zyao$$ZYAO {
+
+ public String getMessage() {
+  return &quot;Hello !!! Welcome Zyao !\n&quot;;
+ }
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="运行"><a href="#运行" class="header-anchor">#</a> 运行</h2> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token annotation punctuation">@ZyaoAnnotation</span><span class="token punctuation">(</span>
+        name <span class="token operator">=</span> <span class="token string">&quot;Zyao&quot;</span><span class="token punctuation">,</span>
+        text <span class="token operator">=</span> <span class="token string">&quot;Hello !!! Welcome &quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span>
+<span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token class-name">Bundle</span> savedInstanceState<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span><span class="token class-name">R</span><span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">changeText</span><span class="token punctuation">(</span><span class="token class-name">View</span> view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Zyao</span>$$ZYAO zyao$$ZYAO <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Zyao</span>$$<span class="token function">ZYAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> message <span class="token operator">=</span> zyao$$ZYAO<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">TextView</span><span class="token punctuation">)</span>view<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@ZyaoAnnotation(
+        name = &quot;Zyao&quot;,
+        text = &quot;Hello !!! Welcome &quot;
+)
+public class MainActivity extends AppCompatActivity
+{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+
+    public void changeText(View view) {
+        Zyao$$ZYAO zyao$$ZYAO = new Zyao$$ZYAO();
+        String message = zyao$$ZYAO.getMessage();
+        ((TextView)view).setText(message);
+    }
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>最终运行我们的程序，点击文本，可得到我们的<code>getMessage</code>内容。</p> <h2 id="演示图"><a href="#演示图" class="header-anchor">#</a> 演示图</h2> <p><img src="/assets/img/image01.c8136ce1.gif" alt="演示图"></p> <p>Github项目地址：<a href="https://github.com/zyao89/DemoAbstractProcessor" target="_blank" rel="noopener noreferrer">zyao89/DemoAbstractProcessor<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <hr> <p><code>作者：Zyao89；转载请保留此行，谢谢；</code></p></div> <div class="root_1qgPDpgW"><div><span>作者：</span> <span>Zyao89；</span> <span>转载请保留</span></div> <div><span>版权声明：</span> <span>自由转载-非商用-非衍生-保持署名</span></div> <div><span>原文地址：</span> <a target="_blank" href="https://zyao89.cn/s/c116b5c2.html">https://zyao89.cn/s/c116b5c2.html</a></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次编辑时间:</span> <span class="time">2023年11月27日星期一 11:18</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/posts/2017/03/15/android-studio-团队开发必知常识.html" class="prev">
+        Android Studio 团队开发必知常识
+      </a></span> <span class="next"><a href="/posts/2017/03/12/rxjava-rxandroid简单入门学习.html">
+        RxJava &amp; RxAndroid 简单入门学习
+      </a>
+      →
+    </span></p></div>  <div type="vssue" class="theme-default-content root_2fUnO8Ia"><!----></div></main></div></div> <!----></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6169d5d9.js" defer></script><script src="/assets/js/1.381a88b1.js" defer></script><script src="/assets/js/17.7be3556f.js" defer></script><script src="/assets/js/36.8f745991.js" defer></script><script src="/assets/js/23.b5979579.js" defer></script><script src="/assets/js/25.78ef3fa2.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ZWebView使用简单介绍-Android | Zyao89&#39;s Blogs</title>
+    <meta name="generator" content="VuePress 1.8.3">
+    <link rel="icon" href="/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="神秘，暂无任何描述">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" data-auto-meta="true" data-update-meta="true">
+    <meta rel="alternate" title="Zyao89&#39;s Blogs" href="https://zyao89.cn/rss.xml" link="alternate" content="rss" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:published_time" content="2018-03-04T22:23:35.000Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:modified_time" content="2023-11-27T11:25:12.676Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:site_name" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:type" content="article" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:url" content="https://zyao89.cn/s/7ed24aca.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:url" content="https://zyao89.cn/s/7ed24aca.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:card" content="summary_large_image" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label1" content="Written by" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:data2" content="Android,组件库" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label2" content="Filed under" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:tag" content="组件库" data-auto-meta="true" data-update-meta="true">
+    <meta name="keywords" content="移动开发,Android,组件库" data-auto-meta="true" data-update-meta="true">
+    <meta name="powerby" content="Micro-App" data-auto-meta="true" data-update-meta="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="google-site-verification" content="8sZJLe_q5uzLQR19aq4O6V5Y7YPj-mLjb7b-jlBloNo">
+    <meta name="baidu-site-verification" content="D4YhVrZwXf">
+    
+    <link rel="preload" href="/assets/css/0.styles.bd01dee5.css" as="style"><link rel="preload" href="/assets/js/app.6169d5d9.js" as="script"><link rel="preload" href="/assets/js/1.381a88b1.js" as="script"><link rel="preload" href="/assets/js/17.7be3556f.js" as="script"><link rel="preload" href="/assets/js/105.b8801b53.js" as="script"><link rel="preload" href="/assets/js/23.b5979579.js" as="script"><link rel="preload" href="/assets/js/25.78ef3fa2.js" as="script"><link rel="prefetch" href="/assets/js/10.6ae44f0d.js"><link rel="prefetch" href="/assets/js/100.ce30b411.js"><link rel="prefetch" href="/assets/js/101.430c2297.js"><link rel="prefetch" href="/assets/js/102.c8909a76.js"><link rel="prefetch" href="/assets/js/103.b9dba89c.js"><link rel="prefetch" href="/assets/js/104.27de0e8c.js"><link rel="prefetch" href="/assets/js/106.a416b83f.js"><link rel="prefetch" href="/assets/js/107.15d0221f.js"><link rel="prefetch" href="/assets/js/108.ee17e077.js"><link rel="prefetch" href="/assets/js/109.9b8800f9.js"><link rel="prefetch" href="/assets/js/11.54ed8a83.js"><link rel="prefetch" href="/assets/js/110.cb8e98f3.js"><link rel="prefetch" href="/assets/js/111.2ddcd088.js"><link rel="prefetch" href="/assets/js/112.4b546485.js"><link rel="prefetch" href="/assets/js/113.c36d1452.js"><link rel="prefetch" href="/assets/js/114.dae28062.js"><link rel="prefetch" href="/assets/js/115.0ca7de2b.js"><link rel="prefetch" href="/assets/js/116.8dab3bf5.js"><link rel="prefetch" href="/assets/js/117.f4f6c6f1.js"><link rel="prefetch" href="/assets/js/118.86cbf460.js"><link rel="prefetch" href="/assets/js/119.adde92b6.js"><link rel="prefetch" href="/assets/js/12.04cb229a.js"><link rel="prefetch" href="/assets/js/120.73bf71ee.js"><link rel="prefetch" href="/assets/js/121.0f189cac.js"><link rel="prefetch" href="/assets/js/122.5c45dc1c.js"><link rel="prefetch" href="/assets/js/13.5a00df16.js"><link rel="prefetch" href="/assets/js/14.a26fae10.js"><link rel="prefetch" href="/assets/js/15.e9537b9f.js"><link rel="prefetch" href="/assets/js/16.06683abd.js"><link rel="prefetch" href="/assets/js/18.ec51fb25.js"><link rel="prefetch" href="/assets/js/19.488ea1ee.js"><link rel="prefetch" href="/assets/js/20.29ddea1c.js"><link rel="prefetch" href="/assets/js/21.9109ebb0.js"><link rel="prefetch" href="/assets/js/22.9133d4c6.js"><link rel="prefetch" href="/assets/js/24.a6ef82b5.js"><link rel="prefetch" href="/assets/js/26.1219245c.js"><link rel="prefetch" href="/assets/js/27.fe2ae86a.js"><link rel="prefetch" href="/assets/js/28.bec255d5.js"><link rel="prefetch" href="/assets/js/29.010b6565.js"><link rel="prefetch" href="/assets/js/30.97f83566.js"><link rel="prefetch" href="/assets/js/31.6119500d.js"><link rel="prefetch" href="/assets/js/32.46261414.js"><link rel="prefetch" href="/assets/js/33.0d04d42c.js"><link rel="prefetch" href="/assets/js/34.c6f32b75.js"><link rel="prefetch" href="/assets/js/35.0ee096ff.js"><link rel="prefetch" href="/assets/js/36.8f745991.js"><link rel="prefetch" href="/assets/js/37.dfe9efd3.js"><link rel="prefetch" href="/assets/js/38.bec066ef.js"><link rel="prefetch" href="/assets/js/39.b14031d8.js"><link rel="prefetch" href="/assets/js/40.800552a7.js"><link rel="prefetch" href="/assets/js/41.e57d40b9.js"><link rel="prefetch" href="/assets/js/42.7f256ae5.js"><link rel="prefetch" href="/assets/js/43.5a80c8e2.js"><link rel="prefetch" href="/assets/js/44.52e26885.js"><link rel="prefetch" href="/assets/js/45.a42e8e25.js"><link rel="prefetch" href="/assets/js/46.6764b81d.js"><link rel="prefetch" href="/assets/js/47.eaf53807.js"><link rel="prefetch" href="/assets/js/48.14338a4d.js"><link rel="prefetch" href="/assets/js/49.526d110c.js"><link rel="prefetch" href="/assets/js/50.b33cc987.js"><link rel="prefetch" href="/assets/js/51.bbcc75ed.js"><link rel="prefetch" href="/assets/js/52.394ca397.js"><link rel="prefetch" href="/assets/js/53.27695e37.js"><link rel="prefetch" href="/assets/js/54.5ad339f1.js"><link rel="prefetch" href="/assets/js/55.7c915336.js"><link rel="prefetch" href="/assets/js/56.e01cebf5.js"><link rel="prefetch" href="/assets/js/57.1d7fecfe.js"><link rel="prefetch" href="/assets/js/58.ffd7b1b3.js"><link rel="prefetch" href="/assets/js/59.f8db9595.js"><link rel="prefetch" href="/assets/js/60.a5f1c4aa.js"><link rel="prefetch" href="/assets/js/61.b7803c9d.js"><link rel="prefetch" href="/assets/js/62.2ba48c7c.js"><link rel="prefetch" href="/assets/js/63.a865f1ec.js"><link rel="prefetch" href="/assets/js/64.7aa3fc9c.js"><link rel="prefetch" href="/assets/js/65.52d5335b.js"><link rel="prefetch" href="/assets/js/66.cea5fc3f.js"><link rel="prefetch" href="/assets/js/67.2d0f72dc.js"><link rel="prefetch" href="/assets/js/68.777bd562.js"><link rel="prefetch" href="/assets/js/69.71c5f7ec.js"><link rel="prefetch" href="/assets/js/7.4cf3e922.js"><link rel="prefetch" href="/assets/js/70.1f4316df.js"><link rel="prefetch" href="/assets/js/71.997b8615.js"><link rel="prefetch" href="/assets/js/72.9b8dcbc7.js"><link rel="prefetch" href="/assets/js/73.1b58fd72.js"><link rel="prefetch" href="/assets/js/74.32aa822b.js"><link rel="prefetch" href="/assets/js/75.6bb7df3b.js"><link rel="prefetch" href="/assets/js/76.520f2311.js"><link rel="prefetch" href="/assets/js/77.740ea264.js"><link rel="prefetch" href="/assets/js/78.0c97a8a8.js"><link rel="prefetch" href="/assets/js/79.557ccb7a.js"><link rel="prefetch" href="/assets/js/8.56f0b2e1.js"><link rel="prefetch" href="/assets/js/80.1aa8feae.js"><link rel="prefetch" href="/assets/js/81.8f9a55ed.js"><link rel="prefetch" href="/assets/js/82.6cdf60b1.js"><link rel="prefetch" href="/assets/js/83.29956407.js"><link rel="prefetch" href="/assets/js/84.e92374a3.js"><link rel="prefetch" href="/assets/js/85.6421d767.js"><link rel="prefetch" href="/assets/js/86.4f19d0eb.js"><link rel="prefetch" href="/assets/js/87.3e568c7e.js"><link rel="prefetch" href="/assets/js/88.163feac5.js"><link rel="prefetch" href="/assets/js/89.a4ab5d2b.js"><link rel="prefetch" href="/assets/js/9.b2dc3a8e.js"><link rel="prefetch" href="/assets/js/90.ec038868.js"><link rel="prefetch" href="/assets/js/91.d2368531.js"><link rel="prefetch" href="/assets/js/92.7054f0b3.js"><link rel="prefetch" href="/assets/js/93.029176c6.js"><link rel="prefetch" href="/assets/js/94.0d33f8b6.js"><link rel="prefetch" href="/assets/js/95.8b96ae84.js"><link rel="prefetch" href="/assets/js/96.7bb3a166.js"><link rel="prefetch" href="/assets/js/97.10a3a72c.js"><link rel="prefetch" href="/assets/js/98.4cb6e2ae.js"><link rel="prefetch" href="/assets/js/99.01121ed2.js"><link rel="prefetch" href="/assets/js/icon-svg.c49b1031.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.b053b093.js"><link rel="prefetch" href="/assets/js/vendors~icon-svg.6232fe9b.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.5e89e0f4.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.bd01dee5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="navbar-inner"><div class="navbar-crumb"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zyao89's Blogs</span></a></div> <div class="navbar-action"><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav></div></div></div></header> <!----> <div class="main-wrapper wrapper_2N9oDuL6"><div class="sidebar-mask"></div> <div class="aside"><aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav> <div class="sidebar-links root_2Q8rAuh1"><div class="sidebar-group"><p class="sidebar-heading"><span>相关推荐</span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2017/03/15/android-studio-团队开发必知常识.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android Studio 团队开发必知常识</a></li><li><a href="/posts/2017/03/12/android编译时注解apt实战-abstractprocessor.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android编译时注解APT实战（AbstractProcessor）</a></li><li><a href="/posts/2017/03/26/android自定义加载动画-pacman.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-PacMan</a></li><li><a href="/posts/2017/04/06/android自定义加载动画-感染体.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-感染体</a></li><li><a href="/posts/2017/04/06/android自定义加载动画-交织.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-交织</a></li></ul></div></div>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>ZWebView使用简单介绍-Android</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#最新" class="sidebar-link">最新</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#更新说明" class="sidebar-link">更新说明</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#web" class="sidebar-link">Web</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#分为三种方式" class="sidebar-link">分为三种方式</a></li></ul></li><li><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#android" class="sidebar-link">Android</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#引入方式" class="sidebar-link">引入方式</a></li><li class="sidebar-sub-header"><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#安卓也对应采用三种交互方式" class="sidebar-link">安卓也对应采用三种交互方式</a></li><li class="sidebar-sub-header"><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#基本使用方式" class="sidebar-link">基本使用方式</a></li><li class="sidebar-sub-header"><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#一些内部状态监听实现" class="sidebar-link">一些内部状态监听实现</a></li><li class="sidebar-sub-header"><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#ioc实现-js-请求方法封装" class="sidebar-link">IOC实现 js 请求方法封装</a></li><li class="sidebar-sub-header"><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#js调用原生提供的方法" class="sidebar-link">JS调用原生提供的方法</a></li></ul></li><li><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#ios" class="sidebar-link">iOS</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2018/03/04/zwebview%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-android.html#author-blog" class="sidebar-link">Author Blog</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside></div> <!----> <div class="main-content content_2RZ9sgU8"><main class="page root_2M_Qi7kG"> <div class="theme-default-content root_2-7WkaDt"><h1 class="title_1j35tYhd">
+        ZWebView使用简单介绍-Android
+        <!----></h1> <div class="rows_1p4yuwM6"><span class="categories_xVucymjQ"><span class="categoriesItem_25QzbJMw">移动开发</span></span> <span class="tags_3eRugDkG"><span class="tagItem_BVRgjoUO">Android</span><span class="tagItem_BVRgjoUO">组件库</span></span></div> <div class="rows_1p4yuwM6"><span class="author_26qEzl24"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>Zyao89</span></span> <span><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>2018年3月4日星期日 22:23</span></span></div></div> <div role="content" class="theme-default-content content__default content_1Lffc1Nr"><p>ZWebView for Hybird App，建立移动端和Web的JS桥接框架，主要包含了多种常用协议的约束和定义。Android的WebView使用更方便。</p> <h2 id="最新"><a href="#最新" class="header-anchor">#</a> 最新</h2> <p>Github: <a href="https://github.com/zyao89/ZWebView" target="_blank" rel="noopener noreferrer">ZWebView.git<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <h2 id="更新说明"><a href="#更新说明" class="header-anchor">#</a> 更新说明</h2> <ul><li>1.0.0 创建Android库zweb</li> <li>1.0.1 更新一些简单问题</li> <li>1.0.2 添加新注解<code>@ZJson</code>，修复IOC实现方式无法传json参数</li> <li>1.0.3 添加新注解<code>@ZData</code>，传入字符串，web端接收到的参数格式为 { 'ZData', String }</li></ul> <h2 id="web"><a href="#web" class="header-anchor">#</a> Web</h2> <h3 id="分为三种方式"><a href="#分为三种方式" class="header-anchor">#</a> 分为三种方式</h3> <ol><li>Vue插件注入方式（有些问题，不建议使用）</li></ol> <p>使用<code>Vue</code>时，可导入<code>vue-zweb</code>插件使用。具体参考 <a href="https://github.com/zyao89/vue-zweb" target="_blank" rel="noopener noreferrer">vue-zweb<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <ol start="2"><li>H5标签协议注入方式</li></ol> <p>可通过在html文件中引入 <code>&lt;script&gt;</code> 标签，控制引入框架的位置。</p> <p>协议在标签的 <code>src</code> 下，以地址方式注入，具体格式采用：<code>zweb://</code> 开头。</p> <p>目前支持的协议如下：</p> <div class="language- line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-text"><code>1. zweb://__init__
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="1. zweb://__init__" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>具体引入方式如下：</p> <div class="language-html line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text/javascript<span class="token punctuation">&quot;</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>zweb://__init__<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="&lt;script type=&quot;text/javascript&quot; src=&quot;zweb://__init__&quot;&gt;&lt;/script&gt;" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <span class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span></div></div> <!----></div></div><ol start="3"><li>普通手动注入方式</li></ol> <h2 id="android"><a href="#android" class="header-anchor">#</a> Android</h2> <h3 id="引入方式"><a href="#引入方式" class="header-anchor">#</a> 引入方式</h3> <p>Gradle &gt; v3.0</p> <div class="language-groovy line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-groovy"><code>implementation <span class="token string">'com.zyao89.view:zweb:1.0.2'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="implementation 'com.zyao89.view:zweb:1.0.2'" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>Gradle &lt; v3.0</p> <div class="language-groovy line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-groovy"><code>compile <span class="token string">'com.zyao89.view:zweb:1.0.2'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="compile 'com.zyao89.view:zweb:1.0.2'" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h3 id="安卓也对应采用三种交互方式"><a href="#安卓也对应采用三种交互方式" class="header-anchor">#</a> 安卓也对应采用三种交互方式</h3> <p>对应的3中枚举类型如下：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">InjectionMode</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// vue插件方式，引入  vue-zweb.js  例如：&lt;script type=&quot;text/javascript&quot; src=&quot;static/libs/vue-zweb.min.js&quot;&gt;&lt;/script&gt;</span>
+    <span class="token class-name">VuePlugin</span><span class="token punctuation">,</span>
+    <span class="token comment">// 协议方式：zweb://  例如：&lt;script type=&quot;text/javascript&quot; src=&quot;zweb://__init__&quot;&gt;&lt;/script&gt;</span>
+    <span class="token class-name">Protocol</span><span class="token punctuation">,</span>
+    <span class="token comment">// 普通人工引入 &lt;script type=&quot;text/javascript&quot; src=&quot;static/zweb.js&quot;&gt;&lt;/script&gt;</span>
+    <span class="token class-name">Normal</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="public enum InjectionMode
+{
+    // vue插件方式，引入  vue-zweb.js  例如：&lt;script type=&quot;text/javascript&quot; src=&quot;static/libs/vue-zweb.min.js&quot;&gt;&lt;/script&gt;
+    VuePlugin,
+    // 协议方式：zweb://  例如：&lt;script type=&quot;text/javascript&quot; src=&quot;zweb://__init__&quot;&gt;&lt;/script&gt;
+    Protocol,
+    // 普通人工引入 &lt;script type=&quot;text/javascript&quot; src=&quot;static/zweb.js&quot;&gt;&lt;/script&gt;
+    Normal
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h3 id="基本使用方式"><a href="#基本使用方式" class="header-anchor">#</a> 基本使用方式</h3> <ul><li>Step1，初始化：<br>
+在自定义的Application中初始化 <code>ZWebView</code>，方法如下：</li></ul> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">ZWebInstance</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@Override
+public void onCreate()
+{
+    super.onCreate();
+
+    ZWebInstance.init(this);
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><ul><li>Step2，构建 <code>ZWebConfig</code> 配置文件，并创建 <code>ZWeb</code> 对象实例。</li></ul> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token class-name">String</span> MAIN_HTML <span class="token operator">=</span> <span class="token string">&quot;file:///android_asset/index.html&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1. 创建配置文件，并带入主页 URL</span>
+<span class="token class-name">ZWebConfig</span> config <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ZWebConfig<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token class-name">ZWebConstant</span><span class="token punctuation">.</span>MAIN_HTML_TEST<span class="token punctuation">)</span>
+    <span class="token comment">// 注册状态监听</span>
+    <span class="token punctuation">.</span><span class="token function">setOnStateListener</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token comment">// 注册原生协议UI实现</span>
+    <span class="token punctuation">.</span><span class="token function">setNativeMethodImplement</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token comment">// 注册一些特殊的实现方法</span>
+<span class="token comment">//  .setOnSpecialStateListener(this)</span>
+    <span class="token comment">// 选择注入模式</span>
+    <span class="token punctuation">.</span><span class="token function">setInjectionMode</span><span class="token punctuation">(</span><span class="token class-name">InjectionMode<span class="token punctuation">.</span>VuePlugin</span><span class="token punctuation">)</span>
+    <span class="token comment">// 自动注入框架脚本JS（建议配置）</span>
+    <span class="token punctuation">.</span><span class="token function">autoInjectFramework</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 自动注入扩展方法</span>
+    <span class="token punctuation">.</span><span class="token function">autoInjectExtendsJS</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 添加 assets 中js文件注入</span>
+<span class="token comment">//  .addInjectJSAssetsFile(&quot;js/test.js&quot;)</span>
+    <span class="token comment">// 添加 raw 中js文件注入</span>
+<span class="token comment">//  .addInjectJSRawFile(R.raw.index_test)</span>
+    <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 2. 创建ZWeb对象实例.</span>
+mZWebInstance <span class="token operator">=</span> <span class="token class-name">ZWebInstance</span><span class="token punctuation">.</span><span class="token function">createInstance</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="String MAIN_HTML = &quot;file:///android_asset/index.html&quot;;
+
+// 1. 创建配置文件，并带入主页 URL
+ZWebConfig config = new ZWebConfig.Builder(ZWebConstant.MAIN_HTML_TEST)
+    // 注册状态监听
+    .setOnStateListener(this)
+    // 注册原生协议UI实现
+    .setNativeMethodImplement(this)
+    // 注册一些特殊的实现方法
+//  .setOnSpecialStateListener(this)
+    // 选择注入模式
+    .setInjectionMode(InjectionMode.VuePlugin)
+    // 自动注入框架脚本JS（建议配置）
+    .autoInjectFramework()
+    // 自动注入扩展方法
+    .autoInjectExtendsJS()
+    // 添加 assets 中js文件注入
+//  .addInjectJSAssetsFile(&quot;js/test.js&quot;)
+    // 添加 raw 中js文件注入
+//  .addInjectJSRawFile(R.raw.index_test)
+    .build();
+
+// 2. 创建ZWeb对象实例.
+mZWebInstance = ZWebInstance.createInstance(config);" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><ul><li>Step3，传递Activity的生命周期，如下：</li></ul> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token comment">// mRootView 为根ViewGroup容器 （必须）</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token class-name">Bundle</span> savedInstanceState<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+    mZWebInstance<span class="token punctuation">.</span><span class="token function">onActivityCreate</span><span class="token punctuation">(</span>mRootView<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 分别实现其他生命周期传递</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onBackPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>mZWebInstance<span class="token punctuation">.</span><span class="token function">onActivityBack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onBackPressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    mZWebInstance<span class="token punctuation">.</span><span class="token function">onActivityPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    mZWebInstance<span class="token punctuation">.</span><span class="token function">onActivityResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    mZWebInstance<span class="token punctuation">.</span><span class="token function">onActivityStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onStop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    mZWebInstance<span class="token punctuation">.</span><span class="token function">onActivityStop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onStop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    mZWebInstance<span class="token punctuation">.</span><span class="token function">onActivityDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="// mRootView 为根ViewGroup容器 （必须）
+@Override
+protected void onCreate(Bundle savedInstanceState)
+{
+    //...
+    mZWebInstance.onActivityCreate(mRootView);
+    //...
+}
+
+// 分别实现其他生命周期传递
+@Override
+public void onBackPressed()
+{
+    if (!mZWebInstance.onActivityBack())
+    {
+        super.onBackPressed();
+    }
+}
+
+@Override
+protected void onPause()
+{
+    mZWebInstance.onActivityPause();
+    super.onPause();
+}
+
+@Override
+protected void onResume()
+{
+    mZWebInstance.onActivityResume();
+    super.onResume();
+}
+
+@Override
+protected void onStart()
+{
+    mZWebInstance.onActivityStart();
+    super.onStart();
+}
+
+@Override
+protected void onStop()
+{
+    mZWebInstance.onActivityStop();
+    super.onStop();
+}
+
+@Override
+protected void onDestroy()
+{
+    mZWebInstance.onActivityDestroy();
+    super.onDestroy();
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h3 id="一些内部状态监听实现"><a href="#一些内部状态监听实现" class="header-anchor">#</a> 一些内部状态监听实现</h3> <p>以下为实现监听状态接口时，所需要实现的方法。</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token comment">/**
+* 框架初始化成功后回调
+*
+* @param zWebHandler
+* @param width 宽
+* @param height 高
+*/</span>
+<span class="token keyword">void</span> <span class="token function">onZWebCreated</span><span class="token punctuation">(</span><span class="token class-name">IZWebHandler</span> zWebHandler<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+* 异常（JS如果有异常会在这里回调）
+*
+* @param zWebHandler
+* @param errorCode 错误码
+* @param message 错误信息
+*/</span>
+<span class="token keyword">void</span> <span class="token function">onZWebException</span><span class="token punctuation">(</span><span class="token class-name">IZWebHandler</span> zWebHandler<span class="token punctuation">,</span> <span class="token keyword">long</span> errorCode<span class="token punctuation">,</span> <span class="token class-name">String</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+* 网络请求处理
+*
+* @param zWebHandler
+* @param url         链接
+* @param method      请求方法
+* @param data        数据
+* @param type        返回类型
+* @param controller
+*/</span>
+<span class="token keyword">void</span> <span class="token function">onZWebRequire</span><span class="token punctuation">(</span><span class="token class-name">IZWebHandler</span> zWebHandler<span class="token punctuation">,</span> <span class="token class-name">String</span> url<span class="token punctuation">,</span> <span class="token class-name">String</span> method<span class="token punctuation">,</span> <span class="token class-name">String</span> data<span class="token punctuation">,</span> <span class="token class-name">String</span> type<span class="token punctuation">,</span> <span class="token class-name">IZRequireController</span> controller<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+* 异步消息请求
+*
+* @param zWebHandler
+* @param cmd 命令名称
+* @param data 数据
+*/</span>
+<span class="token keyword">void</span> <span class="token function">onZWebMessage</span><span class="token punctuation">(</span><span class="token class-name">IZWebHandler</span> zWebHandler<span class="token punctuation">,</span> <span class="token class-name">String</span> cmd<span class="token punctuation">,</span> <span class="token class-name">String</span> data<span class="token punctuation">,</span> <span class="token class-name">IZMessageController</span> controller<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+* JS销毁
+*
+* @param zWebHandler
+*/</span>
+<span class="token keyword">void</span> <span class="token function">onZWebDestroy</span><span class="token punctuation">(</span><span class="token class-name">IZWebHandler</span> zWebHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+* JS日志信息回调，可在这里记录或打印
+*
+* @param zWebHandler
+* @param type        类型
+* @param msg         信息
+*/</span>
+<span class="token keyword">void</span> <span class="token function">onZWebLog</span><span class="token punctuation">(</span><span class="token class-name">IZWebHandler</span> zWebHandler<span class="token punctuation">,</span> <span class="token class-name">String</span> type<span class="token punctuation">,</span> <span class="token class-name">String</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="/**
+* 框架初始化成功后回调
+*
+* @param zWebHandler
+* @param width 宽
+* @param height 高
+*/
+void onZWebCreated(IZWebHandler zWebHandler, int width, int height);
+
+/**
+* 异常（JS如果有异常会在这里回调）
+*
+* @param zWebHandler
+* @param errorCode 错误码
+* @param message 错误信息
+*/
+void onZWebException(IZWebHandler zWebHandler, long errorCode, String message);
+
+/**
+* 网络请求处理
+*
+* @param zWebHandler
+* @param url         链接
+* @param method      请求方法
+* @param data        数据
+* @param type        返回类型
+* @param controller
+*/
+void onZWebRequire(IZWebHandler zWebHandler, String url, String method, String data, String type, IZRequireController controller);
+
+/**
+* 异步消息请求
+*
+* @param zWebHandler
+* @param cmd 命令名称
+* @param data 数据
+*/
+void onZWebMessage(IZWebHandler zWebHandler, String cmd, String data, IZMessageController controller);
+
+/**
+* JS销毁
+*
+* @param zWebHandler
+*/
+void onZWebDestroy(IZWebHandler zWebHandler);
+
+/**
+* JS日志信息回调，可在这里记录或打印
+*
+* @param zWebHandler
+* @param type        类型
+* @param msg         信息
+*/
+void onZWebLog(IZWebHandler zWebHandler, String type, String msg);" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>以上接口部分实现方式可参考 <a href="https://github.com/zyao89/ZWebView/blob/master/Android/app/src/main/java/com/zyao89/view/MainActivity.java" target="_blank" rel="noopener noreferrer">MainActivity.java<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <h3 id="ioc实现-js-请求方法封装"><a href="#ioc实现-js-请求方法封装" class="header-anchor">#</a> IOC实现 js 请求方法封装</h3> <ol><li>定义调用JS的方法接口</li></ol> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">RequireService</span>
+<span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@ZMethod</span><span class="token punctuation">(</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">)</span> <span class="token comment">// callReceiver</span>
+    <span class="token keyword">boolean</span> <span class="token function">callA</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;KeyA&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> a<span class="token punctuation">,</span> <span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;KeyB&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> b<span class="token punctuation">,</span> <span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;Time&quot;</span><span class="token punctuation">)</span> <span class="token keyword">long</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ZFunction</span><span class="token punctuation">(</span><span class="token string">&quot;init&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">boolean</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;A&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> a<span class="token punctuation">,</span> <span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;B&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> b<span class="token punctuation">,</span> <span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;C&quot;</span><span class="token punctuation">)</span> <span class="token keyword">int</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ZMethod</span><span class="token punctuation">(</span><span class="token class-name">ZMethodName</span><span class="token punctuation">.</span>ON_READY<span class="token punctuation">)</span>
+    <span class="token keyword">void</span> <span class="token function">initParam</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;Msg&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> msg<span class="token punctuation">,</span> <span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;Skin&quot;</span><span class="token punctuation">)</span> <span class="token keyword">int</span> skin<span class="token punctuation">,</span> <span class="token annotation punctuation">@ZKey</span><span class="token punctuation">(</span><span class="token string">&quot;Color&quot;</span><span class="token punctuation">)</span> <span class="token keyword">int</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ZFunction</span><span class="token punctuation">(</span><span class="token class-name">ZFunctionName</span><span class="token punctuation">.</span>REFRESH<span class="token punctuation">)</span>
+    <span class="token keyword">void</span> <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ZFunction</span><span class="token punctuation">(</span><span class="token string">&quot;newInit&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">boolean</span> <span class="token function">newInit</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ZJson</span> <span class="token class-name">String</span> oJson<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@ZFunction</span><span class="token punctuation">(</span><span class="token string">&quot;newInit2&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">boolean</span> <span class="token function">newInit2</span><span class="token punctuation">(</span><span class="token annotation punctuation">@ZData</span> <span class="token class-name">String</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="public interface RequireService
+{
+    @ZMethod(&quot;a&quot;) // callReceiver
+    boolean callA(@ZKey(&quot;KeyA&quot;) String a, @ZKey(&quot;KeyB&quot;) String b, @ZKey(&quot;Time&quot;) long time);
+
+    @ZFunction(&quot;init&quot;)
+    boolean init(@ZKey(&quot;A&quot;) String a, @ZKey(&quot;B&quot;) String b, @ZKey(&quot;C&quot;) int c);
+
+    @ZMethod(ZMethodName.ON_READY)
+    void initParam(@ZKey(&quot;Msg&quot;) String msg, @ZKey(&quot;Skin&quot;) int skin, @ZKey(&quot;Color&quot;) int color);
+
+    @ZFunction(ZFunctionName.REFRESH)
+    void refresh();
+
+    @ZFunction(&quot;newInit&quot;)
+    boolean newInit(@ZJson String oJson);
+
+    @ZFunction(&quot;newInit2&quot;)
+    boolean newInit2(@ZData String str);
+}" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p><strong>各种注解介绍：</strong></p> <blockquote><p>@ZFunction(&quot;方法名称&quot;)： 用于调用JS中 <code>ZWebSDK.extends('方法名称', function(oData){});</code> 扩展方法的调用。<br>
+@ZMethod(&quot;监听名称&quot;)：用于JS中 <code>ZWebSDK.on('监听名称', function(oData){});</code> 注册监听的方法调用。<br>
+@ZKey(&quot;参数名称&quot;)：JS中Object参数键值名称。<br>
+@ZCmd(&quot;cmd名称&quot;)：用于 <code>onZWebMessage</code> 方法回调中，cmd参数的映射。具体使用方法可以参考Demo。（针对Message做映射解析时使用）。<br>
+@ZJson：JS中Object参数的字符串（json）。<br>
+@ZData：参数为字符串。</p></blockquote> <ol start="2"><li>创建接口服务对象实例，并进行调用</li></ol> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>mRequireService <span class="token operator">=</span> mZWebInstance<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">RequireService</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="mRequireService = mZWebInstance.create(RequireService.class);" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>通过使用 <code>mRequireService</code> 提供的方法，调用JS。如下：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>mRequireService<span class="token punctuation">.</span><span class="token function">callA</span><span class="token punctuation">(</span><span class="token string">&quot;我是一个坚挺的消息。。。&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;小A你好啊！&quot;</span><span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="mRequireService.callA(&quot;我是一个坚挺的消息。。。&quot;, &quot;小A你好啊！&quot;, time);" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h3 id="js调用原生提供的方法"><a href="#js调用原生提供的方法" class="header-anchor">#</a> JS调用原生提供的方法</h3> <ol><li><p>使用现有的 <code>void onZWebMessage(IZWebHandler zWebHandler, String cmd, String data, IZMessageController controller);</code> 进行方法解析，并异步返回结果。</p> <p>参数 <code>cmd</code> ：定义的命令名称。</p> <p>参数 <code>data</code>： 定义的参数。</p> <p><code>controller</code> ：可进行异步的结果返回。或者利用 <code>controller.parseMessage(this.mParseMessage);</code> 此方法进行方法解析。</p></li> <li><p>使用原生 <code>@JavascriptInterface</code> 注解的方法进行扩展。</p> <p>框架在 ZWebConfig 中提供了 <code>setExposedName (String exposedName);</code> 方法，可以扩展一个原生的接口协议名称。</p> <p>然后，利用 <code>mZWebInstance.addJavascriptInterface(object);</code> 进行对象中的方法注入。</p></li></ol> <h2 id="ios"><a href="#ios" class="header-anchor">#</a> iOS</h2> <p>暂无</p> <h2 id="author-blog"><a href="#author-blog" class="header-anchor">#</a> Author Blog</h2> <p><a href="https://zyao89.cn" target="_blank" rel="noopener noreferrer">zyao89.cn<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <hr> <p><code>作者：Zyao89；转载请保留此行，谢谢；</code><br> <code>原文网站：https://www.zyao89.cn</code><br> <code>祝你好运，谢谢支持</code></p></div> <div class="root_1qgPDpgW"><div><span>作者：</span> <span>Zyao89；</span> <span>转载请保留</span></div> <div><span>版权声明：</span> <span>自由转载-非商用-非衍生-保持署名</span></div> <div><span>原文地址：</span> <a target="_blank" href="https://zyao89.cn/s/7ed24aca.html">https://zyao89.cn/s/7ed24aca.html</a></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次编辑时间:</span> <span class="time">2023年11月27日星期一 11:18</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/posts/2018/03/11/android自定义加载动画-舞动阶梯.html" class="prev">
+        Android自定义加载动画-舞动阶梯
+      </a></span> <span class="next"><a href="/posts/2017/12/05/gradle配置-多工程必备知识.html">
+        Gradle配置-多工程必备知识
+      </a>
+      →
+    </span></p></div>  <div type="vssue" class="theme-default-content root_2fUnO8Ia"><!----></div></main></div></div> <!----></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6169d5d9.js" defer></script><script src="/assets/js/1.381a88b1.js" defer></script><script src="/assets/js/17.7be3556f.js" defer></script><script src="/assets/js/105.b8801b53.js" defer></script><script src="/assets/js/23.b5979579.js" defer></script><script src="/assets/js/25.78ef3fa2.js" defer></script>
+  </body>
+</html>

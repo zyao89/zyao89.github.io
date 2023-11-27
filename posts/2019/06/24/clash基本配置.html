@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Clash基本配置 | Zyao89&#39;s Blogs</title>
+    <meta name="generator" content="VuePress 1.8.3">
+    <link rel="icon" href="/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="神秘，暂无任何描述">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" data-auto-meta="true" data-update-meta="true">
+    <meta rel="alternate" title="Zyao89&#39;s Blogs" href="https://zyao89.cn/rss.xml" link="alternate" content="rss" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:published_time" content="2019-06-24T20:40:20.000Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:modified_time" content="2023-11-27T11:25:12.679Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:site_name" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:type" content="article" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:url" content="https://zyao89.cn/s/74626870.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:url" content="https://zyao89.cn/s/74626870.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:card" content="summary_large_image" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label1" content="Written by" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:data2" content="VPN" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label2" content="Filed under" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:tag" content="VPN" data-auto-meta="true" data-update-meta="true">
+    <meta name="keywords" content="网络,VPN" data-auto-meta="true" data-update-meta="true">
+    <meta name="powerby" content="Micro-App" data-auto-meta="true" data-update-meta="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="google-site-verification" content="8sZJLe_q5uzLQR19aq4O6V5Y7YPj-mLjb7b-jlBloNo">
+    <meta name="baidu-site-verification" content="D4YhVrZwXf">
+    
+    <link rel="preload" href="/assets/css/0.styles.bd01dee5.css" as="style"><link rel="preload" href="/assets/js/app.6169d5d9.js" as="script"><link rel="preload" href="/assets/js/1.381a88b1.js" as="script"><link rel="preload" href="/assets/js/17.7be3556f.js" as="script"><link rel="preload" href="/assets/js/51.bbcc75ed.js" as="script"><link rel="preload" href="/assets/js/23.b5979579.js" as="script"><link rel="preload" href="/assets/js/24.a6ef82b5.js" as="script"><link rel="preload" href="/assets/js/25.78ef3fa2.js" as="script"><link rel="prefetch" href="/assets/js/10.6ae44f0d.js"><link rel="prefetch" href="/assets/js/100.ce30b411.js"><link rel="prefetch" href="/assets/js/101.430c2297.js"><link rel="prefetch" href="/assets/js/102.c8909a76.js"><link rel="prefetch" href="/assets/js/103.b9dba89c.js"><link rel="prefetch" href="/assets/js/104.27de0e8c.js"><link rel="prefetch" href="/assets/js/105.b8801b53.js"><link rel="prefetch" href="/assets/js/106.a416b83f.js"><link rel="prefetch" href="/assets/js/107.15d0221f.js"><link rel="prefetch" href="/assets/js/108.ee17e077.js"><link rel="prefetch" href="/assets/js/109.9b8800f9.js"><link rel="prefetch" href="/assets/js/11.54ed8a83.js"><link rel="prefetch" href="/assets/js/110.cb8e98f3.js"><link rel="prefetch" href="/assets/js/111.2ddcd088.js"><link rel="prefetch" href="/assets/js/112.4b546485.js"><link rel="prefetch" href="/assets/js/113.c36d1452.js"><link rel="prefetch" href="/assets/js/114.dae28062.js"><link rel="prefetch" href="/assets/js/115.0ca7de2b.js"><link rel="prefetch" href="/assets/js/116.8dab3bf5.js"><link rel="prefetch" href="/assets/js/117.f4f6c6f1.js"><link rel="prefetch" href="/assets/js/118.86cbf460.js"><link rel="prefetch" href="/assets/js/119.adde92b6.js"><link rel="prefetch" href="/assets/js/12.04cb229a.js"><link rel="prefetch" href="/assets/js/120.73bf71ee.js"><link rel="prefetch" href="/assets/js/121.0f189cac.js"><link rel="prefetch" href="/assets/js/122.5c45dc1c.js"><link rel="prefetch" href="/assets/js/13.5a00df16.js"><link rel="prefetch" href="/assets/js/14.a26fae10.js"><link rel="prefetch" href="/assets/js/15.e9537b9f.js"><link rel="prefetch" href="/assets/js/16.06683abd.js"><link rel="prefetch" href="/assets/js/18.ec51fb25.js"><link rel="prefetch" href="/assets/js/19.488ea1ee.js"><link rel="prefetch" href="/assets/js/20.29ddea1c.js"><link rel="prefetch" href="/assets/js/21.9109ebb0.js"><link rel="prefetch" href="/assets/js/22.9133d4c6.js"><link rel="prefetch" href="/assets/js/26.1219245c.js"><link rel="prefetch" href="/assets/js/27.fe2ae86a.js"><link rel="prefetch" href="/assets/js/28.bec255d5.js"><link rel="prefetch" href="/assets/js/29.010b6565.js"><link rel="prefetch" href="/assets/js/30.97f83566.js"><link rel="prefetch" href="/assets/js/31.6119500d.js"><link rel="prefetch" href="/assets/js/32.46261414.js"><link rel="prefetch" href="/assets/js/33.0d04d42c.js"><link rel="prefetch" href="/assets/js/34.c6f32b75.js"><link rel="prefetch" href="/assets/js/35.0ee096ff.js"><link rel="prefetch" href="/assets/js/36.8f745991.js"><link rel="prefetch" href="/assets/js/37.dfe9efd3.js"><link rel="prefetch" href="/assets/js/38.bec066ef.js"><link rel="prefetch" href="/assets/js/39.b14031d8.js"><link rel="prefetch" href="/assets/js/40.800552a7.js"><link rel="prefetch" href="/assets/js/41.e57d40b9.js"><link rel="prefetch" href="/assets/js/42.7f256ae5.js"><link rel="prefetch" href="/assets/js/43.5a80c8e2.js"><link rel="prefetch" href="/assets/js/44.52e26885.js"><link rel="prefetch" href="/assets/js/45.a42e8e25.js"><link rel="prefetch" href="/assets/js/46.6764b81d.js"><link rel="prefetch" href="/assets/js/47.eaf53807.js"><link rel="prefetch" href="/assets/js/48.14338a4d.js"><link rel="prefetch" href="/assets/js/49.526d110c.js"><link rel="prefetch" href="/assets/js/50.b33cc987.js"><link rel="prefetch" href="/assets/js/52.394ca397.js"><link rel="prefetch" href="/assets/js/53.27695e37.js"><link rel="prefetch" href="/assets/js/54.5ad339f1.js"><link rel="prefetch" href="/assets/js/55.7c915336.js"><link rel="prefetch" href="/assets/js/56.e01cebf5.js"><link rel="prefetch" href="/assets/js/57.1d7fecfe.js"><link rel="prefetch" href="/assets/js/58.ffd7b1b3.js"><link rel="prefetch" href="/assets/js/59.f8db9595.js"><link rel="prefetch" href="/assets/js/60.a5f1c4aa.js"><link rel="prefetch" href="/assets/js/61.b7803c9d.js"><link rel="prefetch" href="/assets/js/62.2ba48c7c.js"><link rel="prefetch" href="/assets/js/63.a865f1ec.js"><link rel="prefetch" href="/assets/js/64.7aa3fc9c.js"><link rel="prefetch" href="/assets/js/65.52d5335b.js"><link rel="prefetch" href="/assets/js/66.cea5fc3f.js"><link rel="prefetch" href="/assets/js/67.2d0f72dc.js"><link rel="prefetch" href="/assets/js/68.777bd562.js"><link rel="prefetch" href="/assets/js/69.71c5f7ec.js"><link rel="prefetch" href="/assets/js/7.4cf3e922.js"><link rel="prefetch" href="/assets/js/70.1f4316df.js"><link rel="prefetch" href="/assets/js/71.997b8615.js"><link rel="prefetch" href="/assets/js/72.9b8dcbc7.js"><link rel="prefetch" href="/assets/js/73.1b58fd72.js"><link rel="prefetch" href="/assets/js/74.32aa822b.js"><link rel="prefetch" href="/assets/js/75.6bb7df3b.js"><link rel="prefetch" href="/assets/js/76.520f2311.js"><link rel="prefetch" href="/assets/js/77.740ea264.js"><link rel="prefetch" href="/assets/js/78.0c97a8a8.js"><link rel="prefetch" href="/assets/js/79.557ccb7a.js"><link rel="prefetch" href="/assets/js/8.56f0b2e1.js"><link rel="prefetch" href="/assets/js/80.1aa8feae.js"><link rel="prefetch" href="/assets/js/81.8f9a55ed.js"><link rel="prefetch" href="/assets/js/82.6cdf60b1.js"><link rel="prefetch" href="/assets/js/83.29956407.js"><link rel="prefetch" href="/assets/js/84.e92374a3.js"><link rel="prefetch" href="/assets/js/85.6421d767.js"><link rel="prefetch" href="/assets/js/86.4f19d0eb.js"><link rel="prefetch" href="/assets/js/87.3e568c7e.js"><link rel="prefetch" href="/assets/js/88.163feac5.js"><link rel="prefetch" href="/assets/js/89.a4ab5d2b.js"><link rel="prefetch" href="/assets/js/9.b2dc3a8e.js"><link rel="prefetch" href="/assets/js/90.ec038868.js"><link rel="prefetch" href="/assets/js/91.d2368531.js"><link rel="prefetch" href="/assets/js/92.7054f0b3.js"><link rel="prefetch" href="/assets/js/93.029176c6.js"><link rel="prefetch" href="/assets/js/94.0d33f8b6.js"><link rel="prefetch" href="/assets/js/95.8b96ae84.js"><link rel="prefetch" href="/assets/js/96.7bb3a166.js"><link rel="prefetch" href="/assets/js/97.10a3a72c.js"><link rel="prefetch" href="/assets/js/98.4cb6e2ae.js"><link rel="prefetch" href="/assets/js/99.01121ed2.js"><link rel="prefetch" href="/assets/js/icon-svg.c49b1031.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.b053b093.js"><link rel="prefetch" href="/assets/js/vendors~icon-svg.6232fe9b.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.5e89e0f4.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.bd01dee5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="navbar-inner"><div class="navbar-crumb"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zyao89's Blogs</span></a></div> <div class="navbar-action"><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav></div></div></div></header> <!----> <div class="main-wrapper wrapper_2N9oDuL6"><div class="sidebar-mask"></div> <div class="aside"><aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav> <div class="sidebar-links root_2Q8rAuh1"><div class="sidebar-group"><p class="sidebar-heading"><span>相关推荐</span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2019/08/22/freenom-cloudflare-nginx搭建静态站点.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Freenom+Cloudflare+Nginx搭建静态站点</a></li><li><a href="/posts/2020/03/31/openvpn基本配置.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> OpenVPN基本配置</a></li><li><a href="/posts/2020/02/15/从零开始搭建v2ray教程.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> 从零开始搭建V2Ray教程</a></li><li><a href="/posts/2020/04/07/http与https理解.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> HTTP与HTTPS理解</a></li><li><a href="/posts/2020/07/20/http状态码对照表.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> HTTP状态码对照表</a></li></ul></div></div>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Clash基本配置</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2019/06/24/clash%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE.html#名词解释" class="sidebar-link">名词解释</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2019/06/24/clash%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE.html#基本配置" class="sidebar-link">基本配置</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2019/06/24/clash%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE.html#代理组策略配置" class="sidebar-link">代理组策略配置</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2019/06/24/clash%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE.html#dns-配置" class="sidebar-link">DNS 配置</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2019/06/24/clash%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE.html#更多规则" class="sidebar-link">更多规则</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside></div> <!----> <div class="main-content content_2RZ9sgU8"><main class="page root_2M_Qi7kG"> <div class="theme-default-content root_2-7WkaDt"><h1 class="title_1j35tYhd">
+        Clash基本配置
+        <!----></h1> <div class="rows_1p4yuwM6"><span class="categories_xVucymjQ"><span class="categoriesItem_25QzbJMw">网络</span></span> <span class="tags_3eRugDkG"><span class="tagItem_BVRgjoUO">VPN</span></span></div> <div class="rows_1p4yuwM6"><span class="author_26qEzl24"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>Zyao89</span></span> <span><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>2019年6月24日星期一 20:40</span></span></div></div> <div role="content" class="theme-default-content content__default content_1Lffc1Nr"><h2 id="名词解释"><a href="#名词解释" class="header-anchor">#</a> 名词解释</h2> <p>Clash：一个 GO 开发的、基于规则的多平台代理客户端，兼容 Shadowsocks、V2Ray 等协议，拥有像 Surge 一样强大的代理规则。<a href="https://github.com/Dreamacro/clash" target="_blank" rel="noopener noreferrer">GitHub<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <h2 id="基本配置"><a href="#基本配置" class="header-anchor">#</a> 基本配置</h2> <p>以下只是简单示例，请自行修改。</p> <div class="language-yaml line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-yaml"><code><span class="token comment"># RESTful API 的口令 (可选)</span>
+<span class="token comment"># secret: ''</span>
+
+<span class="token comment"># 代理节点</span>
+<span class="token key atrule">Proxy</span><span class="token punctuation">:</span>
+    <span class="token comment"># shadowsocks</span>
+    <span class="token comment"># 所支持的加密方式与 go-shadowsocks2 保持一致</span>
+    <span class="token comment"># 支持加密方式：</span>
+    <span class="token comment">#   aes-128-gcm aes-192-gcm aes-256-gcm</span>
+    <span class="token comment">#   aes-128-cfb aes-192-cfb aes-256-cfb</span>
+    <span class="token comment">#   aes-128-ctr aes-192-ctr aes-256-ctr</span>
+    <span class="token comment">#   rc4-md5 chacha20 chacha20-ietf xchacha20</span>
+    <span class="token comment">#   chacha20-ietf-poly1305 xchacha20-ietf-poly1305</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;测试1号&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> ss
+      <span class="token key atrule">server</span><span class="token punctuation">:</span> server
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+      <span class="token key atrule">cipher</span><span class="token punctuation">:</span> chacha20<span class="token punctuation">-</span>ietf<span class="token punctuation">-</span>poly1305
+      <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">&quot;password&quot;</span>
+
+      <span class="token comment"># udp: true</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;测试2号&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> ss
+      <span class="token key atrule">server</span><span class="token punctuation">:</span> server
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+      <span class="token key atrule">cipher</span><span class="token punctuation">:</span> AEAD_CHACHA20_POLY1305
+      <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">&quot;password&quot;</span>
+      <span class="token key atrule">plugin</span><span class="token punctuation">:</span> obfs
+      <span class="token key atrule">plugin-opts</span><span class="token punctuation">:</span>
+          <span class="token key atrule">mode</span><span class="token punctuation">:</span> tls <span class="token comment"># 混淆模式，可以选择 http 或 tls</span>
+          <span class="token key atrule">host</span><span class="token punctuation">:</span> bing.com <span class="token comment"># 混淆域名，需要和服务器配置保持一致</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="# RESTful API 的口令 (可选)
+# secret: ''
+
+# 代理节点
+Proxy:
+    # shadowsocks
+    # 所支持的加密方式与 go-shadowsocks2 保持一致
+    # 支持加密方式：
+    #   aes-128-gcm aes-192-gcm aes-256-gcm
+    #   aes-128-cfb aes-192-cfb aes-256-cfb
+    #   aes-128-ctr aes-192-ctr aes-256-ctr
+    #   rc4-md5 chacha20 chacha20-ietf xchacha20
+    #   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
+
+    - name: &quot;测试1号&quot;
+      type: ss
+      server: server
+      port: 443
+      cipher: chacha20-ietf-poly1305
+      password: &quot;password&quot;
+
+      # udp: true
+    - name: &quot;测试2号&quot;
+      type: ss
+      server: server
+      port: 443
+      cipher: AEAD_CHACHA20_POLY1305
+      password: &quot;password&quot;
+      plugin: obfs
+      plugin-opts:
+          mode: tls # 混淆模式，可以选择 http 或 tls
+          host: bing.com # 混淆域名，需要和服务器配置保持一致" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="代理组策略配置"><a href="#代理组策略配置" class="header-anchor">#</a> 代理组策略配置</h2> <p>请手段改写添加 <code>&quot;测试1号&quot;</code>, <code>&quot;测试2号&quot;</code> .</p> <div class="language-yaml line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-yaml"><code><span class="token comment"># 代理组策略</span>
+<span class="token key atrule">Proxy Group</span><span class="token punctuation">:</span>
+    <span class="token comment"># url-test 通过指定的 URL 测试并选择延迟最低的节点</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;自动节点选择&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> url<span class="token punctuation">-</span>test
+      <span class="token key atrule">proxies</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;测试1号&quot;</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;测试2号&quot;</span>
+      <span class="token key atrule">url</span><span class="token punctuation">:</span> <span class="token string">'http://www.gstatic.com/generate_204'</span>
+      <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token number">300</span>
+
+    <span class="token comment"># fallback 可以尽量按照用户书写的服务器顺序，在确保服务器可用的情况下，自动选择服务器</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;fallback-auto&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> fallback
+      <span class="token key atrule">proxies</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;测试1号&quot;</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;测试2号&quot;</span>
+      <span class="token key atrule">url</span><span class="token punctuation">:</span> <span class="token string">'http://www.gstatic.com/generate_204'</span>
+      <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token number">300</span>
+
+    <span class="token comment"># load-balance 可以使相同 eTLD 请求在同一条代理线路上</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;load-balance&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> load<span class="token punctuation">-</span>balance
+      <span class="token key atrule">proxies</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;测试1号&quot;</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;测试2号&quot;</span>
+      <span class="token key atrule">url</span><span class="token punctuation">:</span> <span class="token string">'http://www.gstatic.com/generate_204'</span>
+      <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token number">300</span>
+
+    <span class="token comment"># 代理节点选择</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;PROXY&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> select
+      <span class="token key atrule">proxies</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;自动节点选择&quot;</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;测试1号&quot;</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;测试2号&quot;</span>
+
+    <span class="token comment"># Apple 服务代理</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;Apple&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> select
+      <span class="token key atrule">proxies</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;DIRECT&quot;</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;PROXY&quot;</span>
+
+    <span class="token comment"># 运营商及声名狼藉网站劫持</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;Hijacking&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> select
+      <span class="token key atrule">proxies</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;REJECT&quot;</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;DIRECT&quot;</span>
+
+    <span class="token comment"># 白名单模式 PROXY，黑名单模式 DIRECT</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">&quot;FINAL&quot;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> select
+      <span class="token key atrule">proxies</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;PROXY&quot;</span>
+        <span class="token punctuation">-</span> <span class="token string">&quot;DIRECT&quot;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="# 代理组策略
+Proxy Group:
+    # url-test 通过指定的 URL 测试并选择延迟最低的节点
+    - name: &quot;自动节点选择&quot;
+      type: url-test
+      proxies:
+        - &quot;测试1号&quot;
+        - &quot;测试2号&quot;
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
+
+    # fallback 可以尽量按照用户书写的服务器顺序，在确保服务器可用的情况下，自动选择服务器
+    - name: &quot;fallback-auto&quot;
+      type: fallback
+      proxies:
+        - &quot;测试1号&quot;
+        - &quot;测试2号&quot;
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
+
+    # load-balance 可以使相同 eTLD 请求在同一条代理线路上
+    - name: &quot;load-balance&quot;
+      type: load-balance
+      proxies:
+        - &quot;测试1号&quot;
+        - &quot;测试2号&quot;
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 300
+
+    # 代理节点选择
+    - name: &quot;PROXY&quot;
+      type: select
+      proxies:
+        - &quot;自动节点选择&quot;
+        - &quot;测试1号&quot;
+        - &quot;测试2号&quot;
+
+    # Apple 服务代理
+    - name: &quot;Apple&quot;
+      type: select
+      proxies:
+        - &quot;DIRECT&quot;
+        - &quot;PROXY&quot;
+
+    # 运营商及声名狼藉网站劫持
+    - name: &quot;Hijacking&quot;
+      type: select
+      proxies:
+        - &quot;REJECT&quot;
+        - &quot;DIRECT&quot;
+
+    # 白名单模式 PROXY，黑名单模式 DIRECT
+    - name: &quot;FINAL&quot;
+      type: select
+      proxies:
+        - &quot;PROXY&quot;
+        - &quot;DIRECT&quot;" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="dns-配置"><a href="#dns-配置" class="header-anchor">#</a> DNS 配置</h2> <div class="language-yaml line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-yaml"><code><span class="token key atrule">dns</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">ipv6</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">listen</span><span class="token punctuation">:</span> 0.0.0.0<span class="token punctuation">:</span><span class="token number">8053</span>
+    <span class="token key atrule">enhanced-mode</span><span class="token punctuation">:</span> redir<span class="token punctuation">-</span>host
+    <span class="token comment"># enhanced-mode: redir-host # 或 fake-ip</span>
+    <span class="token comment"># # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改</span>
+    <span class="token comment"># fake-ip-filter: # fake-ip 白名单列表</span>
+    <span class="token comment">#   - '*.lan'</span>
+    <span class="token comment">#   - localhost.ptlogin2.qq.com</span>
+
+    <span class="token key atrule">nameserver</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> 119.29.29.29
+        <span class="token punctuation">-</span> 114.114.114.114
+        <span class="token punctuation">-</span> 223.5.5.5
+        <span class="token punctuation">-</span> tls<span class="token punctuation">:</span>//dns.rubyfish.cn<span class="token punctuation">:</span><span class="token number">853</span>
+        <span class="token comment"># - https://dns.rubyfish.cn/dns-query</span>
+
+    <span class="token key atrule">fallback</span><span class="token punctuation">:</span>
+        <span class="token comment"># 与 nameserver 内的服务器列表同时发起请求，当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。</span>
+        <span class="token punctuation">-</span> tcp<span class="token punctuation">:</span>//8.8.8.8<span class="token punctuation">:</span><span class="token number">53</span>
+        <span class="token punctuation">-</span> tcp<span class="token punctuation">:</span>//8.8.4.4<span class="token punctuation">:</span><span class="token number">53</span>
+        <span class="token punctuation">-</span> tcp<span class="token punctuation">:</span>//208.67.222.222<span class="token punctuation">:</span><span class="token number">443</span>
+        <span class="token punctuation">-</span> tcp<span class="token punctuation">:</span>//208.67.220.220<span class="token punctuation">:</span><span class="token number">443</span>
+        <span class="token punctuation">-</span> tls<span class="token punctuation">:</span>//1.0.0.1<span class="token punctuation">:</span><span class="token number">853</span>
+        <span class="token punctuation">-</span> tls<span class="token punctuation">:</span>//dns.google<span class="token punctuation">:</span><span class="token number">853</span>
+        <span class="token punctuation">-</span> tls<span class="token punctuation">:</span>//dns.google
+        <span class="token comment"># - https://dns.rubyfish.cn/dns-query</span>
+        <span class="token comment"># - https://cloudflare-dns.com/dns-query</span>
+        <span class="token comment"># - https://dns.google/dns-query</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="dns:
+    enable: true
+    ipv6: true
+    listen: 0.0.0.0:8053
+    enhanced-mode: redir-host
+    # enhanced-mode: redir-host # 或 fake-ip
+    # # fake-ip-range: 198.18.0.1/16 # 如果你不知道这个参数的作用，请勿修改
+    # fake-ip-filter: # fake-ip 白名单列表
+    #   - '*.lan'
+    #   - localhost.ptlogin2.qq.com
+
+    nameserver:
+        - 119.29.29.29
+        - 114.114.114.114
+        - 223.5.5.5
+        - tls://dns.rubyfish.cn:853
+        # - https://dns.rubyfish.cn/dns-query
+
+    fallback:
+        # 与 nameserver 内的服务器列表同时发起请求，当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。
+        - tcp://8.8.8.8:53
+        - tcp://8.8.4.4:53
+        - tcp://208.67.222.222:443
+        - tcp://208.67.220.220:443
+        - tls://1.0.0.1:853
+        - tls://dns.google:853
+        - tls://dns.google
+        # - https://dns.rubyfish.cn/dns-query
+        # - https://cloudflare-dns.com/dns-query
+        # - https://dns.google/dns-query" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="更多规则"><a href="#更多规则" class="header-anchor">#</a> 更多规则</h2> <p>参考: <a href="https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/master/LAZY_RULES/clash.yaml" target="_blank" rel="noopener noreferrer">yaml<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <p>规则: <a href="/assets/file/posts/网络/Clash基本配置/demo/ClashProxyRules.yaml" target="_blank" rel="noopener noreferrer" class="nav-link external link_B7RDSkor"><!----> 链接 <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p></div> <div class="root_1qgPDpgW"><div><span>作者：</span> <span>Zyao89；</span> <span>转载请保留</span></div> <div><span>版权声明：</span> <span>自由转载-非商用-非衍生-保持署名</span></div> <div><span>原文地址：</span> <a target="_blank" href="https://zyao89.cn/s/74626870.html">https://zyao89.cn/s/74626870.html</a></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次编辑时间:</span> <span class="time">2023年11月27日星期一 11:18</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/posts/2019/07/20/解决mac中词典文件问题.html" class="prev">
+        解决Mac中词典文件问题
+      </a></span> <span class="next"><a href="/posts/2019/06/20/收集一些广告过滤的规则地址.html">
+        收集一些广告过滤的规则地址
+      </a>
+      →
+    </span></p></div>  <div type="vssue" class="theme-default-content root_2fUnO8Ia"><!----></div></main></div></div> <!----></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6169d5d9.js" defer></script><script src="/assets/js/1.381a88b1.js" defer></script><script src="/assets/js/17.7be3556f.js" defer></script><script src="/assets/js/51.bbcc75ed.js" defer></script><script src="/assets/js/23.b5979579.js" defer></script><script src="/assets/js/24.a6ef82b5.js" defer></script><script src="/assets/js/25.78ef3fa2.js" defer></script>
+  </body>
+</html>

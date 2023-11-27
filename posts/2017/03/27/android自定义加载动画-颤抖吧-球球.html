@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Android自定义加载动画-颤抖吧！球球 | Zyao89&#39;s Blogs</title>
+    <meta name="generator" content="VuePress 1.8.3">
+    <link rel="icon" href="/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="神秘，暂无任何描述">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" data-auto-meta="true" data-update-meta="true">
+    <meta rel="alternate" title="Zyao89&#39;s Blogs" href="https://zyao89.cn/rss.xml" link="alternate" content="rss" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:published_time" content="2017-03-27T20:22:27.000Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:modified_time" content="2023-11-27T11:25:12.673Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:site_name" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:type" content="article" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:url" content="https://zyao89.cn/s/17fd94b6.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:url" content="https://zyao89.cn/s/17fd94b6.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:card" content="summary_large_image" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label1" content="Written by" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:data2" content="Android,ZLoading" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label2" content="Filed under" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:tag" content="ZLoading" data-auto-meta="true" data-update-meta="true">
+    <meta name="keywords" content="移动开发,Android,ZLoading" data-auto-meta="true" data-update-meta="true">
+    <meta name="powerby" content="Micro-App" data-auto-meta="true" data-update-meta="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="google-site-verification" content="8sZJLe_q5uzLQR19aq4O6V5Y7YPj-mLjb7b-jlBloNo">
+    <meta name="baidu-site-verification" content="D4YhVrZwXf">
+    
+    <link rel="preload" href="/assets/css/0.styles.bd01dee5.css" as="style"><link rel="preload" href="/assets/js/app.6169d5d9.js" as="script"><link rel="preload" href="/assets/js/1.381a88b1.js" as="script"><link rel="preload" href="/assets/js/17.7be3556f.js" as="script"><link rel="preload" href="/assets/js/32.46261414.js" as="script"><link rel="preload" href="/assets/js/23.b5979579.js" as="script"><link rel="preload" href="/assets/js/25.78ef3fa2.js" as="script"><link rel="prefetch" href="/assets/js/10.6ae44f0d.js"><link rel="prefetch" href="/assets/js/100.ce30b411.js"><link rel="prefetch" href="/assets/js/101.430c2297.js"><link rel="prefetch" href="/assets/js/102.c8909a76.js"><link rel="prefetch" href="/assets/js/103.b9dba89c.js"><link rel="prefetch" href="/assets/js/104.27de0e8c.js"><link rel="prefetch" href="/assets/js/105.b8801b53.js"><link rel="prefetch" href="/assets/js/106.a416b83f.js"><link rel="prefetch" href="/assets/js/107.15d0221f.js"><link rel="prefetch" href="/assets/js/108.ee17e077.js"><link rel="prefetch" href="/assets/js/109.9b8800f9.js"><link rel="prefetch" href="/assets/js/11.54ed8a83.js"><link rel="prefetch" href="/assets/js/110.cb8e98f3.js"><link rel="prefetch" href="/assets/js/111.2ddcd088.js"><link rel="prefetch" href="/assets/js/112.4b546485.js"><link rel="prefetch" href="/assets/js/113.c36d1452.js"><link rel="prefetch" href="/assets/js/114.dae28062.js"><link rel="prefetch" href="/assets/js/115.0ca7de2b.js"><link rel="prefetch" href="/assets/js/116.8dab3bf5.js"><link rel="prefetch" href="/assets/js/117.f4f6c6f1.js"><link rel="prefetch" href="/assets/js/118.86cbf460.js"><link rel="prefetch" href="/assets/js/119.adde92b6.js"><link rel="prefetch" href="/assets/js/12.04cb229a.js"><link rel="prefetch" href="/assets/js/120.73bf71ee.js"><link rel="prefetch" href="/assets/js/121.0f189cac.js"><link rel="prefetch" href="/assets/js/122.5c45dc1c.js"><link rel="prefetch" href="/assets/js/13.5a00df16.js"><link rel="prefetch" href="/assets/js/14.a26fae10.js"><link rel="prefetch" href="/assets/js/15.e9537b9f.js"><link rel="prefetch" href="/assets/js/16.06683abd.js"><link rel="prefetch" href="/assets/js/18.ec51fb25.js"><link rel="prefetch" href="/assets/js/19.488ea1ee.js"><link rel="prefetch" href="/assets/js/20.29ddea1c.js"><link rel="prefetch" href="/assets/js/21.9109ebb0.js"><link rel="prefetch" href="/assets/js/22.9133d4c6.js"><link rel="prefetch" href="/assets/js/24.a6ef82b5.js"><link rel="prefetch" href="/assets/js/26.1219245c.js"><link rel="prefetch" href="/assets/js/27.fe2ae86a.js"><link rel="prefetch" href="/assets/js/28.bec255d5.js"><link rel="prefetch" href="/assets/js/29.010b6565.js"><link rel="prefetch" href="/assets/js/30.97f83566.js"><link rel="prefetch" href="/assets/js/31.6119500d.js"><link rel="prefetch" href="/assets/js/33.0d04d42c.js"><link rel="prefetch" href="/assets/js/34.c6f32b75.js"><link rel="prefetch" href="/assets/js/35.0ee096ff.js"><link rel="prefetch" href="/assets/js/36.8f745991.js"><link rel="prefetch" href="/assets/js/37.dfe9efd3.js"><link rel="prefetch" href="/assets/js/38.bec066ef.js"><link rel="prefetch" href="/assets/js/39.b14031d8.js"><link rel="prefetch" href="/assets/js/40.800552a7.js"><link rel="prefetch" href="/assets/js/41.e57d40b9.js"><link rel="prefetch" href="/assets/js/42.7f256ae5.js"><link rel="prefetch" href="/assets/js/43.5a80c8e2.js"><link rel="prefetch" href="/assets/js/44.52e26885.js"><link rel="prefetch" href="/assets/js/45.a42e8e25.js"><link rel="prefetch" href="/assets/js/46.6764b81d.js"><link rel="prefetch" href="/assets/js/47.eaf53807.js"><link rel="prefetch" href="/assets/js/48.14338a4d.js"><link rel="prefetch" href="/assets/js/49.526d110c.js"><link rel="prefetch" href="/assets/js/50.b33cc987.js"><link rel="prefetch" href="/assets/js/51.bbcc75ed.js"><link rel="prefetch" href="/assets/js/52.394ca397.js"><link rel="prefetch" href="/assets/js/53.27695e37.js"><link rel="prefetch" href="/assets/js/54.5ad339f1.js"><link rel="prefetch" href="/assets/js/55.7c915336.js"><link rel="prefetch" href="/assets/js/56.e01cebf5.js"><link rel="prefetch" href="/assets/js/57.1d7fecfe.js"><link rel="prefetch" href="/assets/js/58.ffd7b1b3.js"><link rel="prefetch" href="/assets/js/59.f8db9595.js"><link rel="prefetch" href="/assets/js/60.a5f1c4aa.js"><link rel="prefetch" href="/assets/js/61.b7803c9d.js"><link rel="prefetch" href="/assets/js/62.2ba48c7c.js"><link rel="prefetch" href="/assets/js/63.a865f1ec.js"><link rel="prefetch" href="/assets/js/64.7aa3fc9c.js"><link rel="prefetch" href="/assets/js/65.52d5335b.js"><link rel="prefetch" href="/assets/js/66.cea5fc3f.js"><link rel="prefetch" href="/assets/js/67.2d0f72dc.js"><link rel="prefetch" href="/assets/js/68.777bd562.js"><link rel="prefetch" href="/assets/js/69.71c5f7ec.js"><link rel="prefetch" href="/assets/js/7.4cf3e922.js"><link rel="prefetch" href="/assets/js/70.1f4316df.js"><link rel="prefetch" href="/assets/js/71.997b8615.js"><link rel="prefetch" href="/assets/js/72.9b8dcbc7.js"><link rel="prefetch" href="/assets/js/73.1b58fd72.js"><link rel="prefetch" href="/assets/js/74.32aa822b.js"><link rel="prefetch" href="/assets/js/75.6bb7df3b.js"><link rel="prefetch" href="/assets/js/76.520f2311.js"><link rel="prefetch" href="/assets/js/77.740ea264.js"><link rel="prefetch" href="/assets/js/78.0c97a8a8.js"><link rel="prefetch" href="/assets/js/79.557ccb7a.js"><link rel="prefetch" href="/assets/js/8.56f0b2e1.js"><link rel="prefetch" href="/assets/js/80.1aa8feae.js"><link rel="prefetch" href="/assets/js/81.8f9a55ed.js"><link rel="prefetch" href="/assets/js/82.6cdf60b1.js"><link rel="prefetch" href="/assets/js/83.29956407.js"><link rel="prefetch" href="/assets/js/84.e92374a3.js"><link rel="prefetch" href="/assets/js/85.6421d767.js"><link rel="prefetch" href="/assets/js/86.4f19d0eb.js"><link rel="prefetch" href="/assets/js/87.3e568c7e.js"><link rel="prefetch" href="/assets/js/88.163feac5.js"><link rel="prefetch" href="/assets/js/89.a4ab5d2b.js"><link rel="prefetch" href="/assets/js/9.b2dc3a8e.js"><link rel="prefetch" href="/assets/js/90.ec038868.js"><link rel="prefetch" href="/assets/js/91.d2368531.js"><link rel="prefetch" href="/assets/js/92.7054f0b3.js"><link rel="prefetch" href="/assets/js/93.029176c6.js"><link rel="prefetch" href="/assets/js/94.0d33f8b6.js"><link rel="prefetch" href="/assets/js/95.8b96ae84.js"><link rel="prefetch" href="/assets/js/96.7bb3a166.js"><link rel="prefetch" href="/assets/js/97.10a3a72c.js"><link rel="prefetch" href="/assets/js/98.4cb6e2ae.js"><link rel="prefetch" href="/assets/js/99.01121ed2.js"><link rel="prefetch" href="/assets/js/icon-svg.c49b1031.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.b053b093.js"><link rel="prefetch" href="/assets/js/vendors~icon-svg.6232fe9b.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.5e89e0f4.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.bd01dee5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="navbar-inner"><div class="navbar-crumb"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zyao89's Blogs</span></a></div> <div class="navbar-action"><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav></div></div></div></header> <!----> <div class="main-wrapper wrapper_2N9oDuL6"><div class="sidebar-mask"></div> <div class="aside"><aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav> <div class="sidebar-links root_2Q8rAuh1"><div class="sidebar-group"><p class="sidebar-heading"><span>相关推荐</span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2017/03/15/android-studio-团队开发必知常识.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android Studio 团队开发必知常识</a></li><li><a href="/posts/2017/03/12/android编译时注解apt实战-abstractprocessor.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android编译时注解APT实战（AbstractProcessor）</a></li><li><a href="/posts/2017/03/26/android自定义加载动画-pacman.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-PacMan</a></li><li><a href="/posts/2017/04/06/android自定义加载动画-感染体.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-感染体</a></li><li><a href="/posts/2017/04/06/android自定义加载动画-交织.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Android自定义加载动画-交织</a></li></ul></div></div>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Android自定义加载动画-颤抖吧！球球</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2017/03/27/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB-%E9%A2%A4%E6%8A%96%E5%90%A7-%E7%90%83%E7%90%83.html#介绍" class="sidebar-link">介绍</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/27/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB-%E9%A2%A4%E6%8A%96%E5%90%A7-%E7%90%83%E7%90%83.html#正文" class="sidebar-link">正文</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/27/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB-%E9%A2%A4%E6%8A%96%E5%90%A7-%E7%90%83%E7%90%83.html#总结" class="sidebar-link">总结</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2017/03/27/android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB-%E9%A2%A4%E6%8A%96%E5%90%A7-%E7%90%83%E7%90%83.html#演示" class="sidebar-link">演示</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside></div> <!----> <div class="main-content content_2RZ9sgU8"><main class="page root_2M_Qi7kG"> <div class="theme-default-content root_2-7WkaDt"><h1 class="title_1j35tYhd">
+        Android自定义加载动画-颤抖吧！球球
+        <!----></h1> <div class="rows_1p4yuwM6"><span class="categories_xVucymjQ"><span class="categoriesItem_25QzbJMw">移动开发</span></span> <span class="tags_3eRugDkG"><span class="tagItem_BVRgjoUO">Android</span><span class="tagItem_BVRgjoUO">ZLoading</span></span></div> <div class="rows_1p4yuwM6"><span class="author_26qEzl24"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>Zyao89</span></span> <span><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>2017年3月27日星期一 20:22</span></span></div></div> <div role="content" class="theme-default-content content__default content_1Lffc1Nr"><p>Android自定义动画系列六，今天来分享第六个自定义Loaidng动画（ElasticBallBuilder），我给他起了一个逼格很高的名字，叫<code>颤抖吧！球球</code>，这个动画让我绞尽脑汁，算数算的晕乎乎，不过结果还是很满意的，还是老规矩先介绍，效果图在最后面。</p> <p><strong>实现效果图在最后，GIF有点大，手机流量请三思。</strong></p> <blockquote><p>⭐️这里我想问大家一个问题，这个最终效果图，是放在文章的 <strong>开头</strong> 好呢？还是放在 <strong>结尾</strong> 好呢？<br>
+大家评论里面给个建议吧。谢谢了。</p></blockquote> <h2 id="介绍"><a href="#介绍" class="header-anchor">#</a> 介绍</h2> <p>首先依旧是声明，做这些动画的初衷是为了学习和分享，所以希望大家可以指点错误，让我更好的进步。（系列加载动画的截止时间：我放弃的时候）。<br>
+上一个动画链接：<a href="https://zyao89.cn/2017/03/26/Android%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB-PacMan/" target="_blank" rel="noopener noreferrer">Android自定义加载动画-PacMan<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <h2 id="正文"><a href="#正文" class="header-anchor">#</a> 正文</h2> <p>参数变量初始化，用处我都在代码里写了注释了，不懂得大家也可以问，有什么不对的，也希望大家帮忙指出，谢谢了。如下：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>    <span class="token comment">//动画间隔时间</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> DURATION_TIME <span class="token operator">=</span> <span class="token number">333</span><span class="token punctuation">;</span>
+    <span class="token comment">//最终阶段</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span>                     FINAL_STATE   <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token comment">//小球共5个位置</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span>                     SUM_POINT_POS <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token comment">//贝塞尔曲线常量</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">float</span>                   PROP_VALUE    <span class="token operator">=</span> <span class="token number">0.551915024494f</span><span class="token punctuation">;</span>
+    <span class="token comment">//小球点集合</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span>        <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">CirclePoint</span><span class="token punctuation">&gt;</span></span> mBallPoints   <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//背景圆集合</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span>        <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">CirclePoint</span><span class="token punctuation">&gt;</span></span> mBGCircles    <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Paint</span> mPaint<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">float</span> mBallR<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Path</span>  mPath<span class="token punctuation">;</span>
+    <span class="token comment">//当前动画阶段</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> mCurrAnimatorState <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">//每个小球的偏移量</span>
+    <span class="token keyword">private</span> <span class="token keyword">float</span> mCanvasTranslateOffset<span class="token punctuation">;</span>
+    <span class="token comment">//当前状态是否翻转</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> mIsReverse    <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token comment">//当前小球的位置</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span>     mCurrPointPos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="//动画间隔时间
+    private static final long DURATION_TIME = 333;
+    //最终阶段
+    private static final int                     FINAL_STATE   = 2;
+    //小球共5个位置
+    private static final int                     SUM_POINT_POS = 5;
+    //贝塞尔曲线常量
+    private static final float                   PROP_VALUE    = 0.551915024494f;
+    //小球点集合
+    private final        LinkedList&lt;CirclePoint&gt; mBallPoints   = new LinkedList&lt;&gt;();
+    //背景圆集合
+    private final        LinkedList&lt;CirclePoint&gt; mBGCircles    = new LinkedList&lt;&gt;();
+    private Paint mPaint;
+    private float mBallR;
+    private Path  mPath;
+    //当前动画阶段
+    private int mCurrAnimatorState = 0;
+    //每个小球的偏移量
+    private float mCanvasTranslateOffset;
+    //当前状态是否翻转
+    private boolean mIsReverse    = false;
+    //当前小球的位置
+    private int     mCurrPointPos = 0;" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>首先初始化参数，<code>mBallR</code> 为小球半径，<code>mCanvasTranslateOffset</code> 为小球之间的间距，<code>mPath</code> 路径，其它如注释：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">initParams</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        mBallR <span class="token operator">=</span> <span class="token function">getAllSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> SUM_POINT_POS<span class="token punctuation">;</span>
+        mCanvasTranslateOffset <span class="token operator">=</span> <span class="token function">getIntrinsicWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> SUM_POINT_POS<span class="token punctuation">;</span>
+        mPath <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Path</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">initPaint</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">initPoints</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">initBGPoints</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 背景圆点初始化
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initBGPoints</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">float</span> centerX <span class="token operator">=</span> <span class="token function">getViewCenterX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">float</span> centerY <span class="token operator">=</span> <span class="token function">getViewCenterY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_0 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">-</span> mCanvasTranslateOffset <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> centerY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">-</span> mCanvasTranslateOffset<span class="token punctuation">,</span> centerY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX<span class="token punctuation">,</span> centerY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">+</span> mCanvasTranslateOffset<span class="token punctuation">,</span> centerY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">+</span> mCanvasTranslateOffset <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> centerY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        p_0<span class="token punctuation">.</span><span class="token function">setEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//默认第一个圆不显示</span>
+        mBGCircles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBGCircles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBGCircles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBGCircles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBGCircles<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@Override
+    protected void initParams(Context context)
+    {
+        mBallR = getAllSize() / SUM_POINT_POS;
+        mCanvasTranslateOffset = getIntrinsicWidth() / SUM_POINT_POS;
+        mPath = new Path();
+        initPaint(5);
+        initPoints();
+        initBGPoints();
+    }
+
+    /**
+     * 背景圆点初始化
+     */
+    private void initBGPoints()
+    {
+        float centerX = getViewCenterX();
+        float centerY = getViewCenterY();
+        CirclePoint p_0 = new CirclePoint(centerX - mCanvasTranslateOffset * 2, centerY);
+        CirclePoint p_1 = new CirclePoint(centerX - mCanvasTranslateOffset, centerY);
+        CirclePoint p_2 = new CirclePoint(centerX, centerY);
+        CirclePoint p_3 = new CirclePoint(centerX + mCanvasTranslateOffset, centerY);
+        CirclePoint p_4 = new CirclePoint(centerX + mCanvasTranslateOffset * 2, centerY);
+
+        p_0.setEnabled(false);//默认第一个圆不显示
+        mBGCircles.add(p_0);
+        mBGCircles.add(p_1);
+        mBGCircles.add(p_2);
+        mBGCircles.add(p_3);
+        mBGCircles.add(p_4);
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>这里很重要，很重要，重要。<br>
+这里初始化的是小球的各个点坐标，这里的小球是通过贝塞尔曲线绘制了，为了后面方便动画操作，所以球的绘制就会相对的繁琐了。</p> <p>贝塞尔曲线画球的原理，如下：</p> <p><img src="/assets/img/image01.35985924.png" alt="原理图，来自其它地方"></p> <p>具体标注点，请对照我注释中的P0～P11点，如下：</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>
+    <span class="token comment">/**
+     *      p10    p9      p8
+     *      ------  ------
+     * p11                     p7
+     * |                       |
+     * |                       |
+     * p0 |      (0,0)         | p6
+     * |                       |
+     * |                       |
+     * p1                      p5
+     *      ------  ------
+     *      p2      p3      p4
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initPoints</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">float</span> centerX <span class="token operator">=</span> <span class="token function">getViewCenterX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">float</span> centerY <span class="token operator">=</span> <span class="token function">getViewCenterY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_0 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">-</span> mBallR<span class="token punctuation">,</span> centerY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">-</span> mBallR<span class="token punctuation">,</span> centerY <span class="token operator">+</span> mBallR <span class="token operator">*</span> PROP_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">-</span> mBallR <span class="token operator">*</span> PROP_VALUE<span class="token punctuation">,</span> centerY <span class="token operator">+</span> mBallR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX<span class="token punctuation">,</span> centerY <span class="token operator">+</span> mBallR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">+</span> mBallR <span class="token operator">*</span> PROP_VALUE<span class="token punctuation">,</span> centerY <span class="token operator">+</span> mBallR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">+</span> mBallR<span class="token punctuation">,</span> centerY <span class="token operator">+</span> mBallR <span class="token operator">*</span> PROP_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_6 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">+</span> mBallR<span class="token punctuation">,</span> centerY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_7 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">+</span> mBallR<span class="token punctuation">,</span> centerY <span class="token operator">-</span> mBallR <span class="token operator">*</span> PROP_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_7<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_8 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">+</span> mBallR <span class="token operator">*</span> PROP_VALUE<span class="token punctuation">,</span> centerY <span class="token operator">-</span> mBallR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_9 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX<span class="token punctuation">,</span> centerY <span class="token operator">-</span> mBallR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_9<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_10 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">-</span> mBallR <span class="token operator">*</span> PROP_VALUE<span class="token punctuation">,</span> centerY <span class="token operator">-</span> mBallR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_10<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">CirclePoint</span> p_11 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span>centerX <span class="token operator">-</span> mBallR<span class="token punctuation">,</span> centerY <span class="token operator">-</span> mBallR <span class="token operator">*</span> PROP_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mBallPoints<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>p_11<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 初始化画笔
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initPaint</span><span class="token punctuation">(</span><span class="token keyword">float</span> lineWidth<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        mPaint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span><span class="token class-name">Paint</span><span class="token punctuation">.</span>ANTI_ALIAS_FLAG<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setStyle</span><span class="token punctuation">(</span><span class="token class-name">Paint<span class="token punctuation">.</span>Style</span><span class="token punctuation">.</span>FILL_AND_STROKE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setStrokeWidth</span><span class="token punctuation">(</span>lineWidth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setColor</span><span class="token punctuation">(</span><span class="token class-name">Color</span><span class="token punctuation">.</span>BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setDither</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setFilterBitmap</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setStrokeCap</span><span class="token punctuation">(</span><span class="token class-name">Paint<span class="token punctuation">.</span>Cap</span><span class="token punctuation">.</span>ROUND<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setStrokeJoin</span><span class="token punctuation">(</span><span class="token class-name">Paint<span class="token punctuation">.</span>Join</span><span class="token punctuation">.</span>ROUND<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="/**
+     *      p10    p9      p8
+     *      ------  ------
+     * p11                     p7
+     * |                       |
+     * |                       |
+     * p0 |      (0,0)         | p6
+     * |                       |
+     * |                       |
+     * p1                      p5
+     *      ------  ------
+     *      p2      p3      p4
+     */
+    private void initPoints()
+    {
+        float centerX = getViewCenterX();
+        float centerY = getViewCenterY();
+        CirclePoint p_0 = new CirclePoint(centerX - mBallR, centerY);
+        mBallPoints.add(p_0);
+        CirclePoint p_1 = new CirclePoint(centerX - mBallR, centerY + mBallR * PROP_VALUE);
+        mBallPoints.add(p_1);
+        CirclePoint p_2 = new CirclePoint(centerX - mBallR * PROP_VALUE, centerY + mBallR);
+        mBallPoints.add(p_2);
+        CirclePoint p_3 = new CirclePoint(centerX, centerY + mBallR);
+        mBallPoints.add(p_3);
+        CirclePoint p_4 = new CirclePoint(centerX + mBallR * PROP_VALUE, centerY + mBallR);
+        mBallPoints.add(p_4);
+        CirclePoint p_5 = new CirclePoint(centerX + mBallR, centerY + mBallR * PROP_VALUE);
+        mBallPoints.add(p_5);
+        CirclePoint p_6 = new CirclePoint(centerX + mBallR, centerY);
+        mBallPoints.add(p_6);
+        CirclePoint p_7 = new CirclePoint(centerX + mBallR, centerY - mBallR * PROP_VALUE);
+        mBallPoints.add(p_7);
+        CirclePoint p_8 = new CirclePoint(centerX + mBallR * PROP_VALUE, centerY - mBallR);
+        mBallPoints.add(p_8);
+        CirclePoint p_9 = new CirclePoint(centerX, centerY - mBallR);
+        mBallPoints.add(p_9);
+        CirclePoint p_10 = new CirclePoint(centerX - mBallR * PROP_VALUE, centerY - mBallR);
+        mBallPoints.add(p_10);
+        CirclePoint p_11 = new CirclePoint(centerX - mBallR, centerY - mBallR * PROP_VALUE);
+        mBallPoints.add(p_11);
+    }
+
+    /**
+     * 初始化画笔
+     */
+    private void initPaint(float lineWidth)
+    {
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        mPaint.setStrokeWidth(lineWidth);
+        mPaint.setColor(Color.BLACK);
+        mPaint.setDither(true);
+        mPaint.setFilterBitmap(true);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        mPaint.setStrokeJoin(Paint.Join.ROUND);
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>以下，开始了绘制工作了，<code>drawBG()</code> 绘制背景，在这里就不多介绍了；我们看下 <code>drawBall()</code> 方法，通过路径贝塞尔曲线绘制并连接一开始初始化的12个点坐标形成路径，最终绘制到画布上。</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDraw</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span> canvas<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">drawBG</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">drawBall</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 绘制小球
+     *
+     * @param canvas
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawBall</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span> canvas<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        canvas<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setStyle</span><span class="token punctuation">(</span><span class="token class-name">Paint<span class="token punctuation">.</span>Style</span><span class="token punctuation">.</span>FILL_AND_STROKE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">float</span> offsetX <span class="token operator">=</span> mBGCircles<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">*</span> mCanvasTranslateOffset<span class="token punctuation">;</span>
+        canvas<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span><span class="token operator">-</span>offsetX <span class="token operator">+</span> mCanvasTranslateOffset <span class="token operator">*</span> mCurrPointPos<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPath<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPath<span class="token punctuation">.</span><span class="token function">moveTo</span><span class="token punctuation">(</span>mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPath<span class="token punctuation">.</span><span class="token function">cubicTo</span><span class="token punctuation">(</span>mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPath<span class="token punctuation">.</span><span class="token function">cubicTo</span><span class="token punctuation">(</span>mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPath<span class="token punctuation">.</span><span class="token function">cubicTo</span><span class="token punctuation">(</span>mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPath<span class="token punctuation">.</span><span class="token function">cubicTo</span><span class="token punctuation">(</span>mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        canvas<span class="token punctuation">.</span><span class="token function">drawPath</span><span class="token punctuation">(</span>mPath<span class="token punctuation">,</span> mPaint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        canvas<span class="token punctuation">.</span><span class="token function">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 绘制背景圆
+     *
+     * @param canvas
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">drawBG</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span> canvas<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        canvas<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mPaint<span class="token punctuation">.</span><span class="token function">setStyle</span><span class="token punctuation">(</span><span class="token class-name">Paint<span class="token punctuation">.</span>Style</span><span class="token punctuation">.</span>STROKE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">CirclePoint</span> point <span class="token operator">:</span> mBGCircles<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            point<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>canvas<span class="token punctuation">,</span> mBallR<span class="token punctuation">,</span> mPaint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        canvas<span class="token punctuation">.</span><span class="token function">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@Override
+    protected void onDraw(Canvas canvas)
+    {
+        drawBG(canvas);
+        drawBall(canvas);
+    }
+
+    /**
+     * 绘制小球
+     *
+     * @param canvas
+     */
+    private void drawBall(Canvas canvas)
+    {
+        canvas.save();
+        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        float offsetX = mBGCircles.size() / 2 * mCanvasTranslateOffset;
+        canvas.translate(-offsetX + mCanvasTranslateOffset * mCurrPointPos, 0);
+        mPath.reset();
+        mPath.moveTo(mBallPoints.get(0).getX(), mBallPoints.get(0).getY());
+        mPath.cubicTo(mBallPoints.get(1).getX(), mBallPoints.get(1).getY(), mBallPoints.get(2).getX(), mBallPoints.get(2).getY(), mBallPoints.get(3).getX(), mBallPoints.get(3).getY());
+        mPath.cubicTo(mBallPoints.get(4).getX(), mBallPoints.get(4).getY(), mBallPoints.get(5).getX(), mBallPoints.get(5).getY(), mBallPoints.get(6).getX(), mBallPoints.get(6).getY());
+        mPath.cubicTo(mBallPoints.get(7).getX(), mBallPoints.get(7).getY(), mBallPoints.get(8).getX(), mBallPoints.get(8).getY(), mBallPoints.get(9).getX(), mBallPoints.get(9).getY());
+        mPath.cubicTo(mBallPoints.get(10).getX(), mBallPoints.get(10).getY(), mBallPoints.get(11).getX(), mBallPoints.get(11).getY(), mBallPoints.get(0).getX(), mBallPoints.get(0).getY());
+        canvas.drawPath(mPath, mPaint);
+        canvas.restore();
+    }
+
+    /**
+     * 绘制背景圆
+     *
+     * @param canvas
+     */
+    private void drawBG(Canvas canvas)
+    {
+        canvas.save();
+        mPaint.setStyle(Paint.Style.STROKE);
+        for (CirclePoint point : mBGCircles)
+        {
+            point.draw(canvas, mBallR, mPaint);
+        }
+        canvas.restore();
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>这里是不同阶段对应的不同偏移量赋值，前三个阶段是针对顺序移动的操作，后三个阶段是对应的逆序时所需要的赋值操作，所有位移操作都是对小球的12点进行X轴方向的处理。</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">computeUpdateValue</span><span class="token punctuation">(</span><span class="token class-name">ValueAnimator</span> animation<span class="token punctuation">,</span> <span class="token annotation punctuation">@FloatRange</span><span class="token punctuation">(</span>from <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token keyword">to</span> <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">)</span> <span class="token keyword">float</span> animatedValue<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">float</span> offset <span class="token operator">=</span> mCanvasTranslateOffset<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> currState <span class="token operator">=</span> mIsReverse <span class="token operator">?</span> mCurrAnimatorState <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">:</span> mCurrAnimatorState<span class="token punctuation">;</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>currState<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token number">0</span><span class="token operator">:</span>
+                animation<span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span>DURATION_TIME<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                animation<span class="token punctuation">.</span><span class="token function">setInterpolator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">AccelerateInterpolator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+                animation<span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span>DURATION_TIME <span class="token operator">+</span> <span class="token number">111</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                animation<span class="token punctuation">.</span><span class="token function">setInterpolator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DecelerateInterpolator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+                animation<span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span>DURATION_TIME <span class="token operator">+</span> <span class="token number">333</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                animation<span class="token punctuation">.</span><span class="token function">setInterpolator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BounceInterpolator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>animatedValue <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+                animation<span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span>DURATION_TIME<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                animation<span class="token punctuation">.</span><span class="token function">setInterpolator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">AccelerateInterpolator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+                animation<span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span>DURATION_TIME <span class="token operator">+</span> <span class="token number">111</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                animation<span class="token punctuation">.</span><span class="token function">setInterpolator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DecelerateInterpolator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">5</span><span class="token operator">:</span>
+                animation<span class="token punctuation">.</span><span class="token function">setDuration</span><span class="token punctuation">(</span>DURATION_TIME <span class="token operator">+</span> <span class="token number">333</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                animation<span class="token punctuation">.</span><span class="token function">setInterpolator</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BounceInterpolator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                mBallPoints<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> animatedValue<span class="token punctuation">)</span> <span class="token operator">*</span> offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@Override
+    protected void computeUpdateValue(ValueAnimator animation, @FloatRange(from = 0.0, to = 1.0) float animatedValue)
+    {
+        float offset = mCanvasTranslateOffset;
+        int currState = mIsReverse ? mCurrAnimatorState + 3 : mCurrAnimatorState;
+        switch (currState)
+        {
+            case 0:
+                animation.setDuration(DURATION_TIME);
+                animation.setInterpolator(new AccelerateInterpolator());
+                mBallPoints.get(5).setOffsetX(animatedValue * offset);
+                mBallPoints.get(6).setOffsetX(animatedValue * offset);
+                mBallPoints.get(7).setOffsetX(animatedValue * offset);
+                break;
+            case 1:
+                animation.setDuration(DURATION_TIME + 111);
+                animation.setInterpolator(new DecelerateInterpolator());
+                mBallPoints.get(2).setOffsetX(animatedValue * offset);
+                mBallPoints.get(3).setOffsetX(animatedValue * offset);
+                mBallPoints.get(4).setOffsetX(animatedValue * offset);
+                mBallPoints.get(8).setOffsetX(animatedValue * offset);
+                mBallPoints.get(9).setOffsetX(animatedValue * offset);
+                mBallPoints.get(10).setOffsetX(animatedValue * offset);
+                break;
+            case 2:
+                animation.setDuration(DURATION_TIME + 333);
+                animation.setInterpolator(new BounceInterpolator());
+                mBallPoints.get(0).setOffsetX(animatedValue * offset);
+                mBallPoints.get(1).setOffsetX(animatedValue * offset);
+                mBallPoints.get(11).setOffsetX(animatedValue * offset);
+                break;
+            case 3:
+                animation.setDuration(DURATION_TIME);
+                animation.setInterpolator(new AccelerateInterpolator());
+                mBallPoints.get(0).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(1).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(11).setOffsetX((1 - animatedValue) * offset);
+                break;
+            case 4:
+                animation.setDuration(DURATION_TIME + 111);
+                animation.setInterpolator(new DecelerateInterpolator());
+                mBallPoints.get(2).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(3).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(4).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(8).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(9).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(10).setOffsetX((1 - animatedValue) * offset);
+                break;
+            case 5:
+                animation.setDuration(DURATION_TIME + 333);
+                animation.setInterpolator(new BounceInterpolator());
+                mBallPoints.get(5).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(6).setOffsetX((1 - animatedValue) * offset);
+                mBallPoints.get(7).setOffsetX((1 - animatedValue) * offset);
+                break;
+        }
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>在下面的方法中，对小球动画的各个阶段进行分布，各个点的偏移量进行重置，以及顺序倒序移动的切换逻辑进行判断，并且对背景圆也做了关联处理。</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onAnimationRepeat</span><span class="token punctuation">(</span><span class="token class-name">Animator</span> animation<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">++</span>mCurrAnimatorState <span class="token operator">&gt;</span> FINAL_STATE<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span><span class="token comment">//还原到第一阶段</span>
+            mCurrAnimatorState <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+            <span class="token comment">/* 小球位置改变 */</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mIsReverse<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span><span class="token comment">//倒序</span>
+                mCurrPointPos<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span><span class="token comment">//顺序</span>
+                mCurrPointPos<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">/* 重置并翻转动画过程 */</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mCurrPointPos <span class="token operator">&gt;=</span> SUM_POINT_POS <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span><span class="token comment">//倒序</span>
+                mIsReverse <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                mCurrPointPos <span class="token operator">=</span> SUM_POINT_POS <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">;</span><span class="token comment">//I Don't Know</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mBGCircles<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token class-name">CirclePoint</span> point <span class="token operator">=</span> mBGCircles<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> mBGCircles<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        point<span class="token punctuation">.</span><span class="token function">setEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">else</span>
+                    <span class="token punctuation">{</span>
+                        point<span class="token punctuation">.</span><span class="token function">setEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>mCurrPointPos <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span><span class="token comment">//顺序</span>
+                mIsReverse <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                mCurrPointPos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mBGCircles<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    <span class="token class-name">CirclePoint</span> point <span class="token operator">=</span> mBGCircles<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">{</span>
+                        point<span class="token punctuation">.</span><span class="token function">setEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">else</span>
+                    <span class="token punctuation">{</span>
+                        point<span class="token punctuation">.</span><span class="token function">setEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">//每个阶段恢复状态，以及对背景圆的控制</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mIsReverse<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span><span class="token comment">//倒序</span>
+                <span class="token comment">//恢复状态</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">CirclePoint</span> point <span class="token operator">:</span> mBallPoints<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    point<span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span>mCanvasTranslateOffset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                mBGCircles<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>mCurrPointPos <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span><span class="token comment">//顺序</span>
+                <span class="token comment">//恢复状态</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">CirclePoint</span> point <span class="token operator">:</span> mBallPoints<span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    point<span class="token punctuation">.</span><span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                mBGCircles<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>mCurrPointPos<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setEnabled</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="@Override
+    public void onAnimationRepeat(Animator animation)
+    {
+        if (++mCurrAnimatorState &gt; FINAL_STATE)
+        {//还原到第一阶段
+            mCurrAnimatorState = 0;
+
+            /* 小球位置改变 */
+            if (mIsReverse)
+            {//倒序
+                mCurrPointPos--;
+            }
+            else
+            {//顺序
+                mCurrPointPos++;
+            }
+
+            /* 重置并翻转动画过程 */
+            if (mCurrPointPos &gt;= SUM_POINT_POS - 1)
+            {//倒序
+                mIsReverse = true;
+                mCurrPointPos = SUM_POINT_POS - 2;//I Don't Know
+                for (int i = 0; i &lt; mBGCircles.size(); i++)
+                {
+                    CirclePoint point = mBGCircles.get(i);
+                    if (i == mBGCircles.size() - 1)
+                    {
+                        point.setEnabled(true);
+                    }
+                    else
+                    {
+                        point.setEnabled(false);
+                    }
+
+                }
+            }
+            else if (mCurrPointPos &lt; 0)
+            {//顺序
+                mIsReverse = false;
+                mCurrPointPos = 0;
+                for (int i = 0; i &lt; mBGCircles.size(); i++)
+                {
+                    CirclePoint point = mBGCircles.get(i);
+                    if (i == 0)
+                    {
+                        point.setEnabled(false);
+                    }
+                    else
+                    {
+                        point.setEnabled(true);
+                    }
+
+                }
+            }
+
+            //每个阶段恢复状态，以及对背景圆的控制
+            if (mIsReverse)
+            {//倒序
+                //恢复状态
+                for (CirclePoint point : mBallPoints)
+                {
+                    point.setOffsetX(mCanvasTranslateOffset);
+                }
+                mBGCircles.get(mCurrPointPos + 1).setEnabled(true);
+            }
+            else
+            {//顺序
+                //恢复状态
+                for (CirclePoint point : mBallPoints)
+                {
+                    point.setOffsetX(0);
+                }
+                mBGCircles.get(mCurrPointPos).setEnabled(false);
+            }
+        }
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>圆点的内部类，封装了此动画中所涉及到的点和球的参数信息（小球的点与背景球都是复用此类的）</p> <div class="language-java line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-java"><code>    <span class="token comment">/**
+     * 圆点内部类
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">CirclePoint</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">float</span> mX<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">float</span> mY<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">float</span>   mOffsetX <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">float</span>   mOffsetY <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token keyword">boolean</span> mEnabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">CirclePoint</span><span class="token punctuation">(</span><span class="token keyword">float</span> x<span class="token punctuation">,</span> <span class="token keyword">float</span> y<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            mX <span class="token operator">=</span> x<span class="token punctuation">;</span>
+            mY <span class="token operator">=</span> y<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">float</span> <span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> mX <span class="token operator">+</span> mOffsetX<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">float</span> <span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> mY <span class="token operator">+</span> mOffsetY<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">void</span> <span class="token function">setOffsetX</span><span class="token punctuation">(</span><span class="token keyword">float</span> offsetX<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            mOffsetX <span class="token operator">=</span> offsetX<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">void</span> <span class="token function">setOffsetY</span><span class="token punctuation">(</span><span class="token keyword">float</span> offsetY<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            mOffsetY <span class="token operator">=</span> offsetY<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setEnabled</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> enabled<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            mEnabled <span class="token operator">=</span> enabled<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">void</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span> canvas<span class="token punctuation">,</span> <span class="token keyword">float</span> r<span class="token punctuation">,</span> <span class="token class-name">Paint</span> paint<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>mEnabled<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                canvas<span class="token punctuation">.</span><span class="token function">drawCircle</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> paint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="/**
+     * 圆点内部类
+     */
+    private class CirclePoint
+    {
+        private final float mX;
+        private final float mY;
+        private float   mOffsetX = 0;
+        private float   mOffsetY = 0;
+        private boolean mEnabled = true;
+
+        CirclePoint(float x, float y)
+        {
+            mX = x;
+            mY = y;
+        }
+
+        float getX()
+        {
+            return mX + mOffsetX;
+        }
+
+        float getY()
+        {
+            return mY + mOffsetY;
+        }
+
+        void setOffsetX(float offsetX)
+        {
+            mOffsetX = offsetX;
+        }
+
+        void setOffsetY(float offsetY)
+        {
+            mOffsetY = offsetY;
+        }
+
+        public void setEnabled(boolean enabled)
+        {
+            mEnabled = enabled;
+        }
+
+        void draw(Canvas canvas, float r, Paint paint)
+        {
+            if (this.mEnabled)
+            {
+                canvas.drawCircle(this.getX(), this.getY(), r, paint);
+            }
+        }
+    }" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>小伙伴们，介绍就到这里了，要是想看更多细节，可以前往文章最下面的Github链接，如果大家觉得ok的话，希望能给个喜欢，最渴望的是在Github上给个star。谢谢了。</p> <p>如果大家有什么更好的方案，或者想要实现的加载效果，可以给我留言或者私信我，我会想办法实现出来给大家。谢谢支持。</p> <h2 id="演示"><a href="#演示" class="header-anchor">#</a> 演示</h2> <p><img src="/assets/img/elastic_ball.9f4941bd.gif" alt="动画效果演示"></p> <p>Github：<a href="https://github.com/zyao89/ZCustomView" target="_blank" rel="noopener noreferrer">zyao89/ZCustomView<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <p><code>作者：Zyao89；转载请保留此行，谢谢；</code></p> <p>个人博客：<a href="http://zyao89.github.io" target="_blank" rel="noopener noreferrer">zyao89.cn<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p></div> <div class="root_1qgPDpgW"><div><span>作者：</span> <span>Zyao89；</span> <span>转载请保留</span></div> <div><span>版权声明：</span> <span>自由转载-非商用-非衍生-保持署名</span></div> <div><span>原文地址：</span> <a target="_blank" href="https://zyao89.cn/s/17fd94b6.html">https://zyao89.cn/s/17fd94b6.html</a></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次编辑时间:</span> <span class="time">2023年11月27日星期一 11:18</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/posts/2017/04/06/android自定义加载动画-感染体.html" class="prev">
+        Android自定义加载动画-感染体
+      </a></span> <span class="next"><a href="/posts/2017/03/26/android自定义加载动画-pacman.html">
+        Android自定义加载动画-PacMan
+      </a>
+      →
+    </span></p></div>  <div type="vssue" class="theme-default-content root_2fUnO8Ia"><!----></div></main></div></div> <!----></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6169d5d9.js" defer></script><script src="/assets/js/1.381a88b1.js" defer></script><script src="/assets/js/17.7be3556f.js" defer></script><script src="/assets/js/32.46261414.js" defer></script><script src="/assets/js/23.b5979579.js" defer></script><script src="/assets/js/25.78ef3fa2.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>自建API服务器实现阿里云DDNS(动态域名)更新 | Zyao89&#39;s Blogs</title>
+    <meta name="generator" content="VuePress 1.8.3">
+    <link rel="icon" href="/favicon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="神秘，暂无任何描述">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" data-auto-meta="true" data-update-meta="true">
+    <meta rel="alternate" title="Zyao89&#39;s Blogs" href="https://zyao89.cn/rss.xml" link="alternate" content="rss" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:published_time" content="2021-03-29T13:06:38.000Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:modified_time" content="2023-11-27T11:25:12.671Z" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:site_name" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:type" content="article" data-auto-meta="true" data-update-meta="true">
+    <meta property="og:url" content="https://zyao89.cn/s/6d2694a8.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:title" content="Zyao89&#39;s Blogs" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:description" content="神秘，暂无任何描述" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:url" content="https://zyao89.cn/s/6d2694a8.html" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:card" content="summary_large_image" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label1" content="Written by" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:data2" content="Docker,阿里云" data-auto-meta="true" data-update-meta="true">
+    <meta name="twitter:label2" content="Filed under" data-auto-meta="true" data-update-meta="true">
+    <meta property="article:tag" content="阿里云" data-auto-meta="true" data-update-meta="true">
+    <meta name="keywords" content="服务端,Docker,阿里云" data-auto-meta="true" data-update-meta="true">
+    <meta name="powerby" content="Micro-App" data-auto-meta="true" data-update-meta="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="google-site-verification" content="8sZJLe_q5uzLQR19aq4O6V5Y7YPj-mLjb7b-jlBloNo">
+    <meta name="baidu-site-verification" content="D4YhVrZwXf">
+    
+    <link rel="preload" href="/assets/css/0.styles.bd01dee5.css" as="style"><link rel="preload" href="/assets/js/app.6169d5d9.js" as="script"><link rel="preload" href="/assets/js/1.381a88b1.js" as="script"><link rel="preload" href="/assets/js/17.7be3556f.js" as="script"><link rel="preload" href="/assets/js/102.c8909a76.js" as="script"><link rel="preload" href="/assets/js/23.b5979579.js" as="script"><link rel="preload" href="/assets/js/25.78ef3fa2.js" as="script"><link rel="prefetch" href="/assets/js/10.6ae44f0d.js"><link rel="prefetch" href="/assets/js/100.ce30b411.js"><link rel="prefetch" href="/assets/js/101.430c2297.js"><link rel="prefetch" href="/assets/js/103.b9dba89c.js"><link rel="prefetch" href="/assets/js/104.27de0e8c.js"><link rel="prefetch" href="/assets/js/105.b8801b53.js"><link rel="prefetch" href="/assets/js/106.a416b83f.js"><link rel="prefetch" href="/assets/js/107.15d0221f.js"><link rel="prefetch" href="/assets/js/108.ee17e077.js"><link rel="prefetch" href="/assets/js/109.9b8800f9.js"><link rel="prefetch" href="/assets/js/11.54ed8a83.js"><link rel="prefetch" href="/assets/js/110.cb8e98f3.js"><link rel="prefetch" href="/assets/js/111.2ddcd088.js"><link rel="prefetch" href="/assets/js/112.4b546485.js"><link rel="prefetch" href="/assets/js/113.c36d1452.js"><link rel="prefetch" href="/assets/js/114.dae28062.js"><link rel="prefetch" href="/assets/js/115.0ca7de2b.js"><link rel="prefetch" href="/assets/js/116.8dab3bf5.js"><link rel="prefetch" href="/assets/js/117.f4f6c6f1.js"><link rel="prefetch" href="/assets/js/118.86cbf460.js"><link rel="prefetch" href="/assets/js/119.adde92b6.js"><link rel="prefetch" href="/assets/js/12.04cb229a.js"><link rel="prefetch" href="/assets/js/120.73bf71ee.js"><link rel="prefetch" href="/assets/js/121.0f189cac.js"><link rel="prefetch" href="/assets/js/122.5c45dc1c.js"><link rel="prefetch" href="/assets/js/13.5a00df16.js"><link rel="prefetch" href="/assets/js/14.a26fae10.js"><link rel="prefetch" href="/assets/js/15.e9537b9f.js"><link rel="prefetch" href="/assets/js/16.06683abd.js"><link rel="prefetch" href="/assets/js/18.ec51fb25.js"><link rel="prefetch" href="/assets/js/19.488ea1ee.js"><link rel="prefetch" href="/assets/js/20.29ddea1c.js"><link rel="prefetch" href="/assets/js/21.9109ebb0.js"><link rel="prefetch" href="/assets/js/22.9133d4c6.js"><link rel="prefetch" href="/assets/js/24.a6ef82b5.js"><link rel="prefetch" href="/assets/js/26.1219245c.js"><link rel="prefetch" href="/assets/js/27.fe2ae86a.js"><link rel="prefetch" href="/assets/js/28.bec255d5.js"><link rel="prefetch" href="/assets/js/29.010b6565.js"><link rel="prefetch" href="/assets/js/30.97f83566.js"><link rel="prefetch" href="/assets/js/31.6119500d.js"><link rel="prefetch" href="/assets/js/32.46261414.js"><link rel="prefetch" href="/assets/js/33.0d04d42c.js"><link rel="prefetch" href="/assets/js/34.c6f32b75.js"><link rel="prefetch" href="/assets/js/35.0ee096ff.js"><link rel="prefetch" href="/assets/js/36.8f745991.js"><link rel="prefetch" href="/assets/js/37.dfe9efd3.js"><link rel="prefetch" href="/assets/js/38.bec066ef.js"><link rel="prefetch" href="/assets/js/39.b14031d8.js"><link rel="prefetch" href="/assets/js/40.800552a7.js"><link rel="prefetch" href="/assets/js/41.e57d40b9.js"><link rel="prefetch" href="/assets/js/42.7f256ae5.js"><link rel="prefetch" href="/assets/js/43.5a80c8e2.js"><link rel="prefetch" href="/assets/js/44.52e26885.js"><link rel="prefetch" href="/assets/js/45.a42e8e25.js"><link rel="prefetch" href="/assets/js/46.6764b81d.js"><link rel="prefetch" href="/assets/js/47.eaf53807.js"><link rel="prefetch" href="/assets/js/48.14338a4d.js"><link rel="prefetch" href="/assets/js/49.526d110c.js"><link rel="prefetch" href="/assets/js/50.b33cc987.js"><link rel="prefetch" href="/assets/js/51.bbcc75ed.js"><link rel="prefetch" href="/assets/js/52.394ca397.js"><link rel="prefetch" href="/assets/js/53.27695e37.js"><link rel="prefetch" href="/assets/js/54.5ad339f1.js"><link rel="prefetch" href="/assets/js/55.7c915336.js"><link rel="prefetch" href="/assets/js/56.e01cebf5.js"><link rel="prefetch" href="/assets/js/57.1d7fecfe.js"><link rel="prefetch" href="/assets/js/58.ffd7b1b3.js"><link rel="prefetch" href="/assets/js/59.f8db9595.js"><link rel="prefetch" href="/assets/js/60.a5f1c4aa.js"><link rel="prefetch" href="/assets/js/61.b7803c9d.js"><link rel="prefetch" href="/assets/js/62.2ba48c7c.js"><link rel="prefetch" href="/assets/js/63.a865f1ec.js"><link rel="prefetch" href="/assets/js/64.7aa3fc9c.js"><link rel="prefetch" href="/assets/js/65.52d5335b.js"><link rel="prefetch" href="/assets/js/66.cea5fc3f.js"><link rel="prefetch" href="/assets/js/67.2d0f72dc.js"><link rel="prefetch" href="/assets/js/68.777bd562.js"><link rel="prefetch" href="/assets/js/69.71c5f7ec.js"><link rel="prefetch" href="/assets/js/7.4cf3e922.js"><link rel="prefetch" href="/assets/js/70.1f4316df.js"><link rel="prefetch" href="/assets/js/71.997b8615.js"><link rel="prefetch" href="/assets/js/72.9b8dcbc7.js"><link rel="prefetch" href="/assets/js/73.1b58fd72.js"><link rel="prefetch" href="/assets/js/74.32aa822b.js"><link rel="prefetch" href="/assets/js/75.6bb7df3b.js"><link rel="prefetch" href="/assets/js/76.520f2311.js"><link rel="prefetch" href="/assets/js/77.740ea264.js"><link rel="prefetch" href="/assets/js/78.0c97a8a8.js"><link rel="prefetch" href="/assets/js/79.557ccb7a.js"><link rel="prefetch" href="/assets/js/8.56f0b2e1.js"><link rel="prefetch" href="/assets/js/80.1aa8feae.js"><link rel="prefetch" href="/assets/js/81.8f9a55ed.js"><link rel="prefetch" href="/assets/js/82.6cdf60b1.js"><link rel="prefetch" href="/assets/js/83.29956407.js"><link rel="prefetch" href="/assets/js/84.e92374a3.js"><link rel="prefetch" href="/assets/js/85.6421d767.js"><link rel="prefetch" href="/assets/js/86.4f19d0eb.js"><link rel="prefetch" href="/assets/js/87.3e568c7e.js"><link rel="prefetch" href="/assets/js/88.163feac5.js"><link rel="prefetch" href="/assets/js/89.a4ab5d2b.js"><link rel="prefetch" href="/assets/js/9.b2dc3a8e.js"><link rel="prefetch" href="/assets/js/90.ec038868.js"><link rel="prefetch" href="/assets/js/91.d2368531.js"><link rel="prefetch" href="/assets/js/92.7054f0b3.js"><link rel="prefetch" href="/assets/js/93.029176c6.js"><link rel="prefetch" href="/assets/js/94.0d33f8b6.js"><link rel="prefetch" href="/assets/js/95.8b96ae84.js"><link rel="prefetch" href="/assets/js/96.7bb3a166.js"><link rel="prefetch" href="/assets/js/97.10a3a72c.js"><link rel="prefetch" href="/assets/js/98.4cb6e2ae.js"><link rel="prefetch" href="/assets/js/99.01121ed2.js"><link rel="prefetch" href="/assets/js/icon-svg.c49b1031.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.b053b093.js"><link rel="prefetch" href="/assets/js/vendors~icon-svg.6232fe9b.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.5e89e0f4.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.bd01dee5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="navbar-inner"><div class="navbar-crumb"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zyao89's Blogs</span></a></div> <div class="navbar-action"><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav></div></div></div></header> <!----> <div class="main-wrapper wrapper_2N9oDuL6"><div class="sidebar-mask"></div> <div class="aside"><aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="分类" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">分类</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 移动开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="nav-link link_1A4KpgHx"><!----> 服务端</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" class="nav-link link_1A4KpgHx"><!----> 前端开发</a></li><li class="dropdown-item"><!----> <a href="/categories/%E5%85%B6%E5%AE%83/" class="nav-link link_1A4KpgHx"><!----> 其它</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%AE%97%E6%B3%95/" class="nav-link link_1A4KpgHx"><!----> 算法</a></li><li class="dropdown-item"><!----> <a href="/categories/%E7%BD%91%E7%BB%9C/" class="nav-link link_1A4KpgHx"><!----> 网络</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 标签</a></div><div class="nav-item"><a href="/timeline/" class="nav-link link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> 归档</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> <span class="title">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://zyao89.cn/rss.xml" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> RSS <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/zyao89" target="_blank" rel="noopener noreferrer" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> GitHub <svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></li><li class="dropdown-item"><!----> <a href="mailto:zyao89@gmail.com?subject=[Blogs]关于博客的建议&amp;body=邮件正文, 请认真填写!" class="nav-link external link_1A4KpgHx"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="icon svgIcon_1AbM17xJ"><use xlink:href=""></use></svg> Email <!----></a></li></ul></div></div> <!----></nav> <div class="sidebar-links root_2Q8rAuh1"><div class="sidebar-group"><p class="sidebar-heading"><span>相关推荐</span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2020/05/13/docker基于pm2制作python运行环境基础镜像.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Docker基于pm2制作Python运行环境基础镜像</a></li><li><a href="/posts/2020/05/13/docker删除所有none镜像.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> Docker删除所有none镜像</a></li><li><a href="/posts/2020/05/08/k8s批量删除evicted-pods.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> k8s批量删除Evicted Pods</a></li><li><a href="/posts/2021/03/31/修改容器源码使其可以动态操作.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> 修改容器源码使其可以动态操作</a></li><li><a href="/posts/2021/02/25/记录-centos7-安装-docker-基本环境.html" class="nav-link sidebar-link link_1A4KpgHx"><!----> 记录 CentOS7 安装 Docker 基本环境</a></li></ul></div></div>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>自建API服务器实现阿里云DDNS(动态域名)更新</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/posts/2021/03/29/%E8%87%AA%E5%BB%BAapi%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91ddns%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%96%B0.html#ddns相关介绍" class="sidebar-link">DDNS相关介绍</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/posts/2021/03/29/%E8%87%AA%E5%BB%BAapi%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91ddns%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%96%B0.html#dns" class="sidebar-link">DNS</a></li><li class="sidebar-sub-header"><a href="/posts/2021/03/29/%E8%87%AA%E5%BB%BAapi%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91ddns%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%96%B0.html#ddns" class="sidebar-link">DDNS</a></li></ul></li><li><a href="/posts/2021/03/29/%E8%87%AA%E5%BB%BAapi%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91ddns%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%96%B0.html#搭建服务" class="sidebar-link">搭建服务</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/posts/2021/03/29/%E8%87%AA%E5%BB%BAapi%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91ddns%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%96%B0.html#调用服务接口动态更新" class="sidebar-link">调用服务接口动态更新</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/posts/2021/03/29/%E8%87%AA%E5%BB%BAapi%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E7%8E%B0%E9%98%BF%E9%87%8C%E4%BA%91ddns%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E6%9B%B4%E6%96%B0.html#ros-配置脚本" class="sidebar-link">ROS 配置脚本</a></li></ul></li></ul></section></li></ul> </aside></div> <!----> <div class="main-content content_2RZ9sgU8"><main class="page root_2M_Qi7kG"> <div class="theme-default-content root_2-7WkaDt"><h1 class="title_1j35tYhd">
+        自建API服务器实现阿里云DDNS(动态域名)更新
+        <!----></h1> <div class="rows_1p4yuwM6"><span class="categories_xVucymjQ"><span class="categoriesItem_25QzbJMw">服务端</span></span> <span class="tags_3eRugDkG"><span class="tagItem_BVRgjoUO">Docker</span><span class="tagItem_BVRgjoUO">阿里云</span></span></div> <div class="rows_1p4yuwM6"><span class="author_26qEzl24"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>Zyao89</span></span> <span><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ icon_2cqqjx-o"><use xlink:href=""></use></svg> <span>2021年3月29日星期一 13:06</span></span></div></div> <div role="content" class="theme-default-content content__default content_1Lffc1Nr"><p>DDNS（Dynamic Domain Name Server）是动态域名服务的缩写，它作为将域名和IP地址相互映射的一个分布式数据库,能够使人们更方便的访问互联网；</p> <h2 id="ddns相关介绍"><a href="#ddns相关介绍" class="header-anchor">#</a> DDNS相关介绍</h2> <h3 id="dns"><a href="#dns" class="header-anchor">#</a> DNS</h3> <p>域名系统,是因特网的一项服务,它作为将域名和IP地址相互映射的一个分布式数据库,能够使人们更方便的用数字英文组合甚至中文访问互联网，而不需要用IPv4、IPv6 复杂的数字字符组合；</p> <h3 id="ddns"><a href="#ddns" class="header-anchor">#</a> DDNS</h3> <p>动态域名系统,是域名系统(DNS)中的一种自动更新名称服务器内容的技术。在传统的DNS中,域名必须和固定的IP绑定,当IP变化时,必须手动更新IP与域名的映射关系,才能保证变化后的IP仍与域名相对应,其他用户才可访问。DDNS的作用就是将这更新过程自动化</p> <h2 id="搭建服务"><a href="#搭建服务" class="header-anchor">#</a> 搭建服务</h2> <p><a href="https://github.com/dockrepo/docker-alicloud-api-server" target="_blank" rel="noopener noreferrer">alicloud-api-server<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <div class="language-sh line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-sh"><code>docker run -d --name alicloud-api-server <span class="token punctuation">\</span>
+    -p <span class="token number">7899</span>:7899 <span class="token punctuation">\</span>
+    -e <span class="token assign-left variable">TZ</span><span class="token operator">=</span><span class="token string">&quot;Asia/Shanghai&quot;</span> <span class="token punctuation">\</span>
+    -e <span class="token assign-left variable">ACCESS_KEY_ID</span><span class="token operator">=</span><span class="token variable">$ACCESS_KEY_ID</span> <span class="token punctuation">\</span>
+    -e <span class="token assign-left variable">ACCESS_KEY_SECRET</span><span class="token operator">=</span><span class="token variable">$ACCESS_KEY_SECRET</span> <span class="token punctuation">\</span>
+    --restart unless-stopped <span class="token punctuation">\</span>
+    zyao89/alicloud-api-server
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="docker run -d --name alicloud-api-server \
+    -p 7899:7899 \
+    -e TZ=&quot;Asia/Shanghai&quot; \
+    -e ACCESS_KEY_ID=$ACCESS_KEY_ID \
+    -e ACCESS_KEY_SECRET=$ACCESS_KEY_SECRET \
+    --restart unless-stopped \
+    zyao89/alicloud-api-server" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><p>其中，</p> <p><code>$ACCESS_KEY_ID</code> 为阿里云的 AccessKey ID<br> <code>$ACCESS_KEY_SECRET</code> 为阿里云的 AccessKey Secret</p> <p>详细获取方式参考官方文档 <a href="https://help.aliyun.com/knowledge_detail/38738.html" target="_blank" rel="noopener noreferrer">如何获取AccessKey ID和AccessKey Secret<svg version="1.1" width="12" height="12" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ outbound_2CshRVUf"><use xlink:href=""></use></svg></a></p> <h2 id="调用服务接口动态更新"><a href="#调用服务接口动态更新" class="header-anchor">#</a> 调用服务接口动态更新</h2> <p>通过如下接口，可以快速实现查询更新</p> <div class="language-js line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-js"><code>    <span class="token comment">/**
+     * @swagger
+     * /api/v1/aliyun/AddDomainRecord:
+     *   post:
+     *     summary: 根据传入参数添加解析记录
+     *     description: 根据传入参数添加解析记录
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: {
+                            RR: '',
+                            DomainName: '',
+                            Type: '',
+                            Value: '',
+                        }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */</span>
+
+    <span class="token comment">/**
+     * @swagger
+     * /api/v1/aliyun/UpdateDomainRecord:
+     *   post:
+     *     summary: 根据传入参数修改解析记录
+     *     description: 根据传入参数修改解析记录
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: {
+                                RR: '',
+                                RecordId: '',
+                                Type: '',
+                                Value: '',
+                            }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */</span>
+
+    <span class="token comment">/**
+     * @swagger
+     * /api/v1/aliyun/DescribeDomainRecords:
+     *   post:
+     *     summary: 根据传入参数获取指定主域名的所有解析记录列表
+     *     description: 根据传入参数获取指定主域名的所有解析记录列表
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: { DomainName: &quot;baidu.com&quot; }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */</span>
+
+    <span class="token comment">/**
+     * @swagger
+     * /api/v1/aliyun/DescribeSubDomainRecords:
+     *   post:
+     *     summary: 根据传入参数获取某个固定子域名的所有解析记录列表
+     *     description: 根据传入参数获取某个固定子域名的所有解析记录列表
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: { SubDomain: &quot;a.b.baidu.com&quot; }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */</span>
+
+    <span class="token comment">/**
+     * @swagger
+     * /api/v1/aliyun/DescribeDomainRecordInfo:
+     *   post:
+     *     summary: 根据传入参数获取某个固定子域名下的解析记录信息
+     *     description: 根据传入参数获取某个固定子域名下的解析记录信息
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: { RecordId: &quot;xxxx&quot; }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */</span>
+
+    <span class="token comment">/**
+     * @swagger
+     * /api/v1/aliyun/CheckupAndUpdateDomainRecord:
+     *   post:
+     *     summary: 根据传入参数先校验，后修改解析记录
+     *     description: 根据传入参数先校验，后修改解析记录
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: {
+                                RR: '',
+                                RecordId: '',
+                                Type: '',
+                                Value: '',
+                            }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="/**
+     * @swagger
+     * /api/v1/aliyun/AddDomainRecord:
+     *   post:
+     *     summary: 根据传入参数添加解析记录
+     *     description: 根据传入参数添加解析记录
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: {
+                            RR: '',
+                            DomainName: '',
+                            Type: '',
+                            Value: '',
+                        }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */
+
+    /**
+     * @swagger
+     * /api/v1/aliyun/UpdateDomainRecord:
+     *   post:
+     *     summary: 根据传入参数修改解析记录
+     *     description: 根据传入参数修改解析记录
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: {
+                                RR: '',
+                                RecordId: '',
+                                Type: '',
+                                Value: '',
+                            }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */
+
+    /**
+     * @swagger
+     * /api/v1/aliyun/DescribeDomainRecords:
+     *   post:
+     *     summary: 根据传入参数获取指定主域名的所有解析记录列表
+     *     description: 根据传入参数获取指定主域名的所有解析记录列表
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: { DomainName: &quot;baidu.com&quot; }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */
+
+    /**
+     * @swagger
+     * /api/v1/aliyun/DescribeSubDomainRecords:
+     *   post:
+     *     summary: 根据传入参数获取某个固定子域名的所有解析记录列表
+     *     description: 根据传入参数获取某个固定子域名的所有解析记录列表
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: { SubDomain: &quot;a.b.baidu.com&quot; }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */
+
+    /**
+     * @swagger
+     * /api/v1/aliyun/DescribeDomainRecordInfo:
+     *   post:
+     *     summary: 根据传入参数获取某个固定子域名下的解析记录信息
+     *     description: 根据传入参数获取某个固定子域名下的解析记录信息
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: { RecordId: &quot;xxxx&quot; }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */
+
+    /**
+     * @swagger
+     * /api/v1/aliyun/CheckupAndUpdateDomainRecord:
+     *   post:
+     *     summary: 根据传入参数先校验，后修改解析记录
+     *     description: 根据传入参数先校验，后修改解析记录
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: {
+                                RR: '',
+                                RecordId: '',
+                                Type: '',
+                                Value: '',
+                            }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div><h3 id="ros-配置脚本"><a href="#ros-配置脚本" class="header-anchor">#</a> ROS 配置脚本</h3> <blockquote><p>此操作可以进行定时更新，具体配置自由发挥</p></blockquote> <div class="language-sh line-numbers-mode"><div class="custom-style-wrapper window-controls"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></div><pre class="language-sh"><code><span class="token comment"># url</span>
+
+:local URL <span class="token string">&quot;http://x.x.x.x:7899/api/v1/aliyun/CheckupAndUpdateDomainRecord&quot;</span>
+
+<span class="token comment"># 拨号的接口名称</span>
+
+:local ddnsinterface <span class="token string">&quot;pppoe-out1&quot;</span>
+
+:delay <span class="token number">3</span><span class="token punctuation">;</span>
+
+:local ipssfn <span class="token punctuation">[</span> /ip address get <span class="token punctuation">[</span>/ip address <span class="token function">find</span> <span class="token assign-left variable">interface</span><span class="token operator">=</span><span class="token variable">$ddnsinterface</span> <span class="token punctuation">]</span> address <span class="token punctuation">]</span>
+
+:local ipss <span class="token punctuation">[</span>:pick <span class="token variable">$ipssfn</span> <span class="token number">0</span> <span class="token punctuation">[</span>:find <span class="token variable">$ipssfn</span> <span class="token string">&quot;/&quot;</span> <span class="token punctuation">]</span> <span class="token punctuation">]</span>
+
+<span class="token comment"># 上传的 json 文本 http-data，具体配置请进行相应修改</span>
+
+:local httpdata <span class="token string">&quot;{<span class="token entity" title="\&quot;">\&quot;</span>RecordId<span class="token entity" title="\&quot;">\&quot;</span>:<span class="token entity" title="\&quot;">\&quot;</span>xxxx<span class="token entity" title="\&quot;">\&quot;</span>,<span class="token entity" title="\&quot;">\&quot;</span>RR<span class="token entity" title="\&quot;">\&quot;</span>:<span class="token entity" title="\&quot;">\&quot;</span>yyyy<span class="token entity" title="\&quot;">\&quot;</span>,<span class="token entity" title="\&quot;">\&quot;</span>Type<span class="token entity" title="\&quot;">\&quot;</span>:<span class="token entity" title="\&quot;">\&quot;</span>A<span class="token entity" title="\&quot;">\&quot;</span>,<span class="token entity" title="\&quot;">\&quot;</span>DomainName<span class="token entity" title="\&quot;">\&quot;</span>:<span class="token entity" title="\&quot;">\&quot;</span>zzzz.com<span class="token entity" title="\&quot;">\&quot;</span>,<span class="token entity" title="\&quot;">\&quot;</span>Value<span class="token entity" title="\&quot;">\&quot;</span>:<span class="token entity" title="\&quot;">\&quot;</span><span class="token variable">$ipss</span><span class="token entity" title="\&quot;">\&quot;</span>}&quot;</span>
+
+/tool fetch http-method<span class="token operator">=</span>post http-data<span class="token operator">=</span><span class="token variable">$httpdata</span> http-header-field<span class="token operator">=</span><span class="token string">&quot;Content-Type: application/json&quot;</span> <span class="token assign-left variable">url</span><span class="token operator">=</span><span class="token variable">$URL</span>
+
+:delay <span class="token number">10</span><span class="token punctuation">;</span>
+:log info <span class="token punctuation">(</span><span class="token string">&quot;更新IP = &quot;</span> <span class="token builtin class-name">.</span><span class="token string">&quot;<span class="token variable">$ipss</span>&quot;</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div><div class="root_1HZXd69d"><div class="head_2UeprHVY"><div class="tools_1YHFaVS4"><!----> <span data-clipboard-text="# url
+
+:local URL &quot;http://x.x.x.x:7899/api/v1/aliyun/CheckupAndUpdateDomainRecord&quot;
+
+# 拨号的接口名称
+
+:local ddnsinterface &quot;pppoe-out1&quot;
+
+:delay 3;
+
+:local ipssfn [ /ip address get [/ip address find interface=$ddnsinterface ] address ]
+
+:local ipss [:pick $ipssfn 0 [:find $ipssfn &quot;/&quot; ] ]
+
+# 上传的 json 文本 http-data，具体配置请进行相应修改
+
+:local httpdata &quot;{\&quot;RecordId\&quot;:\&quot;xxxx\&quot;,\&quot;RR\&quot;:\&quot;yyyy\&quot;,\&quot;Type\&quot;:\&quot;A\&quot;,\&quot;DomainName\&quot;:\&quot;zzzz.com\&quot;,\&quot;Value\&quot;:\&quot;$ipss\&quot;}&quot;
+
+/tool fetch http-method=post http-data=$httpdata http-header-field=&quot;Content-Type: application/json&quot; url=$URL
+
+:delay 10;
+:log info (&quot;更新IP = &quot; .&quot;$ipss&quot;)" class="icon_4QTKitRM"><svg version="1.1" width="14" height="14" viewBox="0 0 0 0" class="svgIcon_1AbM17xJ"><use xlink:href=""></use></svg></span> <!----></div></div> <!----></div></div></div> <div class="root_1qgPDpgW"><div><span>作者：</span> <span>Zyao89；</span> <span>转载请保留</span></div> <div><span>版权声明：</span> <span>自由转载-非商用-非衍生-保持署名</span></div> <div><span>原文地址：</span> <a target="_blank" href="https://zyao89.cn/s/6d2694a8.html">https://zyao89.cn/s/6d2694a8.html</a></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次编辑时间:</span> <span class="time">2023年11月27日星期一 11:18</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/posts/2021/03/31/修改容器源码使其可以动态操作.html" class="prev">
+        修改容器源码使其可以动态操作
+      </a></span> <span class="next"><a href="/posts/2021/02/25/记录-centos7-安装-docker-基本环境.html">
+        记录 CentOS7 安装 Docker 基本环境
+      </a>
+      →
+    </span></p></div>  <div type="vssue" class="theme-default-content root_2fUnO8Ia"><!----></div></main></div></div> <!----></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.6169d5d9.js" defer></script><script src="/assets/js/1.381a88b1.js" defer></script><script src="/assets/js/17.7be3556f.js" defer></script><script src="/assets/js/102.c8909a76.js" defer></script><script src="/assets/js/23.b5979579.js" defer></script><script src="/assets/js/25.78ef3fa2.js" defer></script>
+  </body>
+</html>

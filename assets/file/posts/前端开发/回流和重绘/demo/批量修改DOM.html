@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        'use strict';
+        const rAF = function () {
+            return (
+                window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                }
+            );
+        }();
+
+        let frame = 0;
+        let allFrameCount = 0;
+        let lastTime = Date.now();
+        let lastFameTime = Date.now();
+
+        (function loop() {
+            const now = Date.now();
+            const fs = (now - lastFameTime);
+            let fps = Math.round(1000 / fs);
+
+            lastFameTime = now;
+            // 不置 0，在动画的开头及结尾记录此值的差值算出 FPS
+            allFrameCount++;
+            frame++;
+
+            if (now > 1000 + lastTime) {
+                fps = Math.round((frame * 1000) / (now - lastTime));
+                console.log(`${new Date()} 1S内 FPS：`, fps);
+                frame = 0;
+                lastTime = now;
+            }
+
+            rAF(loop);
+        })();
+    </script>
+</head>
+
+<body>
+    <button id="normal">正常</button>
+    <button id="display">隐藏后展示</button>
+    <button id="fragment">fragment</button>
+    <button id="backup">备份</button>
+    <button id="clear">清空</button>
+    <ul id="list"></ul>
+    <script>
+        'use strict';
+        const data = [];
+        for (let i = 0; i < 2000; i++) {
+            data.push(i);
+        }
+
+        function appendDataToElement(appendToElement, data) {
+            let li;
+            for (let i = 0; i < data.length; i++) {
+                li = document.createElement('li');
+                li.textContent = 'text';
+                appendToElement.appendChild(li);
+            }
+        }
+        const ul = document.getElementById('list');
+        const normalBtn = document.getElementById('normal');
+        const displayBtn = document.getElementById('display');
+        const fragment = document.getElementById('fragment');
+        const backup = document.getElementById('backup');
+        const clear = document.getElementById('clear');
+        normalBtn.addEventListener('click', () => {
+            appendDataToElement(ul, data);
+        });
+        displayBtn.addEventListener('click', () => {
+            ul.style.display = 'none';
+            appendDataToElement(ul, data);
+            ul.style.display = 'block';
+        });
+        fragment.addEventListener('click', () => {
+            const frag = document.createDocumentFragment();
+            appendDataToElement(frag, data);
+            ul.appendChild(frag);
+        });
+        backup.addEventListener('click', () => {
+            const clone = ul.cloneNode(true);
+            appendDataToElement(clone, data);
+            ul.parentNode.replaceChild(clone, ul);
+            ul = clone;
+        });
+        clear.addEventListener('click', () => {
+            while (ul.lastChild) {
+                ul.removeChild(ul.lastChild);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
