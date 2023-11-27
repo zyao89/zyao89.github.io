@@ -10,6 +10,11 @@ jobs:
             - name: Checkout
               uses: actions/checkout@master
 
+            - name: Setup
+              uses: actions/setup-node@master
+              with:
+                node-version: 16
+          
             - name: Install
               run: yarn
 
