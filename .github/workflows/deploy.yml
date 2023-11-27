@@ -11,10 +11,10 @@ jobs:
               uses: actions/checkout@master
 
             - name: Install
-              run: npm install
+              run: yarn
 
             - name: Build
-              run: npm run-script build
+              run: yarn run build
               env:
                   GAID: ${{ secrets.GAID }}
                   GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
@@ -22,6 +22,6 @@ jobs:
                   BAIDU_HMT_ID: ${{ secrets.BAIDU_HMT_ID }}
 
             - name: Deploy
-              run: npm run-script deploy
+              run: yarn run deploy
               env:
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}

@@ -36,7 +36,7 @@
         "@micro-app/plugin-deploy": "^0.0.9",
         "@micro-app/vuepress": "^0.0.3",
         "@types/jest": "^24.9.1",
-        "cz-customizable": "^6.3.0",
+        "cz-customizable": "^6.9.2",
         "eslint-config-2o3t": "^2.0.2",
         "jest": "^24.9.0"
     }
