@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /logo_2021.svg
+heroImage: /logo_2023.svg
 # banner: /banner.jpg
 heroText: 'STAY HUNGRY STAY FOOLISH'
 tagline: 'No one can call back yesterday.'
