@@ -1160,10 +1160,10 @@
     "@release-it/conventional-changelog" "^2.0.1"
     release-it "^14.11.5"
 
-"@micro-app/plugin-vuepress@^0.3.4":
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.3.12.tgz#6fc837074dd588345e33942080cedac7437631b5"
-  integrity sha512-RFD7zzNw6ZQ0FhvolnkN7QeaJsnBBy28COal2xngLDng4XB6nCeEAgSCzE97h4B7JUOogzZbrH9HPYy3Du6VpQ==
+"@micro-app/plugin-vuepress@^0.3.16":
+  version "0.3.16"
+  resolved "https://registry.yarnpkg.com/@micro-app/plugin-vuepress/-/plugin-vuepress-0.3.16.tgz#16d5b7c7de08f6211bb254cc25a4cdbbea2049d5"
+  integrity sha512-GMVUIExYMMFoZBW/LLE0EcaYxS8Am6+4VP//4Pl9mHESD4dGcGqFTIrbV8WhIxTH0S3CslLZxj+b41c30qhBQw==
   dependencies:
     "@micro-app/cli" "^0.4.2"
     "@renovamen/vuepress-plugin-mermaid" "^0.2.0"
@@ -1237,13 +1237,13 @@
     yargs-parser "^18.1.3"
     yargs-unparser "^1.6.4"
 
-"@micro-app/vuepress@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@micro-app/vuepress/-/vuepress-0.0.3.tgz#71e762a99b5558abdef12993c0c242f17ff5c865"
-  integrity sha512-t5lBP220QrC0bh+U2tRYxRH3ULvRu1qzNWCc9RZXLM+U8rbDRCIn2HY93XSBtOh7qfhfv3ZJMrV21lIiDIWWDQ==
+"@micro-app/vuepress@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@micro-app/vuepress/-/vuepress-0.0.4.tgz#660a2fdb8a2e181f8e1b4c89b0ea0310995f12a9"
+  integrity sha512-BV5GnuRfvfVKe9reT+YdWxvkmG459F8yb71Cf4o4O7WBSk94y6Nh/zcoGoY4u9afiBsQ0vmo4DQSnaKIVYj5UQ==
   dependencies:
     "@micro-app/cli" "^0.4.2"
-    "@micro-app/plugin-vuepress" "^0.3.4"
+    "@micro-app/plugin-vuepress" "^0.3.16"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

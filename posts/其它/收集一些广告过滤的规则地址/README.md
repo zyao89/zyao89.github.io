@@ -75,4 +75,4 @@ http://tools.yiclear.com/baidu-lite.txt
 
 ## AdGuardHome 配置
 
-配置: <Link :href="require('./AdGuardHomeRules.txt')">链接</Link>
+配置: <Link :href="require('./demo/AdGuardHomeRules.txt')">链接</Link>
